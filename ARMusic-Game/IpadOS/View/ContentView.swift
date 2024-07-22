@@ -6,16 +6,21 @@
 //
 
 import SwiftUI
+import ARKit
+import RealityKit
+import Metal
+import ARPackage
+
+
+
 
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+           ARViewContainer()
         }
         .padding()
+
     }
 }
 
