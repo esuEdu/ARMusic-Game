@@ -35,7 +35,7 @@ class MainARView: ARView {
         
         self.box = box
         
-        arView.addCoaching()
+        arView.addCoaching() 
         
         arView.session.run(configuration, options: [])
         

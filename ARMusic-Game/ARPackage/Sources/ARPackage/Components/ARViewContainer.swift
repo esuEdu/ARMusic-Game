@@ -12,13 +12,6 @@ public struct ARViewContainer: UIViewRepresentable {
     
     public func makeUIView(context: Context) -> ARView {
         let view = MainARView(frame: .zero)
-        let config = ARWorldTrackingConfiguration()
-            config.planeDetection = [.horizontal,.vertical]
-            config.environmentTexturing = .automatic
-            view.session.run(config)
-            
-            // Adding the coaching overlay on the AR View
-            view.addCoaching()
 
         return view
     }
