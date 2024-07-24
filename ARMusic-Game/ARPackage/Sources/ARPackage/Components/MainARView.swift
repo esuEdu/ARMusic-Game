@@ -14,6 +14,7 @@ class MainARView: ARView {
         arView.automaticallyConfigureSession = true
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
+        configuration.environmentTexturing = .automatic
         
         guard let device = MTLCreateSystemDefaultDevice() else {
             fatalError("Error creating default metal device.")
@@ -34,6 +35,7 @@ class MainARView: ARView {
         
         self.box = box
         
+        arView.addCoaching() 
         
         arView.session.run(configuration, options: [])
         

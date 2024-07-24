@@ -12,7 +12,7 @@ public struct ARViewContainer: UIViewRepresentable {
     
     public func makeUIView(context: Context) -> ARView {
         let view = MainARView(frame: .zero)
-        
+
         return view
     }
     
