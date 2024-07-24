@@ -16,11 +16,20 @@ let package = Package(
             name: "AudioPackage",
             targets: ["AudioPackage"]),
     ],
+    dependencies: [
+        .package(path: "../CorePackage"),
+        .package(path: "../DataPackage"),
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "AudioPackage"),
+            name: "AudioPackage",
+            dependencies: [
+                .product(name: "CorePackage", package: "CorePackage", condition: nil),
+                .product(name: "DataPackage", package: "DataPackage", condition: nil),
+            ]
+        ),
         .testTarget(
             name: "AudioPackageTests",
             dependencies: ["AudioPackage"]),
