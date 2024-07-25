@@ -11,10 +11,8 @@ import RealityKit
 import Metal
 import ARPackage
 
-
-
-
 struct ContentView: View {
+    
     var body: some View {
         VStack {
            ARViewContainer()
@@ -22,8 +20,4 @@ struct ContentView: View {
         .padding()
 
     }
-}
-
-#Preview {
-    ContentView()
 }
