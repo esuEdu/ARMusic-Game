@@ -1,7 +1,7 @@
 import ARKit
 import RealityKit
 
-class MainARView: ARView {
+class MainARView: ARView, ARSessionDelegate {
     
     var arView: ARView {
         return self
@@ -9,13 +9,32 @@ class MainARView: ARView {
     
     var box: ModelEntity!
     
+    
+    
     required init(frame frameRect: CGRect) {
         super.init(frame: frameRect)
+        arView.session.delegate = self
         arView.automaticallyConfigureSession = true
         let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = [.horizontal, .vertical]
+        configuration.planeDetection = [.horizontal]
         configuration.environmentTexturing = .automatic
-
+    
+        guard let device = MTLCreateSystemDefaultDevice() else {
+            fatalError("Error creating default metal device.")
+        }
+        
+        // Get a reference to the Metal library.
+        let library = device.makeDefaultLibrary()!
+        
+        let surfaceShader = CustomMaterial.SurfaceShader(named: "mySurfaceShader", in: library)
+        
+        let geometryShader = CustomMaterial.GeometryModifier(named: "simpleGeometryModifier", in: library)
+        
+        let customMaterial = try! CustomMaterial(surfaceShader: surfaceShader, geometryModifier: geometryShader, lightingModel: .lit)
+        
+        let box = ModelEntity(mesh: .generateSphere(radius: 0.1), materials: [customMaterial])
+        
+        self.box = box
         
         arView.addCoaching() 
         
@@ -23,8 +42,52 @@ class MainARView: ARView {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                           action: #selector(handleTap(_:)))
+        
+       
+        
         arView.addGestureRecognizer(tapGestureRecognizer)
     }
+    
+    func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
+        var planeMesh: MeshResource
+        var color: UIColor
+        
+        for anchor in anchors {
+           
+           
+            if let anchor = anchor as? ARPlaneAnchor {
+                if anchor.alignment == .horizontal {
+                    print("horizotal plane")
+                    color = UIColor.black
+                    planeMesh = .generatePlane(width: anchor.extent.x, depth: anchor.extent.z)
+                } else if anchor.alignment == .vertical {
+                    print("vertical plane")
+                    color = UIColor.yellow.withAlphaComponent(0.5)
+                    planeMesh = .generatePlane(width: anchor.extent.x, height: anchor.extent.z)
+                } else {
+                    fatalError("Anchor is not ARPlaneAnchor")
+                }
+                
+                let entity = ModelEntity(mesh: planeMesh, materials: [
+                SimpleMaterial(color: color, isMetallic: true)])
+                
+                let newAnchor = AnchorEntity(plane: .any, classification: [.any], minimumBounds: [0.5, 0.5])
+                
+                newAnchor.addChild(entity)
+                
+                arView.scene.addAnchor(newAnchor)
+            }
+            
+           
+        }
+        
+       
+        
+        
+    }
+    
+    
+    
     
     @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
         let location = gesture.location(in: arView)
