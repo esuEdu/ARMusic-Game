@@ -18,7 +18,6 @@
 		28CE72CF2C49DACD00051E74 /* AudioPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CE2C49DACD00051E74 /* AudioPackage */; };
 		28CE72D12C49DAD000051E74 /* CorePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D02C49DAD000051E74 /* CorePackage */; };
 		28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D22C49DAD200051E74 /* DataPackage */; };
-		98F6EB762C4EF81100D9B9B0 /* shader_test.metal in Sources */ = {isa = PBXBuildFile; fileRef = 98F6EB752C4EF81100D9B9B0 /* shader_test.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +52,6 @@
 		28CE72C82C49D97B00051E74 /* DataPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataPackage; sourceTree = "<group>"; };
 		28CE72C92C49D99700051E74 /* AudioPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AudioPackage; sourceTree = "<group>"; };
 		28CE72CA2C49D9AD00051E74 /* ARPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ARPackage; sourceTree = "<group>"; };
-		98F6EB752C4EF81100D9B9B0 /* shader_test.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = shader_test.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +111,6 @@
 		28CE729C2C49D8EC00051E74 /* IpadOS */ = {
 			isa = PBXGroup;
 			children = (
-				98F6EB752C4EF81100D9B9B0 /* shader_test.metal */,
 				28CE72D42C49DB3200051E74 /* View */,
 				28CE72D72C49DB6600051E74 /* Navigation */,
 				28CE72D62C49DB4E00051E74 /* Assets */,
@@ -323,7 +320,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28CE72A02C49D8EC00051E74 /* ContentView.swift in Sources */,
-				98F6EB762C4EF81100D9B9B0 /* shader_test.metal in Sources */,
 				28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

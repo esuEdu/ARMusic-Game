@@ -18,8 +18,7 @@ class MainARView: ARView, ARSessionDelegate {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal]
         configuration.environmentTexturing = .automatic
-        
-        
+    
         guard let device = MTLCreateSystemDefaultDevice() else {
             fatalError("Error creating default metal device.")
         }
@@ -98,11 +97,19 @@ class MainARView: ARView, ARSessionDelegate {
         if let firstResult = results.first {
             
             
-            let anchor = AnchorEntity(world: firstResult.worldTransform)
+            let anchor = AnchorEntity(raycastResult: firstResult)
             
-            anchor.addChild(box)
+            let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 0.3))
+            modelEntity.generateCollisionShapes(recursive: true)
+            modelEntity.model?.materials = [SimpleMaterial(color: .blue, isMetallic: true)]
+            
+            
+            
+            anchor.addChild(modelEntity)
             
             arView.scene.addAnchor(anchor)
+            
+            arView.installGestures(.all, for: modelEntity)
         }
     }
     
