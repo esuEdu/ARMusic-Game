@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import ARKit
 import RealityKit
-import AudioPackage
+import Metal
+import ARPackage
+
+
 
 
 struct ContentView: View {
@@ -15,15 +19,9 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            arViewRepresetable(viewModel: viewModel)
-        }.task {
-            registerECS()
+           ARViewContainer()
         }
-    }
-    
-    func registerECS () {
-        AudioSystem.registerSystem()
-        
-        AudioComponent.registerComponent()
+        .padding()
+
     }
 }
