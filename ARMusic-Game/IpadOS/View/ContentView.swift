@@ -11,11 +11,7 @@ import RealityKit
 import Metal
 import ARPackage
 
-
-
-
 struct ContentView: View {
-    @Bindable private var viewModel = ContentViewModel()
     
     var body: some View {
         VStack {

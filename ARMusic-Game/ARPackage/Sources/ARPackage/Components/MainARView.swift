@@ -15,25 +15,7 @@ class MainARView: ARView {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
         configuration.environmentTexturing = .automatic
-        
-        guard let device = MTLCreateSystemDefaultDevice() else {
-            fatalError("Error creating default metal device.")
-        }
-        
-        
-        // Get a reference to the Metal library.
-        let library = device.makeDefaultLibrary()!
-        
-        
-        let surfaceShader = CustomMaterial.SurfaceShader(named: "mySurfaceShader", in: library)
-        
-        let geometryShader = CustomMaterial.GeometryModifier(named: "simpleGeometryModifier", in: library)
-        
-        let customMaterial = try! CustomMaterial(surfaceShader: surfaceShader, geometryModifier: geometryShader, lightingModel: .lit)
-        
-        let box = ModelEntity(mesh: .generateSphere(radius: 0.1), materials: [customMaterial])
-        
-        self.box = box
+
         
         arView.addCoaching() 
         
