@@ -46,6 +46,11 @@ public struct AudioData {
     /// The note associated with the audio data.
     let note: Notes
     
+    public init(instrument: Instruments, note: Notes) {
+        self.instrument = instrument
+        self.note = note
+    }
+    
     /// The file name of the audio data based on the instrument and note.
     var fileName: String {
         return "\(instrument.rawValue)_\(note.rawValue)"
@@ -61,8 +66,7 @@ public struct AudioData {
      
      - Returns: An optional URL pointing to the audio file in the main bundle.
      */
-    func getURL() -> URL? {
-        print("Audio file URL: \(String(describing: self.url))")
+    public func getURL() -> URL? {
         return self.url
     }
 }

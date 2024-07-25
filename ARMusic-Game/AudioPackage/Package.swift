@@ -17,7 +17,6 @@ let package = Package(
             targets: ["AudioPackage"]),
     ],
     dependencies: [
-        .package(path: "../CorePackage"),
         .package(path: "../DataPackage"),
     ],
     targets: [
@@ -26,7 +25,6 @@ let package = Package(
         .target(
             name: "AudioPackage",
             dependencies: [
-                .product(name: "CorePackage", package: "CorePackage", condition: nil),
                 .product(name: "DataPackage", package: "DataPackage", condition: nil),
             ]
         ),

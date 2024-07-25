@@ -6,19 +6,24 @@
 //
 
 import SwiftUI
+import RealityKit
+import AudioPackage
+
 
 struct ContentView: View {
+    @Bindable private var viewModel = ContentViewModel()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            arViewRepresetable(viewModel: viewModel)
+        }.task {
+            registerECS()
         }
-        .padding()
     }
-}
-
-#Preview {
-    ContentView()
+    
+    func registerECS () {
+        AudioSystem.registerSystem()
+        
+        AudioComponent.registerComponent()
+    }
 }
