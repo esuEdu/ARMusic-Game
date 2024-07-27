@@ -45,6 +45,7 @@ public class AudioSystem: System {
         }
     }
     
+    
     public func playThread(entity: Entity) {
         
         if let audio = entity.components[AudioComponent.self] as? AudioComponent {
@@ -53,7 +54,7 @@ public class AudioSystem: System {
             let url = getURL(instrument: audio.intrument, note: audio.note)
             
             //create an audio thread
-            let audioThread = AudioThread(url: url)
+            let audioThread = AudioThread(at: entity.position, with: url)
             
             //save the entity audio thread for more control
             audioThreads[entity] = audioThread

@@ -1,71 +1,80 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Eduardo on 25/07/24.
 //
 
 import Foundation
-import AVFoundation
+import AVFAudio
+import simd
 
 public class AudioThread: Thread {
     
-    private var audioPlayer: AVAudioPlayer?
-    
+    private var audioEngine: AVAudioEngine = AVAudioEngine()
+    private var environmentNode: AVAudioEnvironmentNode = AVAudioEnvironmentNode()
+    private var audioPlayerNode: AVAudioPlayerNode = AVAudioPlayerNode()
+    private var audioFile: AVAudioFile?
     private var url: URL
+    private let position: SIMD3<Float>
+    private let audioUtil = AudioUtils.shared
     
     var isMuted: Bool = false
     var previousVolume: Float = 1.0
     
-    public init(url: URL) {
+    public init(at position: SIMD3<Float> ,with url: URL) {
         self.url = url
+        self.position = position
         super.init()
+        setupAudioEngine()
     }
     
-    override public func main() {
+    private func setupAudioEngine() {
+        
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.play()
-            //keep the tread alive while audio is playing
-            while audioPlayer?.isPlaying == true {
-                Thread.sleep(forTimeInterval: 1)
-                audioPlayer?.play()
-            }
+            try audioEngine.start()
         } catch {
-            print("Error playing sound: \(error.localizedDescription)")
+            print("Audio engine failed to start: \(error)")
         }
     }
     
-    public func playSound(url: URL) {
+    override public func main() {
+    }
+    
+    public func updateListenerPosition() {
+        
+        guard let possition = audioUtil.possition, let orientation = audioUtil.orientation else { return }
+        
+        environmentNode.listenerPosition = AVAudio3DPoint(x: possition.x, y: possition.y, z: possition.z)
+        environmentNode.listenerAngularOrientation = AVAudio3DAngularOrientation(yaw: orientation.y, pitch: orientation.x, roll: orientation.z)
+        
+    }
+    
+    
+    public func playSound() {
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.play()
         } catch {
             print("Error playing sound: \(error.localizedDescription)")
         }
     }
     
     public func pause() {
-        if let audioPlayer = audioPlayer {
-            audioPlayer.pause()
-        }
+        audioPlayerNode.pause()
+        
     }
     
     public func mute() {
-        guard let player = audioPlayer else { return }
         isMuted = true
-        previousVolume = player.volume
-        player.volume = 0
+        previousVolume = audioPlayerNode.volume
+        audioPlayerNode.volume = 0
     }
-
+    
     public func unmute() {
-        guard let player = audioPlayer else { return }
         isMuted = false
-        player.volume = previousVolume
+        audioPlayerNode.volume = previousVolume
     }
     
     public func stopPlayback() {
-        guard let player = audioPlayer else { return }
-        player.stop()
+        audioPlayerNode.stop()
     }
 }
