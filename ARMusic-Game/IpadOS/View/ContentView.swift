@@ -6,18 +6,19 @@
 //
 
 import SwiftUI
-import ARKit
-import RealityKit
-import Metal
 import ARPackage
 
 struct ContentView: View {
-    
-    var body: some View {
-        VStack {
-           ARViewContainer()
-        }
-        .padding()
+    @StateObject private var instrumentSystem = InstrumentSystem(arView: nil)
 
+    var body: some View {
+        ZStack {
+            ARViewContainer(instrumentSystem: instrumentSystem)
+                .edgesIgnoringSafeArea(.all)
+            
+            MainHUDView()
+        }
+        .environmentObject(instrumentSystem)
     }
 }
+
