@@ -64,23 +64,6 @@ public class AudioSystem: System {
             
         }
     }
-
-    public func pause(entity: Entity) {
-        audioThreads[entity]?.pause()
-    }
-
-    public func mute(entity: Entity) {
-        audioThreads[entity]?.mute()
-    }
-
-    public func unmute(entity: Entity) {
-        audioThreads[entity]?.unmute()
-    }
-
-    public func stop(entity: Entity) {
-        audioThreads[entity]?.stopPlayback()
-        audioThreads[entity] = nil
-    }
     
     private func getURL(instrument: Instruments, note: Notes) -> URL {
         let audioData = AudioData(instrument: instrument, note: note)

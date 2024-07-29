@@ -4,7 +4,7 @@
 public class AudioUtils {
     public static var shared = AudioUtils()
     
-    public var possition: SIMD3<Float>?
+    public var position: SIMD3<Float>?
     public var orientation: SIMD3<Float>?
     
     init() {}

@@ -55,7 +55,7 @@ import Combine
                 
                 let box = ModelEntity(mesh: .generateBox(size: 0.1), materials: [SimpleMaterial(color: .red, isMetallic: true)])
                 
-                let audioComponent = AudioComponent(note: .c, instrument: .piano, tom: 100, tempo: 100)
+                let audioComponent = AudioComponent(note: .d, instrument: .piano, tom: 100, tempo: 100)
                 box.components.set(audioComponent)
                 
           
@@ -73,7 +73,7 @@ extension AuidoViewModel: ARSessionDelegate {
         let cameraTransform = frame.camera.transform
         let cameraPosition = SIMD3<Float>(cameraTransform.columns.3.x, cameraTransform.columns.3.y, cameraTransform.columns.3.z)
         let cameraOrientation = frame.camera.eulerAngles
-        AudioUtils.shared.possition = cameraPosition
+        AudioUtils.shared.position = cameraPosition
         AudioUtils.shared.orientation = cameraOrientation
 
     }

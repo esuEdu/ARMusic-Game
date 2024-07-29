@@ -4,9 +4,8 @@
 //
 //  Created by Eduardo on 25/07/24.
 //
-
 import Foundation
-import AVFAudio
+import AVFoundation
 import simd
 
 public class AudioThread: Thread {
@@ -19,17 +18,21 @@ public class AudioThread: Thread {
     private let position: SIMD3<Float>
     private let audioUtil = AudioUtils.shared
     
-    var isMuted: Bool = false
-    var previousVolume: Float = 1.0
-    
-    public init(at position: SIMD3<Float> ,with url: URL) {
+    public init(at position: SIMD3<Float>, with url: URL) {
         self.url = url
         self.position = position
         super.init()
         setupAudioEngine()
+        loadAudioFile()
     }
     
     private func setupAudioEngine() {
+        audioEngine.attach(audioPlayerNode)
+        audioEngine.attach(environmentNode)
+        
+        audioEngine.connect(audioPlayerNode, to: environmentNode, format: nil)
+        audioEngine.connect(environmentNode, to: audioEngine.mainMixerNode, format: nil)
+        audioEngine.mainMixerNode.position = AVAudio3DPoint(x: position.x, y: position.y, z: position.z)
         
         do {
             try audioEngine.start()
@@ -38,43 +41,49 @@ public class AudioThread: Thread {
         }
     }
     
-    override public func main() {
-    }
-    
-    public func updateListenerPosition() {
-        
-        guard let possition = audioUtil.possition, let orientation = audioUtil.orientation else { return }
-        
-        environmentNode.listenerPosition = AVAudio3DPoint(x: possition.x, y: possition.y, z: possition.z)
-        environmentNode.listenerAngularOrientation = AVAudio3DAngularOrientation(yaw: orientation.y, pitch: orientation.x, roll: orientation.z)
-        
-    }
-    
-    
-    public func playSound() {
+    private func loadAudioFile() {
         do {
+            audioFile = try AVAudioFile(forReading: url)
         } catch {
-            print("Error playing sound: \(error.localizedDescription)")
+            print("Failed to load audio file: \(error)")
         }
     }
     
-    public func pause() {
-        audioPlayerNode.pause()
+    override public func main() {
+        while true {
+            Thread.sleep(forTimeInterval: 0.1)
+            playSound()
+        }
+        
         
     }
     
-    public func mute() {
-        isMuted = true
-        previousVolume = audioPlayerNode.volume
-        audioPlayerNode.volume = 0
+    public func updateListenerPosition() {
+        guard let position = audioUtil.position, let orientation = audioUtil.orientation else { return }
+        
+        adjustVolumeBasedOnDistance(listenerPosition: position)
+        environmentNode.listenerPosition = AVAudio3DPoint(x: position.x, y: position.y, z: position.z)
+        environmentNode.listenerAngularOrientation = AVAudio3DAngularOrientation(yaw: orientation.y, pitch: orientation.x, roll: orientation.z)
+
     }
     
-    public func unmute() {
-        isMuted = false
-        audioPlayerNode.volume = previousVolume
+    public func playSound() {
+        guard let audioFile = audioFile else { return }
+        
+        audioPlayerNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
+        updateListenerPosition()
+        audioPlayerNode.position = AVAudio3DPoint(x: position.x, y: position.y, z: position.z)
+        audioPlayerNode.renderingAlgorithm = .HRTFHQ
+        
+        audioPlayerNode.play()
     }
     
-    public func stopPlayback() {
-        audioPlayerNode.stop()
+    private func adjustVolumeBasedOnDistance(listenerPosition: SIMD3<Float>) {
+        let distance = simd_distance(listenerPosition, position)
+        let maxDistance: Float = 5.0
+        let minVolume: Float = 0.1
+        let volume = max(minVolume, 1 - (distance / maxDistance))
+        
+        audioPlayerNode.volume = volume
     }
 }
