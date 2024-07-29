@@ -14,7 +14,7 @@ struct ARViewContainer: UIViewRepresentable {
 
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
-        let arViewManager = ARSystem(arView: arView)
+        let arViewManager = ARSettings(arView: arView)
         arViewManager.setupAR()
         
         instrumentSystem.arView = arView

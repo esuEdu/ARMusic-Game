@@ -10,7 +10,7 @@ import RealityKit
 import SwiftUI
 import ARKit
 
-public class ARSystem {
+public class ARSettings{
     public var arView: ARView?
 
     public init(arView: ARView) {
@@ -20,6 +20,10 @@ public class ARSystem {
     public func setupAR() {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal]
+        configuration.environmentTexturing = .automatic
+        
         arView?.session.run(configuration)
+        
+        arView?.addCoaching() 
     }
 }

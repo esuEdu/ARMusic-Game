@@ -9,11 +9,11 @@ import RealityKit
 import Foundation
 import Combine
 
-public class InstrumentModelManager {
+public class ModelLoader {
     private static var cancellables = Set<AnyCancellable>()
     private static var models: [String: Entity] = [:]
 
-    public init() {}
+    public required init() {}
 
     public static func load(name: String, completion: @escaping (Entity?) -> Void) {
         // Verifica se o modelo já está no cache

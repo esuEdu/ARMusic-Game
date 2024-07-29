@@ -19,23 +19,31 @@ public class InstrumentSystem: ObservableObject {
     public func addInstrument(_ instrument: Instrument) {
         guard let arView = arView else { return }
         
-        InstrumentModelManager.load(name: instrument.modelName) { entity in
-            guard let loadedEntity = entity else {
-                print("Failed to load the piano model.")
+        ModelLoader.load(name: instrument.modelName) { entity in
+            guard let modelEntity = entity else {
+                print("Failed to load the instrument model.")
                 return
             }
             
-            let anchorEntity = AnchorEntity()
-            anchorEntity.addChild(loadedEntity)
+            // Criar uma consulta de raycast a partir do centro da ARView
+            let raycastQuery = arView.makeRaycastQuery(from: arView.center, allowing: .estimatedPlane, alignment: .horizontal)
             
-            // Define uma posição aleatória para o anchor entity
-            let randomX = Float.random(in: -1...1)
-            let randomY = Float.random(in: 0...1)
-            let randomZ = Float.random(in: -1...1)
-            anchorEntity.position = [randomX, randomY, randomZ]
-            
-            arView.scene.anchors.append(anchorEntity)
-            self.instrumentEntities.append(loadedEntity)
+            if let result = arView.session.raycast(raycastQuery!).first {
+                // Criação do AnchorEntity baseado no resultado do raycast
+                let anchorEntity = AnchorEntity(raycastResult: result)
+                anchorEntity.addChild(modelEntity)
+                
+                // Adicionar componentes de colisão e instalar gestos
+                modelEntity.generateCollisionShapes(recursive: true)
+                arView.installGestures([.all], for: modelEntity as! HasCollision)
+                
+                arView.scene.anchors.append(anchorEntity)
+                
+                // Atualizar a lista de entidades de instrumentos
+                self.instrumentEntities.append(modelEntity)
+            } else {
+                print("Nenhum plano detectado.")
+            }
         }
     }
     
@@ -44,4 +52,5 @@ public class InstrumentSystem: ObservableObject {
         //        instrumentEntity.components[AudioComponent.self] = audioComponent
         //        audioComponent.play()
     }
+    
 }

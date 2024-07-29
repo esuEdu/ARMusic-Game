@@ -12,12 +12,13 @@ struct ContentView: View {
     @StateObject private var instrumentSystem = InstrumentSystem(arView: nil)
 
     var body: some View {
-        VStack {
+        ZStack {
             ARViewContainer(instrumentSystem: instrumentSystem)
                 .edgesIgnoringSafeArea(.all)
             
-            InstrumentListView(instrumentSystem: instrumentSystem)
+            MainHUDView()
         }
+        .environmentObject(instrumentSystem)
     }
 }
 
