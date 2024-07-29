@@ -43,8 +43,6 @@ class MainARView: ARView, ARSessionDelegate {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                           action: #selector(handleTap(_:)))
         
-       
-        
         arView.addGestureRecognizer(tapGestureRecognizer)
     }
     
@@ -74,6 +72,8 @@ class MainARView: ARView, ARSessionDelegate {
                 let newAnchor = AnchorEntity(plane: .any, classification: [.any], minimumBounds: [0.5, 0.5])
                 
                 newAnchor.addChild(entity)
+                
+                
                 
                 arView.scene.addAnchor(newAnchor)
             }

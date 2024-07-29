@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2853972F2C541D2200E37A4C /* AudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2853972E2C541D2200E37A4C /* AudioView.swift */; };
+		285397312C541D2A00E37A4C /* AuidoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285397302C541D2A00E37A4C /* AuidoViewModel.swift */; };
 		28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE729D2C49D8EC00051E74 /* ARMusic_GameApp.swift */; };
 		28CE72A02C49D8EC00051E74 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE729F2C49D8EC00051E74 /* ContentView.swift */; };
 		28CE72A22C49D8ED00051E74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28CE72A12C49D8ED00051E74 /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2853972E2C541D2200E37A4C /* AudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioView.swift; sourceTree = "<group>"; };
+		285397302C541D2A00E37A4C /* AuidoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuidoViewModel.swift; sourceTree = "<group>"; };
 		28CE729A2C49D8EC00051E74 /* ARMusic-Game (IpadOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARMusic-Game (IpadOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CE729D2C49D8EC00051E74 /* ARMusic_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMusic_GameApp.swift; sourceTree = "<group>"; };
 		28CE729F2C49D8EC00051E74 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */,
 				C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */,
 				C9E01BB12C573F56001CB428 /* MainHUDView.swift */,
+				2853972E2C541D2200E37A4C /* AudioView.swift */,
+				285397302C541D2A00E37A4C /* AuidoViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -329,6 +335,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				28CE72A02C49D8EC00051E74 /* ContentView.swift in Sources */,
+				285397312C541D2A00E37A4C /* AuidoViewModel.swift in Sources */,
+				2853972F2C541D2200E37A4C /* AudioView.swift in Sources */,
 				28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */,
 				C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */,
 				C9E01BAB2C56EDFC001CB428 /* ARViewConfiguration.swift in Sources */,
