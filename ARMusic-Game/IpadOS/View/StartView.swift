@@ -13,20 +13,28 @@ struct StartView: View {
     
     var body: some View {
         HStack {
-            VStack{
+            VStack {
                 btn()
                 
                 btn()
             }
+            .padding(20)
  
             Image("legoLogo")
+                
         }
+        .padding()
         .background {
             Image("background")
+                .resizable()
+                .frame(width: UIScreen.main.bounds.size.height * 3.0)
+                .frame(height: UIScreen.main.bounds.size.height * 3.0)
                 .offset(x: motionManager.roll * 100, y: motionManager.pitch * 100)
                 .onAppear {
                     motionManager.startMonitoringMotionUpdates()
                 }
+
+
 
         }
     }
