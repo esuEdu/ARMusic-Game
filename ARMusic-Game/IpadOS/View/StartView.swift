@@ -60,4 +60,19 @@ struct StartView: View {
 
 struct Custom3DView: UIViewRepresentable {
     
+    @Binding var scene: SCNScene?
+    
+    func makeUIView(context: Context) -> some UIView {
+        let view = SCNView()
+        view.allowsCameraControl = false
+        view.autoenablesDefaultLighting = true
+        view.antialiasingMode = .multisampling2X
+        view.scene = scene
+        
+        return view
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        
+    }
 }
