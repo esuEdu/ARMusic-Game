@@ -17,11 +17,11 @@ struct StartView: View {
                 
                 btn()
             }
-            
-            Text("LOGO")
-                .font(.largeTitle)
-                .bold()
-                .foregroundStyle(.blue)
+ 
+            Image("legoLogo")
+        }
+        .background {
+            Image("background")
         }
     }
     
