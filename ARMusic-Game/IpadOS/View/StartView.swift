@@ -15,19 +15,23 @@ struct StartView: View {
             VStack{
                 btn()
                 
-                Button("btn2") {
-                    
-                }
+                btn()
             }
             
-            Text("anatomia")
+            Text("LOGO")
+                .font(.largeTitle)
+                .bold()
+                .foregroundStyle(.blue)
         }
     }
     
     func btn() -> some View {        RoundedRectangle(cornerRadius: 25.0)
+            .foregroundStyle(.pink)
             .overlay {
                 Text("text")
-                    .font(.title)
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundStyle(.blue)
             }
             .onTapGesture {
                 print("clicked")
