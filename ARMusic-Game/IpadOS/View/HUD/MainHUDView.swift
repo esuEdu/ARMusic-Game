@@ -16,6 +16,7 @@ struct MainHUDView: View {
         ZStack {
             InstrumentListView()
             PauseButtonView()
+            BPMSelectorView()
         }
     }
 }
