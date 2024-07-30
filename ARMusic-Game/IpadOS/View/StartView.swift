@@ -11,6 +11,7 @@ import SceneKit
 struct StartView: View {
     
     @ObservedObject var motionManager = MotionManager()
+    @State var scene: SCNScene? = .init(named: "chair_swan.usdz")
     
     var body: some View {
         HStack {
@@ -21,7 +22,8 @@ struct StartView: View {
             }
             .padding(20)
  
-            Image("legoLogo")
+//            Image("legoLogo")
+            Custom3DView(scene: $scene)
                 
         }
         .padding()
@@ -68,6 +70,7 @@ struct Custom3DView: UIViewRepresentable {
         view.autoenablesDefaultLighting = true
         view.antialiasingMode = .multisampling2X
         view.scene = scene
+        view.backgroundColor = .clear
         
         return view
     }
