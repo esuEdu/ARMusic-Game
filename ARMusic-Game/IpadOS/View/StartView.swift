@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SceneKit
 
 struct StartView: View {
     
@@ -55,4 +56,8 @@ struct StartView: View {
 
 #Preview {
     StartView()
+}
+
+struct Custom3DView: UIViewRepresentable {
+    
 }
