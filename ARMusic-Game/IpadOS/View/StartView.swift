@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StartView: View {
     
+    @ObservedObject var motionManager = MotionManager()
     
     var body: some View {
         HStack {
@@ -22,6 +23,11 @@ struct StartView: View {
         }
         .background {
             Image("background")
+                .offset(x: motionManager.roll * 100, y: motionManager.pitch * 100)
+                .onAppear {
+                    motionManager.startMonitoringMotionUpdates()
+                }
+
         }
     }
     
