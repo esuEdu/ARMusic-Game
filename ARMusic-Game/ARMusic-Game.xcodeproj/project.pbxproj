@@ -22,6 +22,7 @@
 		28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D22C49DAD200051E74 /* DataPackage */; };
 		AF8660032C596DD000D92541 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660022C596DD000D92541 /* StartView.swift */; };
 		AF8660052C5970B000D92541 /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660042C5970B000D92541 /* ScaledFont.swift */; };
+		AF8660072C59743900D92541 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660062C59743900D92541 /* MotionManager.swift */; };
 		C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */; };
 		C9E01BAB2C56EDFC001CB428 /* ARViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */; };
 		C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BB12C573F56001CB428 /* MainHUDView.swift */; };
@@ -63,6 +64,7 @@
 		28CE72CA2C49D9AD00051E74 /* ARPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ARPackage; sourceTree = "<group>"; };
 		AF8660022C596DD000D92541 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		AF8660042C5970B000D92541 /* ScaledFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
+		AF8660062C59743900D92541 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentListView.swift; sourceTree = "<group>"; };
 		C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewConfiguration.swift; sourceTree = "<group>"; };
 		C9E01BB12C573F56001CB428 /* MainHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHUDView.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				28CE729F2C49D8EC00051E74 /* ContentView.swift */,
 				AF8660022C596DD000D92541 /* StartView.swift */,
+				AF8660062C59743900D92541 /* MotionManager.swift */,
 				AF8660042C5970B000D92541 /* ScaledFont.swift */,
 				C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */,
 				C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */,
@@ -341,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28CE72A02C49D8EC00051E74 /* ContentView.swift in Sources */,
+				AF8660072C59743900D92541 /* MotionManager.swift in Sources */,
 				285397312C541D2A00E37A4C /* AuidoViewModel.swift in Sources */,
 				2853972F2C541D2200E37A4C /* AudioView.swift in Sources */,
 				AF8660032C596DD000D92541 /* StartView.swift in Sources */,
