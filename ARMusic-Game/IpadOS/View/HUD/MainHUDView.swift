@@ -15,6 +15,7 @@ struct MainHUDView: View {
     var body: some View {
         ZStack {
             InstrumentListView()
+            PauseButtonView()
         }
     }
 }

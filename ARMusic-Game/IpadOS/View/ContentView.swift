@@ -13,7 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            ARViewContainer(instrumentSystem: instrumentSystem)
+            ARViewConfiguration(instrumentSystem: instrumentSystem)
                 .edgesIgnoringSafeArea(.all)
             
             MainHUDView()
