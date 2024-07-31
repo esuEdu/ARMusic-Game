@@ -25,7 +25,6 @@ let package = Package(
                 .process("Resources")
             ]
         ),
-            
         .testTarget(
             name: "ARPackageTests",
             dependencies: ["ARPackage"]),

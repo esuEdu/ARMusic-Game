@@ -23,7 +23,7 @@ import Combine
     
     private func setupARView() {
         arView.automaticallyConfigureSession = true
-        
+
         let arConfig = ARWorldTrackingConfiguration()
         arConfig.planeDetection = [.horizontal, .vertical]
         arView.session.delegate = self
@@ -73,9 +73,11 @@ extension AuidoViewModel: ARSessionDelegate {
         let cameraTransform = frame.camera.transform
         let cameraPosition = SIMD3<Float>(cameraTransform.columns.3.x, cameraTransform.columns.3.y, cameraTransform.columns.3.z)
         let cameraOrientation = frame.camera.eulerAngles
+        
         AudioUtils.shared.position = cameraPosition
         AudioUtils.shared.orientation = cameraOrientation
-
+        AudioUtils.shared.viewMatrix = session.currentFrame?.camera.viewMatrix(for: .landscapeLeft)
+        AudioUtils.shared.time = session.currentFrame!.timestamp
     }
 }
 
