@@ -31,31 +31,17 @@ public struct AudioComponent: Component {
 
 public class AudioSystem: System {
     
-    var noteDuration = {
-        Float(7500/AudioUtils.shared.BPM)
-    }()
     
-    var currentNote: Int = 0
-    var currentBeat: Int = 0
+    public required init(scene: Scene) {}
     
-    var maxBeat: Int = 0
-    
-    var soundPlayedForCurrentNote: Bool = false
-
-    var timer: Timer?
     public static var entityBeingEditted: ModelEntity?
-    
-    
-    public required init(scene: Scene) {
-        startTimer()
-    }
     
     public static var dependencies: [SystemDependency] {
         return []
     }
     
     public func update(context: SceneUpdateContext) {
-        if soundPlayedForCurrentNote {
+        if AudioTimerManager.shared.soundPlayedForCurrentNote {
             return
         }
         
@@ -71,17 +57,17 @@ public class AudioSystem: System {
         }
         
         
-        soundPlayedForCurrentNote = true
+        AudioTimerManager.shared.soundPlayedForCurrentNote = true
     }
     
     private func handleEntitySound(entity: Entity) {
         
         if let audio = entity.components[AudioComponent.self] as? AudioComponent {
             getMaxBeat(beat: audio.endBeat)
-            if currentBeat >= audio.startBeat && currentBeat <= audio.endBeat {
+            if AudioTimerManager.shared.currentBeat >= audio.startBeat && AudioTimerManager.shared.currentBeat <= audio.endBeat {
                 let entityTempo = audio.tempo.getArray()
-                if entityTempo[currentNote] {
-                    print(entityTempo[currentNote])
+                if entityTempo[AudioTimerManager.shared.currentNote] {
+                    print(entityTempo[AudioTimerManager.shared.currentNote])
                     playSound(entity: entity)
                 }
             }
@@ -97,45 +83,16 @@ public class AudioSystem: System {
             let url = getURL(instrument: audio.intrument, note: audio.note)
             
             //create an audio thread
-            let audioThread = AudioThread(at: entity.position, with: url, noteDuration: noteDuration)
+            let audioThread = AudioThread(at: entity.position, with: url, noteDuration: AudioTimerManager.shared.noteDuration)
             
             //start the thread
             audioThread.start()
         }
     }
     
-    public func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(noteDuration / 1000), repeats: true) { _ in
-            self.updateTime()
-        }
-    }
-    
-    public func pauseTimer() {
-        timer?.invalidate()
-    }
-    
-    public func resetTimer() {
-        timer?.invalidate()
-        timer = nil
-    }
-    
-    private func updateTime() {
-        currentNote += 1
-        if currentNote >= 8 {
-            currentNote = 0
-            currentBeat += 1
-            
-            if currentBeat >= maxBeat {
-                currentBeat = 0
-            }
-        }
-        soundPlayedForCurrentNote = false
-        print("Current Beat: \(currentBeat), Current Note: \(currentNote)")
-    }
-    
     func getMaxBeat(beat: Int) {
-        if beat > maxBeat {
-            maxBeat = beat
+        if beat > AudioTimerManager.shared.maxBeat {
+            AudioTimerManager.shared.maxBeat = beat
         }
     }
     

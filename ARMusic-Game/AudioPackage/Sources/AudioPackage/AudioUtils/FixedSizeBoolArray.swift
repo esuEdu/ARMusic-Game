@@ -21,17 +21,22 @@ public struct FixedSizeBoolArray {
         return boolArray[index]
     }
     
-    public mutating func setValue(_ value: Bool, at index: Int) -> Bool {
-        guard index >= 0 && index < size else { return false }
+    public mutating func setValue(_ value: Bool, at index: Int) {
+        guard index >= 0 && index < size else { return }
         boolArray[index] = value
-        return true
     }
     
-    @discardableResult
-    public mutating func toggleValue(at index: Int) -> Bool {
-        guard index >= 0 && index < size else { return false }
+    public mutating func toggleValue(at index: Int)  {
+        guard index >= 0 && index < size else { return }
         boolArray[index].toggle()
-        return true
+    }
+    
+    public mutating func toggleValues(at indices: Set<Int>) {
+        for index in indices {
+            if index >= 0 && index < size {
+                boolArray[index].toggle()
+            }
+        }
     }
     
     public mutating func setAllValues(to value: Bool) {
