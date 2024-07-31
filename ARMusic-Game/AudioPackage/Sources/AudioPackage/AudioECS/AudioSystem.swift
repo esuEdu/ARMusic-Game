@@ -45,7 +45,6 @@ public class AudioSystem: System {
         }
     }
     
-    
     public func playThread(entity: Entity) {
         
         if let audio = entity.components[AudioComponent.self] as? AudioComponent {
