@@ -12,7 +12,9 @@ import AudioPackage
 
 struct ARViewContainer: UIViewRepresentable {
     @ObservedObject var instrumentSystem: InstrumentSystem
-
+    
+    
+    
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
         let arViewManager = ARSettings(arView: arView)
@@ -23,8 +25,12 @@ struct ARViewContainer: UIViewRepresentable {
         registerSystem()
         registerComponents()
         instrumentSystem.arView = arView
+        
         return arView
     }
+
+    
+
     
     func registerSystem() {
         WorldSystem.registerSystem()
@@ -33,6 +39,7 @@ struct ARViewContainer: UIViewRepresentable {
     
     func registerComponents() {
         AudioComponent.registerComponent()
+        InputComponent.registerComponent()
     }
 
     func updateUIView(_ uiView: ARView, context: Context) {}

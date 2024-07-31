@@ -18,8 +18,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../DataPackage"),
-        .package(path: "../ARPackage"),
-
+        
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -28,7 +27,7 @@ let package = Package(
             name: "AudioPackage",
             dependencies: [
                 .product(name: "DataPackage", package: "DataPackage", condition: nil),
-                .product(name: "ARPackage", package: "ARPackage", condition: nil),
+                
 
             ]
         ),

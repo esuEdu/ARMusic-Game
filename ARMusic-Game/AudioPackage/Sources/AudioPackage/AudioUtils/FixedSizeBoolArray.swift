@@ -27,6 +27,7 @@ public struct FixedSizeBoolArray {
         return true
     }
     
+    @discardableResult
     public mutating func toggleValue(at index: Int) -> Bool {
         guard index >= 0 && index < size else { return false }
         boolArray[index].toggle()
