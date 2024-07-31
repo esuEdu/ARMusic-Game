@@ -8,6 +8,7 @@
 import SwiftUI
 import RealityKit
 import ARPackage
+import AudioPackage
 
 struct ARViewContainer: UIViewRepresentable {
     @ObservedObject var instrumentSystem: InstrumentSystem
@@ -19,9 +20,19 @@ struct ARViewContainer: UIViewRepresentable {
         WorldSystem.worldSettings = arViewManager
         
         arViewManager.setupAR()
-        
+        registerSystem()
+        registerComponents()
         instrumentSystem.arView = arView
         return arView
+    }
+    
+    func registerSystem() {
+        WorldSystem.registerSystem()
+        AudioSystem.registerSystem()
+    }
+    
+    func registerComponents() {
+        AudioComponent.registerComponent()
     }
 
     func updateUIView(_ uiView: ARView, context: Context) {}

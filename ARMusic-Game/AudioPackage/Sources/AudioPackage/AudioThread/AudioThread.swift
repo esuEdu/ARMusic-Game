@@ -17,13 +17,19 @@ public class AudioThread: Thread {
     private var url: URL
     private let position: SIMD3<Float>
     private let audioUtil = AudioUtils.shared
+    private let noteDuration: Float
     
-    public init(at position: SIMD3<Float>, with url: URL) {
+    public init(at position: SIMD3<Float>, with url: URL, noteDuration: Float) {
         self.url = url
         self.position = position
+        self.noteDuration = noteDuration
         super.init()
         setupAudioEngine()
         loadAudioFile()
+    }
+    
+    func denit() {
+        cleanup()
     }
     
     private func setupAudioEngine() {
@@ -50,12 +56,11 @@ public class AudioThread: Thread {
     }
     
     override public func main() {
-        while true {
+        playSound()
+        while (audioPlayerNode.isPlaying) {
             Thread.sleep(forTimeInterval: 0.1)
-            playSound()
         }
-        
-        
+        Thread.exit()
     }
     
     public func updateListenerPosition() {
@@ -65,7 +70,6 @@ public class AudioThread: Thread {
         adjustVolumeBasedOnDistance(listenerPosition: position)
         environmentNode.listenerPosition = AVAudio3DPoint(x: position.x, y: position.y, z: position.z)
         environmentNode.listenerAngularOrientation = AVAudio3DAngularOrientation(yaw: orientation.y, pitch: orientation.x, roll: orientation.z)
-
     }
     
     public func playSound() {
@@ -86,6 +90,12 @@ public class AudioThread: Thread {
         let volume = max(minVolume, 1 - (distance / maxDistance))
         
         audioPlayerNode.volume = volume
+    }
+    
+    private func cleanup() {
+        audioEngine.stop()
+        audioEngine.detach(audioPlayerNode)
+        audioEngine.detach(environmentNode)
     }
     
     private func adjustPanBasedOnOrientation() {

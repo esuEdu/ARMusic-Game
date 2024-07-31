@@ -13,6 +13,8 @@ public class AudioUtils {
     public var time: TimeInterval = 0
     
     
+    public var BPM: Int = 5
+    
     init() {}
     
 }
