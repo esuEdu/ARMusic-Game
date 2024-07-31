@@ -36,6 +36,7 @@ import Combine
         // Initialize shared anchor
         sharedAnchor = AnchorEntity()
         arView.scene.addAnchor(sharedAnchor!)
+        AudioTimerManager.shared.start()
     }
     
     @objc private func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
