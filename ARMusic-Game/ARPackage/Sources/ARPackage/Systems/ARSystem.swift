@@ -12,6 +12,10 @@ import ARKit
 
 public class ARSettings{
     public var arView: ARView?
+    
+    public var session: ARSession? {
+        arView?.session
+    }
 
     public init(arView: ARView) {
         self.arView = arView

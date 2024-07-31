@@ -66,6 +66,7 @@ public class AudioThread: Thread {
     public func updateListenerPosition() {
         guard let position = audioUtil.position, let orientation = audioUtil.orientation else { return }
         
+        adjustPanBasedOnOrientation()
         adjustVolumeBasedOnDistance(listenerPosition: position)
         environmentNode.listenerPosition = AVAudio3DPoint(x: position.x, y: position.y, z: position.z)
         environmentNode.listenerAngularOrientation = AVAudio3DAngularOrientation(yaw: orientation.y, pitch: orientation.x, roll: orientation.z)
@@ -95,5 +96,19 @@ public class AudioThread: Thread {
         audioEngine.stop()
         audioEngine.detach(audioPlayerNode)
         audioEngine.detach(environmentNode)
+    }
+    
+    private func adjustPanBasedOnOrientation() {
+        
+        let cameraSpace4 = simd_mul(simd_float4(position.x, position.y, position.z, 1.0), AudioUtils.shared.viewMatrix!)
+        let cameraSpace = simd_float3(cameraSpace4.x, cameraSpace4.y, cameraSpace4.z)
+        
+        let z = simd_float3(-1, 0, 0)
+        
+        let dirToObj = simd_normalize(cameraSpace)
+        let dot = simd_dot(dirToObj, z)
+        
+        environmentNode.pan = dot
+        
     }
 }
