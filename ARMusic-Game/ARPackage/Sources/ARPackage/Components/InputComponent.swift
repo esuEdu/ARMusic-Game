@@ -2,7 +2,8 @@ import RealityKit
 import SwiftUI
 
 
-struct InputComponent: Component {
+
+public struct InputComponent: Component {
     
     var callbacks: [String : (_ gesture: UIGestureRecognizer) -> Void] = [:];
     
