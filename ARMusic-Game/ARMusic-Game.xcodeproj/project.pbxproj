@@ -23,7 +23,7 @@
 		AF8660032C596DD000D92541 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660022C596DD000D92541 /* StartView.swift */; };
 		AF8660052C5970B000D92541 /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660042C5970B000D92541 /* ScaledFont.swift */; };
 		AF8660072C59743900D92541 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660062C59743900D92541 /* MotionManager.swift */; };
-		AF8660092C59838200D92541 /* chair_swan.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AF8660082C59838200D92541 /* chair_swan.usdz */; };
+		AF8660112C5AD52C00D92541 /* pancakes.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AF8660102C5AD52C00D92541 /* pancakes.usdz */; };
 		C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */; };
 		C9E01BAB2C56EDFC001CB428 /* ARViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */; };
 		C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BB12C573F56001CB428 /* MainHUDView.swift */; };
@@ -66,7 +66,7 @@
 		AF8660022C596DD000D92541 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		AF8660042C5970B000D92541 /* ScaledFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
 		AF8660062C59743900D92541 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
-		AF8660082C59838200D92541 /* chair_swan.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = chair_swan.usdz; sourceTree = "<group>"; };
+		AF8660102C5AD52C00D92541 /* pancakes.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = pancakes.usdz; sourceTree = "<group>"; };
 		C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentListView.swift; sourceTree = "<group>"; };
 		C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewConfiguration.swift; sourceTree = "<group>"; };
 		C9E01BB12C573F56001CB428 /* MainHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHUDView.swift; sourceTree = "<group>"; };
@@ -178,8 +178,8 @@
 				AF8660062C59743900D92541 /* MotionManager.swift */,
 				AF8660042C5970B000D92541 /* ScaledFont.swift */,
 				C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */,
-				AF8660082C59838200D92541 /* chair_swan.usdz */,
 				C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */,
+				AF8660102C5AD52C00D92541 /* pancakes.usdz */,
 				C9E01BB12C573F56001CB428 /* MainHUDView.swift */,
 				2853972E2C541D2200E37A4C /* AudioView.swift */,
 				285397302C541D2A00E37A4C /* AuidoViewModel.swift */,
@@ -320,7 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF8660092C59838200D92541 /* chair_swan.usdz in Resources */,
+				AF8660112C5AD52C00D92541 /* pancakes.usdz in Resources */,
 				28CE72A52C49D8ED00051E74 /* Preview Assets.xcassets in Resources */,
 				28CE72A22C49D8ED00051E74 /* Assets.xcassets in Resources */,
 			);
