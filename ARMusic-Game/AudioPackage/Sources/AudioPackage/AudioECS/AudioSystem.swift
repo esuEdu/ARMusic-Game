@@ -7,7 +7,6 @@
 
 import Foundation
 import DataPackage
-import ARPackage
 import RealityKit
 
 
@@ -19,7 +18,6 @@ public struct AudioComponent: Component {
     
     var startBeat: Int
     var endBeat: Int
-    
     
     
     public init(note: Notes, instrument: Instruments, tom: Float, startBeat: Int = 0, endBeat: Int = 1) {
@@ -45,6 +43,8 @@ public class AudioSystem: System {
     var soundPlayedForCurrentNote: Bool = false
 
     var timer: Timer?
+    public static var entityBeingEditted: ModelEntity?
+    
     
     public required init(scene: Scene) {
         startTimer()
@@ -62,19 +62,31 @@ public class AudioSystem: System {
         let query = EntityQuery(where: .has(AudioComponent.self))
         let entities = context.scene.performQuery(query)
         
-        for entity in entities {
-            if let audio = entity.components[AudioComponent.self] as? AudioComponent {
-                getMaxBeat(beat: audio.endBeat)
-                if currentBeat >= audio.startBeat && currentBeat <= audio.endBeat {
-                    let entityTempo = audio.tempo.getArray()
-                    if entityTempo[currentNote] {
-                        print(entityTempo[currentNote])
-                        playSound(entity: entity)
-                    }
+        if let entityBeingEditted = AudioSystem.entityBeingEditted {
+            handleEntitySound(entity: entityBeingEditted)
+        } else {
+            for entity in entities {
+                handleEntitySound(entity: entity)
+            }
+        }
+        
+        
+        soundPlayedForCurrentNote = true
+    }
+    
+    private func handleEntitySound(entity: Entity) {
+        
+        if let audio = entity.components[AudioComponent.self] as? AudioComponent {
+            getMaxBeat(beat: audio.endBeat)
+            if currentBeat >= audio.startBeat && currentBeat <= audio.endBeat {
+                let entityTempo = audio.tempo.getArray()
+                if entityTempo[currentNote] {
+                    print(entityTempo[currentNote])
+                    playSound(entity: entity)
                 }
             }
         }
-        soundPlayedForCurrentNote = true
+        
     }
     
     public func playSound(entity: Entity) {
