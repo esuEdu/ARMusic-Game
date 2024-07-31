@@ -56,7 +56,10 @@ import Combine
                 let box = ModelEntity(mesh: .generateBox(size: 0.1), materials: [SimpleMaterial(color: .red, isMetallic: true)])
                 let box2 = ModelEntity(mesh: .generateBox(size: 0.1), materials: [SimpleMaterial(color: .red, isMetallic: true)])
                                 
-                var component = AudioComponent(note: .d, instrument: .piano, tom: 100)
+                var component = AudioComponent(note: .d, instrument: .piano, tom: 100, endBeat: 6)
+                _ = component.tempo.toggleValue(at: 1)
+                _ = component.tempo.toggleValue(at: 2)
+                _ = component.tempo.toggleValue(at: 3)
                 _ = component.tempo.toggleValue(at: 4)
                 _ = component.tempo.toggleValue(at: 5)
                 
