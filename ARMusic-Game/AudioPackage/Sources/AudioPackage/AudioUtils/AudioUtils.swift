@@ -7,6 +7,8 @@ public class AudioUtils {
     public var position: SIMD3<Float>?
     public var orientation: SIMD3<Float>?
     
+    public var BPM: Int = 5
+    
     init() {}
     
 }
