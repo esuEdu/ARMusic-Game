@@ -21,42 +21,42 @@ struct InstrumentListView: View {
             Note(name: "E", audioFile: "Piano/Note3"),
             Note(name: "F", audioFile: "Piano/Note4"),
             Note(name: "G", audioFile: "Piano/Note5")
-        ]),
+        ], sequence: []),
         Instrument(name: "Guitar", modelName: "guitarra", notes: [
             Note(name: "A", audioFile: "Guitar/Note1"),
             Note(name: "B", audioFile: "Guitar/Note2"),
             Note(name: "C", audioFile: "Guitar/Note3"),
             Note(name: "D", audioFile: "Guitar/Note4"),
             Note(name: "E", audioFile: "Guitar/Note5")
-        ]),
+        ], sequence: []),
         Instrument(name: "Violão", modelName: "guitarra", notes: [
             Note(name: "A", audioFile: "Guitar/Note1"),
             Note(name: "B", audioFile: "Guitar/Note2"),
             Note(name: "C", audioFile: "Guitar/Note3"),
             Note(name: "D", audioFile: "Guitar/Note4"),
             Note(name: "E", audioFile: "Guitar/Note5")
-        ]),
+        ], sequence: []),
         Instrument(name: "Voz", modelName: "guitarra", notes: [
             Note(name: "A", audioFile: "Guitar/Note1"),
             Note(name: "B", audioFile: "Guitar/Note2"),
             Note(name: "C", audioFile: "Guitar/Note3"),
             Note(name: "D", audioFile: "Guitar/Note4"),
             Note(name: "E", audioFile: "Guitar/Note5")
-        ]),
+        ], sequence: []),
         Instrument(name: "Bateria", modelName: "guitarra", notes: [
             Note(name: "A", audioFile: "Guitar/Note1"),
             Note(name: "B", audioFile: "Guitar/Note2"),
             Note(name: "C", audioFile: "Guitar/Note3"),
             Note(name: "D", audioFile: "Guitar/Note4"),
             Note(name: "E", audioFile: "Guitar/Note5")
-        ]),
+        ], sequence: []),
         Instrument(name: "Baixo", modelName: "guitarra", notes: [
             Note(name: "A", audioFile: "Guitar/Note1"),
             Note(name: "B", audioFile: "Guitar/Note2"),
             Note(name: "C", audioFile: "Guitar/Note3"),
             Note(name: "D", audioFile: "Guitar/Note4"),
             Note(name: "E", audioFile: "Guitar/Note5")
-        ])
+        ], sequence: [])
     ]
     
     private let columns = [

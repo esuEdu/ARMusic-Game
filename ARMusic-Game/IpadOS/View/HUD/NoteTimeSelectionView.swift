@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ARPackage
 
 struct TimeComponent: View {
     let timeText: String
@@ -38,15 +39,20 @@ struct TimeComponent: View {
     }
 }
 
+
 struct NoteTimeSelectionView: View {
-    @State private var selectedTimes: [Bool] = Array(repeating: false, count: 8)
+    @Binding var instrument: Instrument?
     
     var body: some View {
         HStack(spacing: 10) {
             ForEach(0..<8) { index in
-                TimeComponent(timeText: "\(index + 1)/8", isSelected: selectedTimes[index]) {
+                TimeComponent(timeText: "\(index + 1)/8", isSelected: instrument?.sequence.contains(index) ?? false) {
                     withAnimation {
-                        selectedTimes[index].toggle()
+                        if instrument?.sequence.contains(index) ?? false {
+                            instrument?.sequence.remove(index)
+                        } else {
+                            instrument?.sequence.insert(index)
+                        }
                     }
                 }
             }
@@ -55,7 +61,5 @@ struct NoteTimeSelectionView: View {
     }
 }
 
-#Preview {
-    NoteTimeSelectionView()
-}
+
 

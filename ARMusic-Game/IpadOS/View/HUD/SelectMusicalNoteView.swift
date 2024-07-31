@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ARPackage
 
 struct NoteButton: View {
     let note: String
@@ -35,26 +36,29 @@ struct NoteButton: View {
 }
 
 struct SelectMusicalNoteView: View {
-    @State private var selectedNote: String? = nil
-    @State private var showMenu: Bool = false
+    @Binding var selectedNote: Note?
+    @Binding var instrument: Instrument?
     
-    let notes = ["A", "B", "C", "D", "E"]
+    @State private var showMenu: Bool = false
+
+    let onNoteSelected: (Note) -> Void
     
     var body: some View {
         VStack {
             if showMenu {
-                ForEach(notes, id: \.self) { note in
-                    NoteButton(note: note, action: {
+                ForEach(instrument?.notes ?? []) { note in
+                    NoteButton(note: note.name, action: {
                         withAnimation {
                             selectedNote = note
                             showMenu = false
+                            onNoteSelected(note)
                         }
                     }, isSystemImage: false)
                     .padding(.bottom, 10)
                 }
             }
             
-            NoteButton(note: showMenu ? "xmark" : (selectedNote == nil ? "music.note" : selectedNote!), action: {
+            NoteButton(note: showMenu ? "xmark" : (selectedNote?.name ?? "music.note"), action: {
                 withAnimation {
                     if showMenu {
                         selectedNote = nil
@@ -64,8 +68,4 @@ struct SelectMusicalNoteView: View {
             }, isSystemImage: (selectedNote == nil) || showMenu)
         }
     }
-}
-
-#Preview {
-    SelectMusicalNoteView()
 }

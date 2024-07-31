@@ -7,7 +7,8 @@
 
 import Foundation
 
-public struct Note {
+public struct Note: Identifiable {
+    public let id = UUID()
     public let name: String
     public let audioFile: String
     
