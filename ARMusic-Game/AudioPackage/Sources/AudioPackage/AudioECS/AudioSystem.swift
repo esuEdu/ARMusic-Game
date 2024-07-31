@@ -34,6 +34,8 @@ public class AudioSystem: System {
     
     public required init(scene: Scene) {}
     
+    public static var entityBeingEditted: ModelEntity?
+    
     public static var dependencies: [SystemDependency] {
         return []
     }
@@ -55,17 +57,17 @@ public class AudioSystem: System {
         }
         
         
-        soundPlayedForCurrentNote = true
+        AudioTimerManager.shared.soundPlayedForCurrentNote = true
     }
     
     private func handleEntitySound(entity: Entity) {
         
         if let audio = entity.components[AudioComponent.self] as? AudioComponent {
             getMaxBeat(beat: audio.endBeat)
-            if currentBeat >= audio.startBeat && currentBeat <= audio.endBeat {
+            if AudioTimerManager.shared.currentBeat >= audio.startBeat && AudioTimerManager.shared.currentBeat <= audio.endBeat {
                 let entityTempo = audio.tempo.getArray()
-                if entityTempo[currentNote] {
-                    print(entityTempo[currentNote])
+                if entityTempo[AudioTimerManager.shared.currentNote] {
+                    print(entityTempo[AudioTimerManager.shared.currentNote])
                     playSound(entity: entity)
                 }
             }
