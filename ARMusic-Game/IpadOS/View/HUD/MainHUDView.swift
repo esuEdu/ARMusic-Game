@@ -17,6 +17,7 @@ struct MainHUDView: View {
             InstrumentListView()
             PauseButtonView()
             BPMSelectorView()
+            SelectMusicalNoteView()
         }
     }
 }

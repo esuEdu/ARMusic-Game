@@ -22,6 +22,7 @@
 		28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D22C49DAD200051E74 /* DataPackage */; };
 		C9DD7BBB2C596BB8004DCD03 /* PauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DD7BBA2C596BB8004DCD03 /* PauseButtonView.swift */; };
 		C9DD7BBD2C5985A0004DCD03 /* BPMSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DD7BBC2C5985A0004DCD03 /* BPMSelectorView.swift */; };
+		C9DD7BBF2C5A0282004DCD03 /* SelectMusicalNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */; };
 		C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */; };
 		C9E01BAB2C56EDFC001CB428 /* ARViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */; };
 		C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BB12C573F56001CB428 /* MainHUDView.swift */; };
@@ -63,6 +64,7 @@
 		28CE72CA2C49D9AD00051E74 /* ARPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ARPackage; sourceTree = "<group>"; };
 		C9DD7BBA2C596BB8004DCD03 /* PauseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButtonView.swift; sourceTree = "<group>"; };
 		C9DD7BBC2C5985A0004DCD03 /* BPMSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPMSelectorView.swift; sourceTree = "<group>"; };
+		C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicalNoteView.swift; sourceTree = "<group>"; };
 		C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentListView.swift; sourceTree = "<group>"; };
 		C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewConfiguration.swift; sourceTree = "<group>"; };
 		C9E01BB12C573F56001CB428 /* MainHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHUDView.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				C9E01BB12C573F56001CB428 /* MainHUDView.swift */,
 				C9DD7BBA2C596BB8004DCD03 /* PauseButtonView.swift */,
 				C9DD7BBC2C5985A0004DCD03 /* BPMSelectorView.swift */,
+				C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				C9DD7BBB2C596BB8004DCD03 /* PauseButtonView.swift in Sources */,
 				C9E01BAB2C56EDFC001CB428 /* ARViewConfiguration.swift in Sources */,
 				C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */,
+				C9DD7BBF2C5A0282004DCD03 /* SelectMusicalNoteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
