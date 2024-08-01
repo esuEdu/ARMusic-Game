@@ -130,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				28CE72D42C49DB3200051E74 /* View */,
+				AF8660142C5C1F8200D92541 /* Components */,
 				28CE72D72C49DB6600051E74 /* Navigation */,
 				28CE72D62C49DB4E00051E74 /* Assets */,
 				28CE72D52C49DB4500051E74 /* Sys */,
@@ -208,6 +209,13 @@
 			children = (
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		AF8660142C5C1F8200D92541 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
