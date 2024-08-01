@@ -8,14 +8,27 @@
 import RealityKit
 import Combine
 import SwiftUI
-
-public class InstrumentSystem: ObservableObject {
-    public var arView: ARView?
-    @Published public var instrumentEntities: [Entity] = []
-    @Published public var instruments: [Instrument] = []
-    @Published public var selectedInstrument: Instrument?
+@Observable
+public class InstrumentSystem {
+    public static var shared = InstrumentSystem()
     
-    public init(arView: ARView?) {
+    public var arView: ARView?
+    public var instrumentEntities: [Entity] = []
+    public var instruments: [Instrument] = []
+    public var selectedInstrument: Instrument?
+    
+    public var instrumentBinding: Binding<Instrument?> {
+        
+        Binding {
+            self.selectedInstrument
+        } set: { newValue in
+            self.selectedInstrument = newValue
+        }
+
+        
+    }
+    
+    public init(arView: ARView? = nil) {
         self.arView = arView
     }
     
@@ -46,10 +59,11 @@ public class InstrumentSystem: ObservableObject {
                 print("Nenhum plano detectado.")
             }
         }
-    }
+    } 
     
     public func handleTapOnEntity(_ entity: Entity) {
         if let instrument = findInstrument(for: entity) {
+
             selectedInstrument = instrument
         }
     }

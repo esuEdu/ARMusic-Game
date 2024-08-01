@@ -39,7 +39,6 @@ struct TimeComponent: View {
     }
 }
 
-
 struct NoteTimeSelectionView: View {
     @Binding var instrument: Instrument?
     

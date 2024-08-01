@@ -10,7 +10,7 @@ import ARPackage
 import ARKit
 
 struct InstrumentListView: View {
-    @EnvironmentObject var instrumentSystem: InstrumentSystem
+    @Environment(InstrumentSystem.self) var instrumentSystem: InstrumentSystem
     @Binding var isExpanded:Bool
     @State private var dragOffsets: [Int: CGSize] = [:]
     
@@ -144,5 +144,5 @@ struct InstrumentListView: View {
 
 #Preview {
     InstrumentListView(isExpanded: Binding.constant(true))
-        .environmentObject(InstrumentSystem(arView: nil))
+        .environment(InstrumentSystem(arView: nil))
 }

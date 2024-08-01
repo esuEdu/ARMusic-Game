@@ -26,6 +26,7 @@ struct ActionButtonView: View {
         }
         .padding()
         .onTapGesture {
+            
             action()
         }
     }

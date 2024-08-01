@@ -29,10 +29,6 @@ import Combine
         arView.session.delegate = self
         arView.session.run(arConfig, options: [])
         
-        // Add gesture recognizer
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        arView.addGestureRecognizer(tapGestureRecognizer)
-        
         // Initialize shared anchor
         sharedAnchor = AnchorEntity()
         arView.scene.addAnchor(sharedAnchor!)

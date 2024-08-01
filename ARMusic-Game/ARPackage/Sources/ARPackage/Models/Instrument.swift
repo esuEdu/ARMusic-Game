@@ -13,6 +13,7 @@ public struct Instrument: Identifiable {
     public let modelName: String
     public var notes: [Note]
     public var sequence: Set<Int> // Array de índices de notas selecionadas para cada tempo
+    
     public init(name: String, modelName: String, notes: [Note], sequence: Set<Int>) {
         self.name = name
         self.modelName = modelName

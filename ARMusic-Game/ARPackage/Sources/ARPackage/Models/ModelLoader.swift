@@ -44,13 +44,14 @@ public class ModelLoader {
                 self.models[intrumentName] = modelEntity
                 self.models[intrumentName]?.name = intrumentName
                               
-                self.models[name] = modelEntity
+                self.models[intrumentName] = modelEntity
                 var inputComponent = InputComponent()
                 var audioComponent = AudioComponent(note: .d, instrument: .piano, tom: 123.0)
                 
                 audioComponent.tempo.toggleValue(at: 0)
                 
                 inputComponent.addGestureFunc(gesture: UITapGestureRecognizer.self) { gesture in
+                    InstrumentSystem.shared.handleTapOnEntity(modelEntity)
                     WorldSystem.editEntity(modelEntity)
                 }
                 

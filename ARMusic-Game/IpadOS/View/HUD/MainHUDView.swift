@@ -9,7 +9,7 @@ import SwiftUI
 import ARPackage
 
 struct MainHUDView: View {
-    @EnvironmentObject var instrumentSystem: InstrumentSystem
+    @Environment(InstrumentSystem.self) var instrumentSystem: InstrumentSystem
     @State private var selectedNote: Note? = nil
     @State private var isExpandedInstrumentList = false
     
@@ -32,14 +32,14 @@ struct MainHUDView: View {
             
             // Mostre quando uma nota e um instrumento for selecionado
             showView(selectedNote != nil && instrumentSystem.selectedInstrument != nil) {
-                NoteTimeSelectionView(instrument: $instrumentSystem.selectedInstrument)
+                NoteTimeSelectionView(instrument: instrumentSystem.instrumentBinding)
                     .transition(.move(edge: .bottom))
             }
             
             // Mostre quando uma instrumento for selecionado
             showView(instrumentSystem.selectedInstrument != nil) {
                 MuteButtonView(isMuted: $isMuted)
-                SelectMusicalNoteView(selectedNote: $selectedNote, instrument: $instrumentSystem.selectedInstrument) { note in
+                SelectMusicalNoteView(selectedNote: $selectedNote, instrument: instrumentSystem.instrumentBinding) { note in
                     selectedNote = note
                 }
                 .transition(.move(edge: .bottom))
