@@ -131,6 +131,7 @@
 		28CE729C2C49D8EC00051E74 /* IpadOS */ = {
 			isa = PBXGroup;
 			children = (
+				AF8660172C5C20BB00D92541 /* 3DAssets */,
 				28CE72D42C49DB3200051E74 /* View */,
 				AF8660142C5C1F8200D92541 /* Components */,
 				28CE72D72C49DB6600051E74 /* Navigation */,
@@ -219,6 +220,13 @@
 				AF8660042C5970B000D92541 /* ScaledFont.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		AF8660172C5C20BB00D92541 /* 3DAssets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 3DAssets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
