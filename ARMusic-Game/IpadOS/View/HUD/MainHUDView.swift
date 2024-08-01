@@ -12,14 +12,17 @@ struct MainHUDView: View {
     @EnvironmentObject var instrumentSystem: InstrumentSystem
     @State private var selectedNote: Note? = nil
     @State private var isExpandedInstrumentList = false
-
+    
+    @State private var isPaused:Bool = false
+    @State private var isMuted:Bool = false
+    
     var body: some View {
         ZStack {
             
             InstrumentListView(isExpanded: $isExpandedInstrumentList)
             
             showView(!isExpandedInstrumentList) {
-                PauseButtonView()
+                PauseButtonView(isPaused: $isPaused)
             }
             
             // Mostre quando um instrumento for selecionado
@@ -35,6 +38,7 @@ struct MainHUDView: View {
             
             // Mostre quando uma instrumento for selecionado
             showView(instrumentSystem.selectedInstrument != nil) {
+                MuteButtonView(isMuted: $isMuted)
                 SelectMusicalNoteView(selectedNote: $selectedNote, instrument: $instrumentSystem.selectedInstrument) { note in
                     selectedNote = note
                 }
