@@ -179,7 +179,6 @@
 				28CE729F2C49D8EC00051E74 /* ContentView.swift */,
 				AF8660022C596DD000D92541 /* StartView.swift */,
 				AF8660062C59743900D92541 /* MotionManager.swift */,
-				AF8660042C5970B000D92541 /* ScaledFont.swift */,
 				C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */,
 				C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */,
 				AF8660102C5AD52C00D92541 /* pancakes.usdz */,
@@ -217,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				AF8660152C5C1FD900D92541 /* Custom3DView.swift */,
+				AF8660042C5970B000D92541 /* ScaledFont.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
