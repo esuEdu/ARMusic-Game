@@ -20,28 +20,17 @@ struct StartView: View {
             return (x: 0, y: 0)
         }
         
-//        let pitch = motion.attitude.pitch
-//        let roll = motion.attitude.roll
-//        let yaw = motion.attitude.yaw
-//        
         let interfaceOrientation = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
         
         switch interfaceOrientation {
-//        case .portrait, .portraitUpsideDown:
-//            // Portrait mode
-//            let pitchDegrees = min(maxRotationAngle, motion.attitude.pitch > thresholdPitch ? (motion.attitude.pitch - thresholdPitch) * (100.0 / .pi) : 0)
-//            let rollDegrees = min(maxRotationAngle, motion.attitude.roll * (100.0 / .pi))
-//            return (x: max(-maxRotationX, min(maxRotationX, -pitchDegrees)), y: max(-maxRotationY, min(maxRotationY, rollDegrees)))
         case .landscapeLeft:
-            // Landscape mode - home button on the right
-            let pitchDegrees = min(maxRotationAngle, motion.attitude.pitch > thresholdPitch ? (motion.attitude.pitch - thresholdPitch) * (100.0 / .pi) : 0)
-            let yawDegrees = min(maxRotationAngle, motion.attitude.yaw * (100.0 / .pi))
-            return (x: max(-maxRotationX, min(maxRotationX, -pitchDegrees)), y: max(-maxRotationY, min(maxRotationY, yawDegrees)))
+            let pitchDegrees = min(maxRotationX, max(-maxRotationX, motion.attitude.pitch * 180 / .pi))
+            let yawDegrees = min(maxRotationY, max(-maxRotationY, motion.attitude.yaw * 180 / .pi))
+            return (x: pitchDegrees, y: yawDegrees)
         case .landscapeRight:
-            // Landscape mode - home button on the left
-            let pitchDegrees = min(maxRotationAngle, motion.attitude.pitch > thresholdPitch ? (motion.attitude.pitch - thresholdPitch) * (100.0 / .pi) : 0)
-            let yawDegrees = min(maxRotationAngle, motion.attitude.yaw * (100.0 / .pi))
-            return (x: max(-maxRotationX, min(maxRotationX, -pitchDegrees)), y: max(-maxRotationY, min(maxRotationY, -yawDegrees)))
+            let pitchDegrees = min(maxRotationX, max(-maxRotationX, -motion.attitude.pitch * 180 / .pi))
+            let yawDegrees = min(maxRotationY, max(-maxRotationY, -motion.attitude.yaw * 180 / .pi))
+            return (x: pitchDegrees, y: yawDegrees)
         default:
             return (x: 0, y: 0)
         }
@@ -59,10 +48,10 @@ struct StartView: View {
                 .padding(20)
                 
                 ZStack {
-                    if let scene = scene {
+                    if scene != nil {
                         Custom3DView(scene: $scene, rotation: rotation)
-                            .rotation3DEffect(.init(degrees: rotation.y), axis: (x: 1.0, y: 0.0, z: 0.0))
-                            .rotation3DEffect(.init(degrees: rotation.x), axis: (x: 0.0, y: 1.0, z: 0.0))
+                            .rotation3DEffect(.init(degrees: rotation.y), axis: (x: 0.0, y: 1.0, z: 0.0))
+                            .rotation3DEffect(.init(degrees: rotation.x), axis: (x: 1.0, y: 0.0, z: 0.0))
                     } else {
                         Text("Cadeira não encontrada")
                             .foregroundColor(.red)
@@ -80,8 +69,6 @@ struct StartView: View {
                         }
                     }
                 }
-
-                
             }
             .padding()
             .background {
@@ -93,12 +80,8 @@ struct StartView: View {
                     .onAppear {
                         managerMotion.startMonitoringMotionUpdates()
                     }
-                
-                
-                
             }
         }
-        
     }
     
     func btn() -> some View {
@@ -150,5 +133,9 @@ struct Custom3DView: UIViewRepresentable {
         let chairNode = scene.rootNode.childNodes.first
         chairNode?.eulerAngles.x = Float(rotation.x * .pi / 180)
         chairNode?.eulerAngles.y = Float(rotation.y * .pi / 180)
+        
+        print("x: \(chairNode?.eulerAngles.x ?? 0)")
+        print("y: \(chairNode?.eulerAngles.y ?? 0)")
     }
 }
+ 
