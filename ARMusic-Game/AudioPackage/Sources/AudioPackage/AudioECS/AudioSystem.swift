@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Eduardo on 22/07/24.
 //
@@ -14,39 +14,68 @@ public struct AudioComponent: Component {
     var note: Notes
     var intrument: Instruments
     var tom: Float
-    var tempo: Float
+    public var tempo = FixedSizeBoolArray(size: 8)
     
-    public init(note: Notes, instrument: Instruments, tom: Float, tempo: Float) {
+    var startBeat: Int
+    var endBeat: Int
+    
+    
+    public init(note: Notes, instrument: Instruments, tom: Float, startBeat: Int = 0, endBeat: Int = 1) {
         self.note = note
         self.intrument = instrument
         self.tom = tom
-        self.tempo = tempo
+        self.startBeat = startBeat
+        self.endBeat = endBeat
     }
 }
 
 public class AudioSystem: System {
     
-    public var audioThreads: [Entity: AudioThread] = [:]
     
     public required init(scene: Scene) {}
-
+    
+    public static var entityBeingEditted: ModelEntity?
+    
     public static var dependencies: [SystemDependency] {
         return []
     }
-
+    
     public func update(context: SceneUpdateContext) {
+        if AudioTimerManager.shared.soundPlayedForCurrentNote {
+            return
+        }
+        
         let query = EntityQuery(where: .has(AudioComponent.self))
         let entities = context.scene.performQuery(query)
-
-        for entity in entities {
-            if audioThreads[entity] == nil {
-                playThread(entity: entity)
+        
+        if let entityBeingEditted = AudioSystem.entityBeingEditted {
+            handleEntitySound(entity: entityBeingEditted)
+        } else {
+            for entity in entities {
+                handleEntitySound(entity: entity)
             }
         }
+        
+        
+        AudioTimerManager.shared.soundPlayedForCurrentNote = true
     }
     
+    private func handleEntitySound(entity: Entity) {
+        
+        if let audio = entity.components[AudioComponent.self] as? AudioComponent {
+            getMaxBeat(beat: audio.endBeat)
+            if AudioTimerManager.shared.currentBeat >= audio.startBeat && AudioTimerManager.shared.currentBeat <= audio.endBeat {
+                let entityTempo = audio.tempo.getArray()
+                if entityTempo[AudioTimerManager.shared.currentNote] {
+                    print(entityTempo[AudioTimerManager.shared.currentNote])
+                    playSound(entity: entity)
+                }
+            }
+        }
+        
+    }
     
-    public func playThread(entity: Entity) {
+    public func playSound(entity: Entity) {
         
         if let audio = entity.components[AudioComponent.self] as? AudioComponent {
             
@@ -54,14 +83,16 @@ public class AudioSystem: System {
             let url = getURL(instrument: audio.intrument, note: audio.note)
             
             //create an audio thread
-            let audioThread = AudioThread(at: entity.position, with: url)
-            
-            //save the entity audio thread for more control
-            audioThreads[entity] = audioThread
+            let audioThread = AudioThread(at: entity.position, with: url, noteDuration: AudioTimerManager.shared.noteDuration)
             
             //start the thread
             audioThread.start()
-            
+        }
+    }
+    
+    func getMaxBeat(beat: Int) {
+        if beat > AudioTimerManager.shared.maxBeat {
+            AudioTimerManager.shared.maxBeat = beat
         }
     }
     

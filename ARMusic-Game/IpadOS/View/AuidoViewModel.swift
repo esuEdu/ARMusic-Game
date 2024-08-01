@@ -23,7 +23,7 @@ import Combine
     
     private func setupARView() {
         arView.automaticallyConfigureSession = true
-        
+
         let arConfig = ARWorldTrackingConfiguration()
         arConfig.planeDetection = [.horizontal, .vertical]
         arView.session.delegate = self
@@ -36,6 +36,7 @@ import Combine
         // Initialize shared anchor
         sharedAnchor = AnchorEntity()
         arView.scene.addAnchor(sharedAnchor!)
+        AudioTimerManager.shared.start()
     }
     
     @objc private func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -54,15 +55,25 @@ import Combine
                                             firstResult.worldTransform.columns.3.z)
                 
                 let box = ModelEntity(mesh: .generateBox(size: 0.1), materials: [SimpleMaterial(color: .red, isMetallic: true)])
+                let box2 = ModelEntity(mesh: .generateBox(size: 0.1), materials: [SimpleMaterial(color: .red, isMetallic: true)])
+                                
+                var component = AudioComponent(note: .d, instrument: .piano, tom: 100, endBeat: 6)
+                _ = component.tempo.toggleValue(at: 1)
+                _ = component.tempo.toggleValue(at: 2)
+                _ = component.tempo.toggleValue(at: 3)
+                _ = component.tempo.toggleValue(at: 4)
+                _ = component.tempo.toggleValue(at: 5)
                 
-                let audioComponent = AudioComponent(note: .d, instrument: .piano, tom: 100, tempo: 100)
-                box.components.set(audioComponent)
+                var component2 = AudioComponent(note: .d, instrument: .piano, tom: 100, startBeat: 5, endBeat: 10)
+                _ = component2.tempo.toggleValue(at: 1)
                 
-          
-
-                
+                box.components.set(component)
                 box.position = position
+                box2.components.set(component2)
+                box2.position = position
+                
                 sharedAnchor?.addChild(box)
+                sharedAnchor?.addChild(box2)
             }
         }
     }
@@ -73,9 +84,11 @@ extension AuidoViewModel: ARSessionDelegate {
         let cameraTransform = frame.camera.transform
         let cameraPosition = SIMD3<Float>(cameraTransform.columns.3.x, cameraTransform.columns.3.y, cameraTransform.columns.3.z)
         let cameraOrientation = frame.camera.eulerAngles
+        
         AudioUtils.shared.position = cameraPosition
         AudioUtils.shared.orientation = cameraOrientation
-
+        AudioUtils.shared.viewMatrix = session.currentFrame?.camera.viewMatrix(for: .landscapeLeft)
+        AudioUtils.shared.time = session.currentFrame!.timestamp
     }
 }
 

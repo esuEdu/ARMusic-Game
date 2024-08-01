@@ -8,25 +8,43 @@
 import SwiftUI
 import RealityKit
 import ARPackage
+import AudioPackage
 
 struct ARViewConfiguration: UIViewRepresentable {
-    @ObservedObject var instrumentSystem: InstrumentSystem
+    @ObservedObject var instrumentSystem: InstrumentSystem    
     
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
         let arViewManager = ARSettings(arView: arView)
-        arViewManager.setupAR()
         
         // Adicionar recognizer de toque
         let tapRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTap(_:)))
         arView.addGestureRecognizer(tapRecognizer)
         
+        context.coordinator.view = arView    
+        WorldSystem.worldSettings = arViewManager
+        
+        arViewManager.setupAR()
+        registerSystem()
+        registerComponents()
         instrumentSystem.arView = arView
-        context.coordinator.view = arView
         
         return arView
     }
+
     
+
+    
+    func registerSystem() {
+        WorldSystem.registerSystem()
+        AudioSystem.registerSystem()
+    }
+    
+    func registerComponents() {
+        AudioComponent.registerComponent()
+        InputComponent.registerComponent()
+    }
+
     func updateUIView(_ uiView: ARView, context: Context) {}
     
     func makeCoordinator() -> Coordinator {

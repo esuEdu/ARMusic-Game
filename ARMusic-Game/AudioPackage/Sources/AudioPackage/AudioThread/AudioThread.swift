@@ -17,13 +17,19 @@ public class AudioThread: Thread {
     private var url: URL
     private let position: SIMD3<Float>
     private let audioUtil = AudioUtils.shared
+    private let noteDuration: Float
     
-    public init(at position: SIMD3<Float>, with url: URL) {
+    public init(at position: SIMD3<Float>, with url: URL, noteDuration: Float) {
         self.url = url
         self.position = position
+        self.noteDuration = noteDuration
         super.init()
         setupAudioEngine()
         loadAudioFile()
+    }
+    
+    func denit() {
+        cleanup()
     }
     
     private func setupAudioEngine() {
@@ -50,21 +56,20 @@ public class AudioThread: Thread {
     }
     
     override public func main() {
-        while true {
+        playSound()
+        while (audioPlayerNode.isPlaying) {
             Thread.sleep(forTimeInterval: 0.1)
-            playSound()
         }
-        
-        
+        Thread.exit()
     }
     
     public func updateListenerPosition() {
         guard let position = audioUtil.position, let orientation = audioUtil.orientation else { return }
         
+        adjustPanBasedOnOrientation()
         adjustVolumeBasedOnDistance(listenerPosition: position)
         environmentNode.listenerPosition = AVAudio3DPoint(x: position.x, y: position.y, z: position.z)
         environmentNode.listenerAngularOrientation = AVAudio3DAngularOrientation(yaw: orientation.y, pitch: orientation.x, roll: orientation.z)
-
     }
     
     public func playSound() {
@@ -85,5 +90,25 @@ public class AudioThread: Thread {
         let volume = max(minVolume, 1 - (distance / maxDistance))
         
         audioPlayerNode.volume = volume
+    }
+    
+    private func cleanup() {
+        audioEngine.stop()
+        audioEngine.detach(audioPlayerNode)
+        audioEngine.detach(environmentNode)
+    }
+    
+    private func adjustPanBasedOnOrientation() {
+        
+        let cameraSpace4 = simd_mul(simd_float4(position.x, position.y, position.z, 1.0), AudioUtils.shared.viewMatrix!)
+        let cameraSpace = simd_float3(cameraSpace4.x, cameraSpace4.y, cameraSpace4.z)
+        
+        let z = simd_float3(-1, 0, 0)
+        
+        let dirToObj = simd_normalize(cameraSpace)
+        let dot = simd_dot(dirToObj, z)
+        
+        environmentNode.pan = dot
+        
     }
 }

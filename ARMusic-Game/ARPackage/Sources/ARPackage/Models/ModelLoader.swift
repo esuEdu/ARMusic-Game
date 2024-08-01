@@ -8,6 +8,8 @@
 import RealityKit
 import Foundation
 import Combine
+import UIKit
+import AudioPackage
 
 public class ModelLoader {
     private static var cancellables = Set<AnyCancellable>()
@@ -41,6 +43,19 @@ public class ModelLoader {
                 // Armazena o modelo carregado no cache
                 self.models[intrumentName] = modelEntity
                 self.models[intrumentName]?.name = intrumentName
+                              
+                self.models[name] = modelEntity
+                var inputComponent = InputComponent()
+                var audioComponent = AudioComponent(note: .d, instrument: .piano, tom: 123.0)
+                
+                audioComponent.tempo.toggleValue(at: 0)
+                
+                inputComponent.addGestureFunc(gesture: UITapGestureRecognizer.self) { gesture in
+                    WorldSystem.editEntity(modelEntity)
+                }
+                
+                modelEntity.components.set(audioComponent)
+                modelEntity.components.set(inputComponent)
                 // Retorna um clone do modelo carregado
                 completion(modelEntity.clone(recursive: true))
                 print("DEBUG - successfully loaded model entity for modelName: \(modelname)")

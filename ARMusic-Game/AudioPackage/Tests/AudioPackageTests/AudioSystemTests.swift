@@ -45,7 +45,7 @@ class AudioSystemTests: XCTestCase {
         entity.components.set(audioComponent)
         arView.scene.addAnchor(AnchorEntity())
         
-        audioSystem.playThread(entity: entity)
+        audioSystem.playSound(entity: entity)
         
         XCTAssertNotNil(audioSystem.audioThreads[entity])
     }

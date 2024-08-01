@@ -1,21 +1,31 @@
+//
+//  WorldSystem.swift
+//
+//
+//  Created by Eduardo on 25/07/24.
+//
+
 import RealityKit
 import ARKit
+import AudioPackage
 
-class WorldSystem: System {
-    
-    static var BPM: Int = 120
-    static var currentBar: Int = 0
-    static var currentNote: Int = 0
-    static var currTime: TimeInterval = 0
-    
-    
-    required init(scene: Scene) {
-        
+public class WorldSystem: System {
+    public static var entityBeingEditted: ModelEntity? {
+        didSet {
+            if entityBeingEditted != nil {
+                AudioSystem.entityBeingEditted = entityBeingEditted
+            } else {
+                AudioSystem.entityBeingEditted = nil
+            }
+        }
     }
     
-    func update(context: SceneUpdateContext) {
-        WorldSystem.currTime += context.deltaTime
-        
-        
+    public required init(scene: Scene) {
+    }
+    
+    public static var worldSettings: ARSettings!
+    
+    public static func editEntity(_ entity: ModelEntity) {
+        entityBeingEditted = entity
     }
 }
