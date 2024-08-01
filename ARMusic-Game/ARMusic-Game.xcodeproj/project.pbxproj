@@ -24,6 +24,7 @@
 		AF8660052C5970B000D92541 /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660042C5970B000D92541 /* ScaledFont.swift */; };
 		AF8660072C59743900D92541 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660062C59743900D92541 /* MotionManager.swift */; };
 		AF8660112C5AD52C00D92541 /* pancakes.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AF8660102C5AD52C00D92541 /* pancakes.usdz */; };
+		AF8660162C5C1FD900D92541 /* Custom3DView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660152C5C1FD900D92541 /* Custom3DView.swift */; };
 		C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */; };
 		C9E01BAB2C56EDFC001CB428 /* ARViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */; };
 		C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BB12C573F56001CB428 /* MainHUDView.swift */; };
@@ -67,6 +68,7 @@
 		AF8660042C5970B000D92541 /* ScaledFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
 		AF8660062C59743900D92541 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		AF8660102C5AD52C00D92541 /* pancakes.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = pancakes.usdz; sourceTree = "<group>"; };
+		AF8660152C5C1FD900D92541 /* Custom3DView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custom3DView.swift; sourceTree = "<group>"; };
 		C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentListView.swift; sourceTree = "<group>"; };
 		C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewConfiguration.swift; sourceTree = "<group>"; };
 		C9E01BB12C573F56001CB428 /* MainHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHUDView.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 		AF8660142C5C1F8200D92541 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AF8660152C5C1FD900D92541 /* Custom3DView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */,
 				C9E01BAB2C56EDFC001CB428 /* ARViewConfiguration.swift in Sources */,
 				C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */,
+				AF8660162C5C1FD900D92541 /* Custom3DView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
