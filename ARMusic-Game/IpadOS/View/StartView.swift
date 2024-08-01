@@ -20,7 +20,7 @@ struct StartView: View {
             return (x: 0, y: 0)
         }
         
-        let interfaceOrientation = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
+        let interfaceOrientation = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.interfaceOrientation
         
         switch interfaceOrientation {
         case .landscapeLeft:
@@ -102,4 +102,3 @@ struct StartView: View {
 #Preview {
     StartView()
 }
-
