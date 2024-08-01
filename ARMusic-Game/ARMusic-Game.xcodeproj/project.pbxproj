@@ -182,7 +182,6 @@
 				AF8660062C59743900D92541 /* MotionManager.swift */,
 				C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */,
 				C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */,
-				AF8660102C5AD52C00D92541 /* pancakes.usdz */,
 				C9E01BB12C573F56001CB428 /* MainHUDView.swift */,
 				2853972E2C541D2200E37A4C /* AudioView.swift */,
 				285397302C541D2A00E37A4C /* AuidoViewModel.swift */,
@@ -225,6 +224,7 @@
 		AF8660172C5C20BB00D92541 /* 3DAssets */ = {
 			isa = PBXGroup;
 			children = (
+				AF8660102C5AD52C00D92541 /* pancakes.usdz */,
 			);
 			path = 3DAssets;
 			sourceTree = "<group>";
