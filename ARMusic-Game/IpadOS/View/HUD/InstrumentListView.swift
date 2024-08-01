@@ -11,7 +11,7 @@ import ARKit
 
 struct InstrumentListView: View {
     @EnvironmentObject var instrumentSystem: InstrumentSystem
-    @State private var isExpanded = false
+    @Binding var isExpanded:Bool
     @State private var dragOffsets: [Int: CGSize] = [:]
     
     let instruments: [Instrument] = [
@@ -143,6 +143,6 @@ struct InstrumentListView: View {
 
 
 #Preview {
-    InstrumentListView()
+    InstrumentListView(isExpanded: Binding.constant(true))
         .environmentObject(InstrumentSystem(arView: nil))
 }

@@ -17,7 +17,7 @@ struct TimeComponent: View {
         VStack {
             RoundedRectangle(cornerRadius: 42)
                 .fill(isSelected ? Color.blue : Color.white)
-                .frame(width: 112, height: 194)
+                .frame(width: self.screenWidth * 0.079, height: self.screenWidth * 0.140)
                 .overlay(
                     RoundedRectangle(cornerRadius: 42)
                         .stroke(Color.black, lineWidth: 2)
@@ -28,13 +28,13 @@ struct TimeComponent: View {
             
             Circle()
                 .fill(Color.gray)
-                .frame(width: 50, height: 50)
+                .frame(width: self.screenWidth * 0.048, height: self.screenWidth * 0.048)
                 .overlay(
                     Text(timeText)
                         .foregroundColor(.white)
                         .font(.headline)
                 )
-                .offset(y: -35)
+                .offset(y: -40)
         }
     }
 }
@@ -57,7 +57,7 @@ struct NoteTimeSelectionView: View {
                 }
             }
         }
-        .padding()
+        .position(x: self.screenWidth * 0.55, y: self.screenHeight * 0.88)
     }
 }
 

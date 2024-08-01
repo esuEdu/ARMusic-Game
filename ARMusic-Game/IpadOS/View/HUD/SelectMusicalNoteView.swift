@@ -17,7 +17,7 @@ struct NoteButton: View {
         Button(action: action) {
             Circle()
                 .fill(Color.blue)
-                .frame(width: 50, height: 50)
+                .frame(width: self.screenHeight * 0.087, height: self.screenHeight * 0.087)
                 .overlay(
                     Group {
                         if isSystemImage {
@@ -45,6 +45,7 @@ struct SelectMusicalNoteView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             if showMenu {
                 ForEach(instrument?.notes ?? []) { note in
                     NoteButton(note: note.name, action: {
@@ -67,5 +68,6 @@ struct SelectMusicalNoteView: View {
                 }
             }, isSystemImage: (selectedNote == nil) || showMenu)
         }
+        .position(x: self.screenWidth * 0.1, y: self.screenHeight * 0.45)
     }
 }
