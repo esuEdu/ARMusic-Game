@@ -26,20 +26,20 @@ struct MainHUDView: View {
             }
             
             // Mostre quando um instrumento for selecionado
-            showView(instrumentSystem.selectedInstrument == nil) {
+            showView(instrumentSystem.selectedEntity == nil) {
                 BPMSelectorView()
             }
             
             // Mostre quando uma nota e um instrumento for selecionado
-            showView(selectedNote != nil && instrumentSystem.selectedInstrument != nil) {
-                NoteTimeSelectionView(instrument: instrumentSystem.instrumentBinding)
+            showView(selectedNote != nil && instrumentSystem.selectedEntity != nil) {
+                NoteTimeSelectionView(entity: instrumentSystem.entityBinding)
                     .transition(.move(edge: .bottom))
             }
             
             // Mostre quando uma instrumento for selecionado
-            showView(instrumentSystem.selectedInstrument != nil) {
+            showView(instrumentSystem.selectedEntity != nil) {
                 MuteButtonView(isMuted: $isMuted)
-                SelectMusicalNoteView(selectedNote: $selectedNote, instrument: instrumentSystem.instrumentBinding) { note in
+                SelectMusicalNoteView(selectedNote: $selectedNote, entity: instrumentSystem.entityBinding) { note in
                     selectedNote = note
                 }
                 .transition(.move(edge: .bottom))

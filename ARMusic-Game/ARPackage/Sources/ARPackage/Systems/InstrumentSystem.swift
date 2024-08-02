@@ -8,81 +8,83 @@
 import RealityKit
 import Combine
 import SwiftUI
+import AudioPackage
+
 @Observable
 public class InstrumentSystem {
     public static var shared = InstrumentSystem()
     
     public var arView: ARView?
-    public var instrumentEntities: [Entity] = []
-    public var instruments: [Instrument] = []
-    public var selectedInstrument: Instrument?
+    private var sharedAnchor: AnchorEntity?
     
-    public var instrumentBinding: Binding<Instrument?> {
-        
+    public var instrumentEntities: [InstrumentEntity] = []
+    public var selectedEntity: InstrumentEntity?
+    
+    public var entityBinding: Binding<InstrumentEntity?> {
         Binding {
-            self.selectedInstrument
+            self.selectedEntity
         } set: { newValue in
-            self.selectedInstrument = newValue
+            self.selectedEntity = newValue
         }
-
-        
     }
     
     public init(arView: ARView? = nil) {
         self.arView = arView
+        // Initialize shared anchor
+        sharedAnchor = AnchorEntity()
+        arView?.scene.anchors.append(sharedAnchor!)
     }
     
     public func addInstrument(_ instrument: Instrument) {
-        instruments.append(instrument)
-        
         guard let arView = arView else { return }
         
-        ModelLoader.load(intrumentName: instrument.name, modelname: instrument.modelName) { entity in
-            guard let modelEntity = entity else {
+        ModelLoader.load(instrument: instrument, instrumentSystem: self) { [weak self] instrumentEntity in
+            guard let self = self else { return }
+            guard let instrumentEntity = instrumentEntity else {
                 print("Failed to load the instrument model.")
                 return
             }
-            
+                        
             let raycastQuery = arView.makeRaycastQuery(from: arView.center, allowing: .estimatedPlane, alignment: .horizontal)
             
             if let result = arView.session.raycast(raycastQuery!).first {
                 let anchorEntity = AnchorEntity(raycastResult: result)
-                anchorEntity.addChild(modelEntity)
+                anchorEntity.addChild(instrumentEntity)
                 
-                modelEntity.generateCollisionShapes(recursive: true)
-                arView.installGestures([.all], for: modelEntity as! HasCollision)
+                instrumentEntity.generateCollisionShapes(recursive: true)
+                arView.installGestures([.all], for: instrumentEntity as HasCollision)
                 
                 arView.scene.anchors.append(anchorEntity)
                 
-                self.instrumentEntities.append(modelEntity)
+                self.instrumentEntities.append(instrumentEntity)
+                print("Instrument added successfully.")
             } else {
                 print("Nenhum plano detectado.")
             }
         }
-    } 
+    }
     
-    public func handleTapOnEntity(_ entity: Entity) {
-        if let instrument = findInstrument(for: entity) {
-
-            selectedInstrument = instrument
+    public func handleTapOnEntity(_ entity: InstrumentEntity) {
+        selectedEntity = entity
+    }
+    
+    public func setSequence(for entity: InstrumentEntity) {
+        selectedEntity = entity
+        print(entity.components)
+        
+        // Verifica se a entidade possui filhos e procura pelo AudioComponent
+        for child in entity.children {
+            if var audioComponent = child.components[AudioComponent.self] as? AudioComponent {
+                audioComponent.tempo.setAllValues(to: false)
+                audioComponent.tempo.toggleValues(at: entity.instrument.sequence)
+                
+                child.components.set(audioComponent)
+                
+                print("AudioComponent atualizado com sucesso no filho da entidade.")
+                return
+            }
         }
-    }
-    
-    private func findInstrument(for entity: Entity) -> Instrument? {
-        let instrument = instruments.first { $0.name == entity.name }
-
-        return instrument
-    }
-    
-    public func setSequence(for instrumentId: UUID, sequence: Set<Int>) {
-        if let index = instruments.firstIndex(where: { $0.id == instrumentId }) {
-            instruments[index].sequence = sequence
-        }
-    }
-    
-    public func getSequence(for instrumentId: UUID) -> Set<Int>? {
-        return instruments.first(where: { $0.id == instrumentId })?.sequence
+        
+        print("AudioComponent não encontrado em nenhum dos filhos da entidade.")
     }
 }
-
-

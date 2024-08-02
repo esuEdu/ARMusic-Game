@@ -37,7 +37,7 @@ struct NoteButton: View {
 
 struct SelectMusicalNoteView: View {
     @Binding var selectedNote: Note?
-    @Binding var instrument: Instrument?
+    @Binding var entity: InstrumentEntity?
     
     @State private var showMenu: Bool = false
 
@@ -47,7 +47,7 @@ struct SelectMusicalNoteView: View {
         VStack {
             Spacer()
             if showMenu {
-                ForEach(instrument?.notes ?? []) { note in
+                ForEach(entity?.instrument.notes ?? []) { note in
                     NoteButton(note: note.name, action: {
                         withAnimation {
                             selectedNote = note

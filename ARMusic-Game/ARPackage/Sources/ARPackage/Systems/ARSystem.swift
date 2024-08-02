@@ -23,8 +23,6 @@ public class ARSettings{
     }
 
     public func setupAR() {
-        
-        AudioTimerManager.shared.start()
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal]
         configuration.environmentTexturing = .automatic
@@ -32,6 +30,8 @@ public class ARSettings{
         arView?.session.run(configuration)
         setupGestures()
         arView?.addCoaching() 
+        
+        AudioTimerManager.shared.start()
     }
     
     private func setupGestures() {

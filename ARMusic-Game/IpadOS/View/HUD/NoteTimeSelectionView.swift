@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+import RealityKit
 import ARPackage
+import AudioPackage
 
 struct TimeComponent: View {
     let timeText: String
@@ -40,17 +42,25 @@ struct TimeComponent: View {
 }
 
 struct NoteTimeSelectionView: View {
-    @Binding var instrument: Instrument?
+    @Environment(InstrumentSystem.self) var instrumentSystem: InstrumentSystem
+    @Binding var entity: InstrumentEntity?
     
     var body: some View {
         HStack(spacing: 10) {
             ForEach(0..<8) { index in
-                TimeComponent(timeText: "\(index + 1)/8", isSelected: instrument?.sequence.contains(index) ?? false) {
+                TimeComponent(
+                    timeText: "\(index + 1)/8",
+                    isSelected: entity?.instrument.sequence.contains(index) ?? false
+                ) {
                     withAnimation {
-                        if instrument?.sequence.contains(index) ?? false {
-                            instrument?.sequence.remove(index)
+                        if entity?.instrument.sequence.contains(index) ?? false {
+                            entity?.instrument.sequence.remove(index)
                         } else {
-                            instrument?.sequence.insert(index)
+                            entity?.instrument.sequence.insert(index)
+                        }
+                        
+                        if let updatedEntity = entity {
+                            instrumentSystem.setSequence(for: updatedEntity)
                         }
                     }
                 }
@@ -59,6 +69,7 @@ struct NoteTimeSelectionView: View {
         .position(x: self.screenWidth * 0.55, y: self.screenHeight * 0.88)
     }
 }
+
 
 
 
