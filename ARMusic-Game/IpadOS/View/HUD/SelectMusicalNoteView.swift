@@ -36,12 +36,9 @@ struct NoteButton: View {
 }
 
 struct SelectMusicalNoteView: View {
-    @Binding var selectedNote: Note?
+    @Environment(InstrumentSystem.self) var instrumentSystem: InstrumentSystem
     @Binding var entity: InstrumentEntity?
-    
     @State private var showMenu: Bool = false
-
-    let onNoteSelected: (Note) -> Void
     
     var body: some View {
         VStack {
@@ -50,23 +47,34 @@ struct SelectMusicalNoteView: View {
                 ForEach(entity?.instrument.notes ?? []) { note in
                     NoteButton(note: note.name, action: {
                         withAnimation {
-                            selectedNote = note
+                            entity?.instrument.selectedNote = note
+                            
+                            print("Nota selecionada: \(note.name)")
+                            
+                            if let updatedEntity = entity {
+                                instrumentSystem.setSequence(for: updatedEntity)
+                            }
+                            
                             showMenu = false
-                            onNoteSelected(note)
                         }
                     }, isSystemImage: false)
                     .padding(.bottom, 10)
                 }
             }
             
-            NoteButton(note: showMenu ? "xmark" : (selectedNote?.name ?? "music.note"), action: {
+            NoteButton(note: showMenu ? "xmark" : (entity?.instrument.selectedNote?.name ?? "music.note"), action: {
                 withAnimation {
                     if showMenu {
-                        selectedNote = nil
+                        entity?.instrument.selectedNote = nil
+                        
+                        if let updatedEntity = entity {
+                            instrumentSystem.setSequence(for: updatedEntity)
+                        }
                     }
+                    
                     showMenu.toggle()
                 }
-            }, isSystemImage: (selectedNote == nil) || showMenu)
+            }, isSystemImage: (entity?.instrument.selectedNote == nil) || showMenu)
         }
         .position(x: self.screenWidth * 0.1, y: self.screenHeight * 0.45)
     }

@@ -10,7 +10,6 @@ import ARPackage
 
 struct MainHUDView: View {
     @Environment(InstrumentSystem.self) var instrumentSystem: InstrumentSystem
-    @State private var selectedNote: Note? = nil
     @State private var isExpandedInstrumentList = false
     
     @State private var isPaused:Bool = false
@@ -31,7 +30,7 @@ struct MainHUDView: View {
             }
             
             // Mostre quando uma nota e um instrumento for selecionado
-            showView(selectedNote != nil && instrumentSystem.selectedEntity != nil) {
+            showView(instrumentSystem.selectedEntity?.instrument.selectedNote != nil) {
                 NoteTimeSelectionView(entity: instrumentSystem.entityBinding)
                     .transition(.move(edge: .bottom))
             }
@@ -39,10 +38,8 @@ struct MainHUDView: View {
             // Mostre quando uma instrumento for selecionado
             showView(instrumentSystem.selectedEntity != nil) {
                 MuteButtonView(isMuted: $isMuted)
-                SelectMusicalNoteView(selectedNote: $selectedNote, entity: instrumentSystem.entityBinding) { note in
-                    selectedNote = note
-                }
-                .transition(.move(edge: .bottom))
+                SelectMusicalNoteView(entity: instrumentSystem.entityBinding)
+                    .transition(.move(edge: .bottom))
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

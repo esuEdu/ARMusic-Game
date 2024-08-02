@@ -75,6 +75,8 @@ public class InstrumentSystem {
         // Verifica se a entidade possui filhos e procura pelo AudioComponent
         for child in entity.children {
             if var audioComponent = child.components[AudioComponent.self] as? AudioComponent {
+                // Passar nota selecionada:
+               // entity.instrument.selectedNote
                 audioComponent.tempo.setAllValues(to: false)
                 audioComponent.tempo.toggleValues(at: entity.instrument.sequence)
                 

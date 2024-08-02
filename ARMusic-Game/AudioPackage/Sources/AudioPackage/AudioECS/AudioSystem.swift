@@ -11,7 +11,7 @@ import RealityKit
 
 
 public struct AudioComponent: Component {
-    var note: Notes
+    public var note: Notes
     var intrument: Instruments
     var tom: Float
     public var tempo = FixedSizeBoolArray(size: 8)
