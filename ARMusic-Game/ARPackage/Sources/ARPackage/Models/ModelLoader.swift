@@ -17,29 +17,28 @@ public class ModelLoader {
     
     public required init() {}
     
-    public static func load(instrument: Instrument, instrumentSystem: InstrumentSystem, completion: @escaping (InstrumentEntity?) -> Void) {
+    public static func load(instrument: Instrument, instrumentSystem: InstrumentSystem, completion: @escaping (Entity?) -> Void) {
         
         // Verifica se o modelo já está no cache
         if let model = models[instrument.name] {
-            let instrumentEntity = InstrumentEntity(instrument: Instrument(
-                name: instrument.name,
-                modelName: instrument.modelName,
-                notes: instrument.notes,
-                sequence: instrument.sequence
-            ))
+//            let instrumentEntity = Entity(instrument: Instrument(
+//                name: instrument.name,
+//                modelName: instrument.modelName,
+//                notes: instrument.notes,
+//                sequence: instrument.sequence
+//            ))
             
             // Clona o modelo
             let modelClone = model.clone(recursive: true)
-            instrumentEntity.addChild(modelClone)
+//            instrumentEntity.addChild(modelClone)
             
             // Cria e configura os componentes
             var inputComponent = InputComponent()
-            var audioComponent = AudioComponent(note: .d, instrument: .piano, tom: 123.0)
-            audioComponent.tempo.toggleValue(at: 0)
+            let audioComponent = AudioComponent(note: .d, instrument: .piano, tom: 123.0)
             
             // Adiciona a função de gesto ao InputComponent
             inputComponent.addGestureFunc(gesture: UITapGestureRecognizer.self) { gesture in
-                instrumentSystem.handleTapOnEntity(instrumentEntity)
+                instrumentSystem.handleTapOnEntity(modelClone)
                 WorldSystem.editEntity(modelClone as! ModelEntity) // Use modelClone para manter a consistência
             }
             
@@ -48,7 +47,7 @@ public class ModelLoader {
             modelClone.components.set(inputComponent)
             
             // Retorna a InstrumentEntity já configurada
-            completion(instrumentEntity)
+            completion(modelClone)
             
             print("DEBUG - successfully loaded model entity for modelName: \(instrument.modelName)")
             return
@@ -73,14 +72,14 @@ public class ModelLoader {
                 // Armazena o modelo carregado no cache
                 self.models[instrument.name] = modelEntity
                 
-                let instrumentEntity = InstrumentEntity(instrument: Instrument(
-                    name: instrument.name,
-                    modelName: instrument.modelName,
-                    notes: instrument.notes,
-                    sequence: instrument.sequence
-                ))
+//                let instrumentEntity = InstrumentEntity(instrument: Instrument(
+//                    name: instrument.name,
+//                    modelName: instrument.modelName,
+//                    notes: instrument.notes,
+//                    sequence: instrument.sequence
+//                ))
                 
-                instrumentEntity.addChild(modelEntity)
+//                instrumentEntity.addChild(modelEntity)
                 
                 var inputComponent = InputComponent()
                 var audioComponent = AudioComponent(note: .d, instrument: .piano, tom: 123.0)
@@ -88,7 +87,7 @@ public class ModelLoader {
                 audioComponent.tempo.toggleValue(at: 0)
                 
                 inputComponent.addGestureFunc(gesture: UITapGestureRecognizer.self) { gesture in
-                    instrumentSystem.handleTapOnEntity(instrumentEntity)
+                    instrumentSystem.handleTapOnEntity(modelEntity)
                     WorldSystem.editEntity(modelEntity)
                 }
                 
@@ -96,7 +95,7 @@ public class ModelLoader {
                 modelEntity.components.set(inputComponent)
                 
                 // Retorna a InstrumentEntity já configurada
-                completion(instrumentEntity)
+                completion(modelEntity)
                 
                 print("DEBUG - successfully loaded model entity for modelName: \(instrument.modelName)")
             })

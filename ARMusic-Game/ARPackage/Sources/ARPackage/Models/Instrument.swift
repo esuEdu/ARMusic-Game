@@ -14,7 +14,7 @@ public struct Instrument: Identifiable {
     public var notes: [Note]
     public var selectedNote: Note?
     public var description:String?
-    public var sequence: Set<Int> // Array de índices de notas selecionadas para cada tempo
+    public var sequence: Set<Int> 
     
     public init(name: String, modelName: String, notes: [Note], sequence: Set<Int>) {
         self.id = UUID()

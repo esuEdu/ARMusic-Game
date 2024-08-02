@@ -15,10 +15,8 @@ public struct AudioComponent: Component {
     var intrument: Instruments
     var tom: Float
     public var tempo = FixedSizeBoolArray(size: 8)
-    
     var startBeat: Int
     var endBeat: Int
-    
     
     public init(note: Notes, instrument: Instruments, tom: Float, startBeat: Int = 0, endBeat: Int = 1) {
         self.note = note
