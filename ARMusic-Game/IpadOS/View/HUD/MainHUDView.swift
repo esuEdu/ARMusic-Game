@@ -15,6 +15,8 @@ struct MainHUDView: View {
     @State private var isPaused:Bool = false
     @State private var isMuted:Bool = false
     
+    @State var selectedNote:String? = nil
+
     var body: some View {
         ZStack {
             
@@ -30,7 +32,7 @@ struct MainHUDView: View {
             }
             
             // Mostre quando uma nota e um instrumento for selecionado
-            showView(instrumentSystem.selectedEntity?.instrument.selectedNote != nil) {
+            showView((selectedNote != nil)) {
                 NoteTimeSelectionView(entity: instrumentSystem.entityBinding)
                     .transition(.move(edge: .bottom))
             }
@@ -38,7 +40,7 @@ struct MainHUDView: View {
             // Mostre quando uma instrumento for selecionado
             showView(instrumentSystem.selectedEntity != nil) {
                 MuteButtonView(isMuted: $isMuted)
-                SelectMusicalNoteView(entity: instrumentSystem.entityBinding)
+                SelectMusicalNoteView(entity: instrumentSystem.entityBinding, selectedNote: $selectedNote)
                     .transition(.move(edge: .bottom))
             }
         }

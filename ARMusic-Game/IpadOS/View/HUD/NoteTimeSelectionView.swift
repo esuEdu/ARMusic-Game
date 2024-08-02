@@ -43,30 +43,46 @@ struct TimeComponent: View {
 
 struct NoteTimeSelectionView: View {
     @Environment(InstrumentSystem.self) var instrumentSystem: InstrumentSystem
-    @Binding var entity: InstrumentEntity?
+    @Binding var entity: Entity?
+    @State private var tempo: Set<Int> = []
     
     var body: some View {
         HStack(spacing: 10) {
             ForEach(0..<8) { index in
                 TimeComponent(
                     timeText: "\(index + 1)/8",
-                    isSelected: entity?.instrument.sequence.contains(index) ?? false
+                    isSelected: tempo.contains(index)
                 ) {
                     withAnimation {
-                        if entity?.instrument.sequence.contains(index) ?? false {
-                            entity?.instrument.sequence.remove(index)
+                        if tempo.contains(index) {
+                            tempo.remove(index)
                         } else {
-                            entity?.instrument.sequence.insert(index)
+                            tempo.insert(index)
                         }
                         
                         if let updatedEntity = entity {
-                            instrumentSystem.setSequence(for: updatedEntity)
+                            instrumentSystem.changeEntity(for: updatedEntity, tempos: tempo)
                         }
                     }
                 }
             }
         }
         .position(x: self.screenWidth * 0.55, y: self.screenHeight * 0.88)
+        .onChange(of: entity) { _,newEntity in
+            
+            if let audioComponent = newEntity?.components[AudioComponent.self] as? AudioComponent {
+                let arrayBool = audioComponent.tempo.getArray()
+                
+                tempo = []
+                
+                for (index, value) in arrayBool.enumerated() {
+                    if value {
+                        tempo.insert(index)
+                    }
+                }
+            }
+            
+        }
     }
 }
 

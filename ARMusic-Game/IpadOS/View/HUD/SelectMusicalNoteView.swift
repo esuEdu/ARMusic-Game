@@ -7,6 +7,8 @@
 
 import SwiftUI
 import ARPackage
+import RealityKit
+import DataPackage
 
 struct NoteButton: View {
     let note: String
@@ -37,44 +39,46 @@ struct NoteButton: View {
 
 struct SelectMusicalNoteView: View {
     @Environment(InstrumentSystem.self) var instrumentSystem: InstrumentSystem
-    @Binding var entity: InstrumentEntity?
+    @Binding var entity: Entity?
     @State private var showMenu: Bool = false
+    @State var notas = ["C", "D", "E", "A", "B"]
+    
+    @Binding var selectedNote:String?
     
     var body: some View {
         VStack {
             Spacer()
             if showMenu {
-                ForEach(entity?.instrument.notes ?? []) { note in
-                    NoteButton(note: note.name, action: {
+                ForEach(notas, id: \.self) { note in
+                    NoteButton(note: note, action: {
                         withAnimation {
-                            entity?.instrument.selectedNote = note
-                            
-                            print("Nota selecionada: \(note.name)")
-                            
-                            if let updatedEntity = entity {
-                                instrumentSystem.setSequence(for: updatedEntity)
+                            selectedNote = note
+                            if let selectNote = Notes(rawValue: note) {
+                                instrumentSystem.changeEntity(for: entity, note: selectNote)
+                                print("Nota selecionada: \(note)")
+                                
+                                showMenu = false
                             }
-                            
-                            showMenu = false
                         }
                     }, isSystemImage: false)
                     .padding(.bottom, 10)
                 }
             }
             
-            NoteButton(note: showMenu ? "xmark" : (entity?.instrument.selectedNote?.name ?? "music.note"), action: {
-                withAnimation {
-                    if showMenu {
-                        entity?.instrument.selectedNote = nil
-                        
-                        if let updatedEntity = entity {
-                            instrumentSystem.setSequence(for: updatedEntity)
+            NoteButton(
+                note: showMenu ? "xmark" : (selectedNote != nil ? "music.note" : ""),
+                action: {
+                    withAnimation {
+                        if showMenu {
+                            selectedNote = nil
                         }
+
+                        showMenu.toggle()
                     }
-                    
-                    showMenu.toggle()
-                }
-            }, isSystemImage: (entity?.instrument.selectedNote == nil) || showMenu)
+                },
+                isSystemImage: (selectedNote != nil) || showMenu
+            )
+
         }
         .position(x: self.screenWidth * 0.1, y: self.screenHeight * 0.45)
     }
