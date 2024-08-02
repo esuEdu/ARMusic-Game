@@ -9,6 +9,7 @@ import Foundation
 import RealityKit
 import SwiftUI
 import ARKit
+import AudioPackage
 
 public class ARSettings{
     public var arView: ARView?
@@ -29,6 +30,8 @@ public class ARSettings{
         arView?.session.run(configuration)
         setupGestures()
         arView?.addCoaching() 
+        
+        AudioTimerManager.shared.start()
     }
     
     private func setupGestures() {
@@ -42,8 +45,6 @@ public class ARSettings{
         let location = gesture.location(in: arView)
         
         let hitTest = arView?.hitTest(location)
-        
-        print(hitTest, location)
         
         let withInputComponent = hitTest?.filter({ hit in
             

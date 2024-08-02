@@ -7,50 +7,84 @@
 
 import RealityKit
 import Combine
+import SwiftUI
+import AudioPackage
 
-public class InstrumentSystem: ObservableObject {
-    public var arView: ARView?
-    @Published public var instrumentEntities: [Entity] = []
+@Observable
+public class InstrumentSystem {
+    public static var shared = InstrumentSystem()
     
-    public init(arView: ARView?) {
+    public var arView: ARView?
+    private var sharedAnchor: AnchorEntity?
+    
+    public var instrumentEntities: [InstrumentEntity] = []
+    public var selectedEntity: InstrumentEntity?
+    
+    public var entityBinding: Binding<InstrumentEntity?> {
+        Binding {
+            self.selectedEntity
+        } set: { newValue in
+            self.selectedEntity = newValue
+        }
+    }
+    
+    public init(arView: ARView? = nil) {
         self.arView = arView
+        // Initialize shared anchor
+        sharedAnchor = AnchorEntity()
+        arView?.scene.anchors.append(sharedAnchor!)
     }
     
     public func addInstrument(_ instrument: Instrument) {
         guard let arView = arView else { return }
         
-        ModelLoader.load(name: instrument.modelName) { entity in
-            guard let modelEntity = entity else {
+        ModelLoader.load(instrument: instrument, instrumentSystem: self) { [weak self] instrumentEntity in
+            guard let self = self else { return }
+            guard let instrumentEntity = instrumentEntity else {
                 print("Failed to load the instrument model.")
                 return
             }
-            
-            // Criar uma consulta de raycast a partir do centro da ARView
+                        
             let raycastQuery = arView.makeRaycastQuery(from: arView.center, allowing: .estimatedPlane, alignment: .horizontal)
             
             if let result = arView.session.raycast(raycastQuery!).first {
-                // Criação do AnchorEntity baseado no resultado do raycast
                 let anchorEntity = AnchorEntity(raycastResult: result)
-                anchorEntity.addChild(modelEntity)
+                anchorEntity.addChild(instrumentEntity)
                 
-                // Adicionar componentes de colisão e instalar gestos
-                modelEntity.generateCollisionShapes(recursive: true)
-                arView.installGestures([.all], for: modelEntity as! HasCollision)
+                instrumentEntity.generateCollisionShapes(recursive: true)
+                arView.installGestures([.all], for: instrumentEntity as HasCollision)
                 
                 arView.scene.anchors.append(anchorEntity)
                 
-                // Atualizar a lista de entidades de instrumentos
-                self.instrumentEntities.append(modelEntity)
+                self.instrumentEntities.append(instrumentEntity)
+                print("Instrument added successfully.")
             } else {
                 print("Nenhum plano detectado.")
             }
         }
     }
     
-    public func playNoteOnInstrument(_ instrumentEntity: Entity, note: Note) {
-        //        let audioComponent = AudioComponent(entity: instrumentEntity, audioFile: note.audioFile)
-        //        instrumentEntity.components[AudioComponent.self] = audioComponent
-        //        audioComponent.play()
+    public func handleTapOnEntity(_ entity: InstrumentEntity) {
+        selectedEntity = entity
     }
     
+    public func setSequence(for entity: InstrumentEntity) {
+        selectedEntity = entity
+        print(entity.components)
+        
+        // Verifica se a entidade possui filhos e procura pelo AudioComponent
+        for child in entity.children {
+            if var audioComponent = child.components[AudioComponent.self] as? AudioComponent {
+                audioComponent.tempo.setAllValues(to: false)
+                audioComponent.tempo.toggleValues(at: entity.instrument.sequence)
+                
+                child.components.set(audioComponent)
+                
+                print("AudioComponent atualizado com sucesso no filho da entidade.")
+                return
+            }
+        }
+        
+        print("AudioComponent não encontrado em nenhum dos filhos da entidade.")
+    }
 }

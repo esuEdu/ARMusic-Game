@@ -8,55 +8,56 @@
 import SwiftUI
 import ARPackage
 import ARKit
+import RealityKit
 
 struct InstrumentListView: View {
-    @EnvironmentObject var instrumentSystem: InstrumentSystem
-    @State private var isExpanded = false
+    @Environment(InstrumentSystem.self) var instrumentSystem: InstrumentSystem
+    @Binding var isExpanded:Bool
     @State private var dragOffsets: [Int: CGSize] = [:]
     
     let instruments: [Instrument] = [
         Instrument(name: "Piano", modelName: "guitarra", notes: [
-            Note(name: "C", audioFile: "Piano/Note1"),
-            Note(name: "D", audioFile: "Piano/Note2"),
-            Note(name: "E", audioFile: "Piano/Note3"),
-            Note(name: "F", audioFile: "Piano/Note4"),
-            Note(name: "G", audioFile: "Piano/Note5")
-        ]),
-        Instrument(name: "Guitar", modelName: "guitarra", notes: [
-            Note(name: "A", audioFile: "Guitar/Note1"),
-            Note(name: "B", audioFile: "Guitar/Note2"),
-            Note(name: "C", audioFile: "Guitar/Note3"),
-            Note(name: "D", audioFile: "Guitar/Note4"),
-            Note(name: "E", audioFile: "Guitar/Note5")
-        ]),
-        Instrument(name: "Violão", modelName: "guitarra", notes: [
-            Note(name: "A", audioFile: "Guitar/Note1"),
-            Note(name: "B", audioFile: "Guitar/Note2"),
-            Note(name: "C", audioFile: "Guitar/Note3"),
-            Note(name: "D", audioFile: "Guitar/Note4"),
-            Note(name: "E", audioFile: "Guitar/Note5")
-        ]),
-        Instrument(name: "Voz", modelName: "guitarra", notes: [
-            Note(name: "A", audioFile: "Guitar/Note1"),
-            Note(name: "B", audioFile: "Guitar/Note2"),
-            Note(name: "C", audioFile: "Guitar/Note3"),
-            Note(name: "D", audioFile: "Guitar/Note4"),
-            Note(name: "E", audioFile: "Guitar/Note5")
-        ]),
+            Note(name: "C", audioFile: "", type: .c),
+            Note(name: "D", audioFile: "", type: .d),
+            Note(name: "E", audioFile: "", type: .e),
+            Note(name: "G", audioFile: "", type: .g),
+            Note(name: "A", audioFile: "", type: .a)
+        ], sequence: []),
+        Instrument(name: "Guitarra", modelName: "guitarra", notes: [
+            Note(name: "C", audioFile: "", type: .c),
+            Note(name: "D", audioFile: "", type: .d),
+            Note(name: "E", audioFile: "", type: .e),
+            Note(name: "G", audioFile: "", type: .g),
+            Note(name: "A", audioFile: "", type: .a)
+        ], sequence: []),
         Instrument(name: "Bateria", modelName: "guitarra", notes: [
-            Note(name: "A", audioFile: "Guitar/Note1"),
-            Note(name: "B", audioFile: "Guitar/Note2"),
-            Note(name: "C", audioFile: "Guitar/Note3"),
-            Note(name: "D", audioFile: "Guitar/Note4"),
-            Note(name: "E", audioFile: "Guitar/Note5")
-        ]),
-        Instrument(name: "Baixo", modelName: "guitarra", notes: [
-            Note(name: "A", audioFile: "Guitar/Note1"),
-            Note(name: "B", audioFile: "Guitar/Note2"),
-            Note(name: "C", audioFile: "Guitar/Note3"),
-            Note(name: "D", audioFile: "Guitar/Note4"),
-            Note(name: "E", audioFile: "Guitar/Note5")
-        ])
+            Note(name: "C", audioFile: "", type: .c),
+            Note(name: "D", audioFile: "", type: .d),
+            Note(name: "E", audioFile: "", type: .e),
+            Note(name: "G", audioFile: "", type: .g),
+            Note(name: "A", audioFile: "", type: .a)
+        ], sequence: []),
+        Instrument(name: "Violão", modelName: "guitarra", notes: [
+            Note(name: "C", audioFile: "", type: .c),
+            Note(name: "D", audioFile: "", type: .d),
+            Note(name: "E", audioFile: "", type: .e),
+            Note(name: "G", audioFile: "", type: .g),
+            Note(name: "A", audioFile: "", type: .a)
+        ], sequence: []),
+        Instrument(name: "Voz", modelName: "guitarra", notes: [
+            Note(name: "C", audioFile: "", type: .c),
+            Note(name: "D", audioFile: "", type: .d),
+            Note(name: "E", audioFile: "", type: .e),
+            Note(name: "G", audioFile: "", type: .g),
+            Note(name: "A", audioFile: "", type: .a)
+        ], sequence: []),
+        Instrument(name: "Pandeiro", modelName: "guitarra", notes: [
+            Note(name: "C", audioFile: "", type: .c),
+            Note(name: "D", audioFile: "", type: .d),
+            Note(name: "E", audioFile: "", type: .e),
+            Note(name: "G", audioFile: "", type: .g),
+            Note(name: "A", audioFile: "", type: .a)
+        ], sequence: []),
     ]
     
     private let columns = [
@@ -143,6 +144,6 @@ struct InstrumentListView: View {
 
 
 #Preview {
-    InstrumentListView()
-        .environmentObject(InstrumentSystem(arView: nil))
+    InstrumentListView(isExpanded: Binding.constant(true))
+        .environment(InstrumentSystem(arView: nil))
 }
