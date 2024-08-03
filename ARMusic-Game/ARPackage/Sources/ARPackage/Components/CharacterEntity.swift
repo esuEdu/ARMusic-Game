@@ -1,18 +1,48 @@
-import ARKit
 import RealityKit
-import UIKit
 
-public class CharacterEntity: Entity, HasCollision {
+import AudioPackage
+
+public class CharacterEntity: Entity, HasCollision, HasModel {
     
-    public required init() {
+    public var audio: AudioComponent? {
+        self.components[AudioComponent.self] as? AudioComponent
+    }
+    
+    public required init(mesh: MeshResource, materials: [Material]) {
         super.init()
-        let sphere: MeshResource = .generateSphere(radius: 0.1)
-        let material: SimpleMaterial = .init(color: .red, isMetallic: false)
         
+        
+        
+        let boxRadius = mesh.bounds.boundingRadius
+        
+        let shape: ShapeResource = .generateSphere(radius: boxRadius)
+        
+        var audioComponent = AudioComponent(note: .d, instrument: .piano, tom: 123.0)
+        var inputComponent = InputComponent()
+        
+        self.components[ModelComponent.self] = ModelComponent(mesh: mesh, materials: materials)
         self.components.set(CollisionComponent(shapes: [
-            .generateSphere(radius: 0.1)
+            shape
         ]))
+        components.set(audioComponent)
+        components.set(inputComponent)
+    }
+    
+    required init() {
         
-        self.components[ModelComponent.self] = ModelComponent(mesh: sphere, materials: [material])
+        
+        
+    }
+    
+    public static func fromModelEntity(_ modelEntity: ModelEntity) -> CharacterEntity {
+    
+        
+        let mesh = modelEntity.model!.mesh
+        let materials = modelEntity.model!.materials
+    
+        let characterEntity = CharacterEntity(mesh: mesh, materials: materials)
+        
+        
+        return characterEntity
     }
 }

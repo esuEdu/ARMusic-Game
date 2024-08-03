@@ -13,7 +13,7 @@ import AudioPackage
 
 public class ModelLoader {
     private static var cancellables = Set<AnyCancellable>()
-    private static var models: [String: Entity] = [:]
+    private static var models: [String: CharacterEntity] = [:]
 
     public required init() {}
 
@@ -41,20 +41,12 @@ public class ModelLoader {
                 }
             }, receiveValue: { modelEntity in
                 // Armazena o modelo carregado no cache
-                self.models[name] = modelEntity
-                var inputComponent = InputComponent()
-                var audioComponent = AudioComponent(note: .d, instrument: .piano, tom: 123.0)
                 
-                audioComponent.tempo.toggleValue(at: 0)
+                let characterEntity = CharacterEntity.fromModelEntity(modelEntity)
                 
-                inputComponent.addGestureFunc(gesture: UITapGestureRecognizer.self) { gesture in
-                    WorldSystem.editEntity(modelEntity)
-                }
-                
-                modelEntity.components.set(audioComponent)
-                modelEntity.components.set(inputComponent)
+                self.models[name] = characterEntity
                 // Retorna um clone do modelo carregado
-                completion(modelEntity.clone(recursive: true))
+                completion(characterEntity.clone(recursive: true))
                 print("DEBUG - successfully loaded model entity for modelName: \(name)")
             })
             .store(in: &cancellables)
