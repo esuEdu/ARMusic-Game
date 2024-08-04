@@ -11,9 +11,9 @@ import AudioPackage
 import DataPackage
 
 public class InstrumentEntity: Entity, HasModel, HasAnchoring, HasCollision {
-    public var instrument: Instruments
+    var instrument: Instruments
     
-    public init(instrument: Instruments) {
+    init(instrument: Instruments) {
         self.instrument = instrument
         super.init()
     }
@@ -22,12 +22,12 @@ public class InstrumentEntity: Entity, HasModel, HasAnchoring, HasCollision {
         fatalError("init() has not been implemented")
     }
     
-    public func addAudioComponent(note: Notes, tom: Float, startBeat: Int = 0, endBeat: Int = 1) {
-        var audioComponent = AudioComponent(note: note, instrument: instrument, tom: tom, startBeat: startBeat, endBeat: endBeat)
+    func addAudioComponent() {
+        let audioComponent = AudioComponent(instrument: instrument)
         self.components.set(audioComponent)
     }
     
-    public func addCollisionComponent() {
+    func addCollisionComponent() {
         self.generateCollisionShapes(recursive: true)
     }
     
@@ -35,4 +35,22 @@ public class InstrumentEntity: Entity, HasModel, HasAnchoring, HasCollision {
         return self.components[AudioComponent.self] != nil
     }
     
+    public func changeAudioComponent(tempo: Set<Int>? = nil, note: Notes? = nil, tom: Float? = nil, startBeat: Int? = nil, endBeat: Int? = nil) {
+        guard var audioComponent = self.components[AudioComponent.self] as? AudioComponent else { return }
+        
+        tempo?.forEach { audioComponent.tempo.toggleValue(at: $0) }
+        if let note = note { audioComponent.note = note }
+        if let tom = tom { audioComponent.tom = tom }
+        if let startBeat = startBeat { audioComponent.startBeat = startBeat }
+        if let endBeat = endBeat { audioComponent.endBeat = endBeat }
+        
+        self.components.set(audioComponent)
+    }
+    
+    public func getArrayOfTempo() -> [Bool] {
+        guard let audioComponent = self.components[AudioComponent.self] as? AudioComponent else {
+            return []
+        }
+        return audioComponent.tempo.getArray()
+    }
 }

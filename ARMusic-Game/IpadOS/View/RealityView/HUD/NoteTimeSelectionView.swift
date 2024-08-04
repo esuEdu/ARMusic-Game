@@ -42,9 +42,10 @@ struct TimeComponent: View {
 }
 
 struct NoteTimeSelectionView: View {
-    @Environment(ARViewManager.self) var arViewManager: ARViewManager
-    @State var entity: Entity?
-    @State private var tempo: Set<Int> = []
+    
+    @Environment(ARViewManager.self) private var arViewManager: ARViewManager
+    
+    @State private var tempo: [Int] = []
     
     var body: some View {
         HStack(spacing: 10) {
@@ -54,37 +55,21 @@ struct NoteTimeSelectionView: View {
                     isSelected: tempo.contains(index)
                 ) {
                     withAnimation {
-                        if tempo.contains(index) {
-                            tempo.remove(index)
+                        if let removeIndex = tempo.firstIndex(of: index) {
+                            tempo.remove(at: removeIndex)
                         } else {
-                            tempo.insert(index)
+                            tempo.append(index)
                         }
                         
-                        if entity != nil {
-                            if var audioComponent = entity?.components[AudioComponent.self] as? AudioComponent {
-                                audioComponent.tempo.toggleValues(at: tempo)
-                                entity?.components.set(audioComponent)
-                            }
-                        }
+                        arViewManager.changeAudioComponent(tempo: Set(tempo))
                     }
                 }
             }
+        }.onAppear {
+            tempo = arViewManager.getIndiceOfTempo()
         }
+        
         .position(x: self.screenWidth * 0.55, y: self.screenHeight * 0.88)
-        .onChange(of: entity) { _,newEntity in
-            
-            if let audioComponent = newEntity?.components[AudioComponent.self] as? AudioComponent {
-                let arrayBool = audioComponent.tempo.getArray()
-                
-                tempo = []
-                
-                for (index, value) in arrayBool.enumerated() {
-                    if value {
-                        tempo.insert(index)
-                    }
-                }
-            }
-        }
     }
 }
 

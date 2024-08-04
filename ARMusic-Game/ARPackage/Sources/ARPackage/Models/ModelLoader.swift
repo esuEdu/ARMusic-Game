@@ -18,7 +18,7 @@ public class ModelLoader {
     func loadModel(for instrumentEntity: InstrumentEntity, into anchor: AnchorEntity, with arView: ARView) {
         let modelName = instrumentEntity.instrument.rawValue
         
-        var position: SIMD3<Float> = getPosition(arView)
+        let position: SIMD3<Float> = getPosition(arView)
         
         if let existingModel = loadedModels[modelName] {
             

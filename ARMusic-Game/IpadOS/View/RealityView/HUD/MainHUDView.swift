@@ -29,14 +29,14 @@ struct MainHUDView: View {
                     BPMSelectorView()
                 }
                 
-            case .editing(let entity):
+            case .editing:
                 showView(selectedNote != nil) {
                     NoteTimeSelectionView()
                         .transition(.move(edge: .bottom))
                 }
                 showView(arViewManager.stateMachine.getEntity() != nil) {
                     MuteButtonView(isMuted: $isMuted)
-                    SelectMusicalNoteView(entity: entity, selectedNote: $selectedNote)
+                    SelectMusicalNoteView( selectedNote: $selectedNote)
                         .transition(.move(edge: .bottom))
                 }
                 

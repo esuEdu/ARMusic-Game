@@ -10,12 +10,12 @@ import ARKit
 import AudioPackage
 
 public class WorldSystem: System {
-    public static var entityBeingEditted: ModelEntity? {
+    public static var entityBeingEditted: Entity? {
         didSet {
             if entityBeingEditted != nil {
-                AudioSystem.entityBeingEditted = entityBeingEditted
+                AudioSystem.entityBeingEdited = entityBeingEditted
             } else {
-                AudioSystem.entityBeingEditted = nil
+                AudioSystem.entityBeingEdited = nil
             }
         }
     }
@@ -24,7 +24,7 @@ public class WorldSystem: System {
     
 //    public static var worldSettings: ARSettings!
     
-    public static func editEntity(_ entity: ModelEntity) {
+    public static func editEntity(_ entity: Entity?) {
         entityBeingEditted = entity
     }
 }

@@ -56,12 +56,8 @@ struct SelectMusicalNoteView: View {
                             selectedNote = note.rawValue
                             if let selectNote = Notes(rawValue: note.rawValue) {
                                 //add change entity
-                                if let entity = arViewManager.stateMachine.getEntity() {
-                                    if var audioComponent = entity.components[AudioComponent.self] as? AudioComponent {
-                                        audioComponent.note = selectNote
-                                        
-                                        entity.components.set(audioComponent)
-                                    }
+                                if let instrumentEntity = entity as? InstrumentEntity {
+                                    instrumentEntity.changeAudioComponent(note: selectNote)
                                 }
                                 showMenu = false
                             }

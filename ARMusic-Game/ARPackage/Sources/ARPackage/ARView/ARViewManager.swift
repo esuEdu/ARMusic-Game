@@ -13,8 +13,7 @@ import DataPackage
 import AudioPackage
 
 @MainActor
-@Observable public class ARViewManager: NSObject, UIGestureRecognizerDelegate {
-    
+@Observable public class ARViewManager: NSObject {
     public var arView: ARView
     public var stateMachine = ARStateMachine()
     
@@ -29,11 +28,11 @@ import AudioPackage
     
     private func setupARView() {
         // Configure AR session
+        arView.addCoaching()
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal]
         arView.session.run(config)
         arView.session.delegate = self
-        arView.addCoaching()
         // Add anchor to the scene
         arView.scene.anchors.append(anchorEntity)
         
@@ -58,7 +57,7 @@ import AudioPackage
         let instrumentEntity = InstrumentEntity(instrument: instrument)
         
         // add components to entity before creation
-        instrumentEntity.addAudioComponent(note: .d, tom: 1.0)
+        instrumentEntity.addAudioComponent()
         
         modelLoader.loadModel(for: instrumentEntity, into: anchorEntity, with: arView)
     }
@@ -75,29 +74,36 @@ import AudioPackage
     
     @objc private func handleEntityTouch(_ gesture: UITapGestureRecognizer) {
         let location = gesture.location(in: arView)
-        if let entity = getEntity(at: location) {
-            if let instrumentEntity = entity as? InstrumentEntity ?? entity.parent as? InstrumentEntity {
-                stateMachine.enterEditingMode(with: instrumentEntity)
-            } else {
-                stateMachine.exitEditingMode()
-            }
+        
+        guard let entity = getEntity(at: location) else {
+            stateMachine.exitEditingMode()
+            return
+        }
+        
+        if let instrumentEntity = entity as? InstrumentEntity ?? entity.parent as? InstrumentEntity {
+            stateMachine.enterEditingMode(with: instrumentEntity)
         } else {
             stateMachine.exitEditingMode()
         }
     }
     
+    
     @objc private func onLongPress(_ gesture: UILongPressGestureRecognizer) {
         let location = gesture.location(in: arView)
-        if gesture.state == .began {
-            if let entity = getEntity(at: location) {
-                if let instrumentEntity = entity as? InstrumentEntity ?? entity.parent as? InstrumentEntity {
+        
+        switch gesture.state {
+            case .began:
+                if let entity = getEntity(at: location),
+                   let instrumentEntity = entity as? InstrumentEntity ?? entity.parent as? InstrumentEntity {
                     stateMachine.enterDraggingMode(with: instrumentEntity)
                 }
-            }
-        } else if gesture.state == .ended {
-            stateMachine.exitDraggingMode()
+            case .ended:
+                stateMachine.exitDraggingMode()
+            default:
+                break
         }
     }
+    
     
     @objc private func onDrag(_ gesture: UIPanGestureRecognizer) {
         guard let entity = stateMachine.currentEntity else { return }
@@ -107,8 +113,9 @@ import AudioPackage
         switch gesture.state {
             case .changed:
                 if let rayResult = arView.raycast(from: location, allowing: .estimatedPlane, alignment: .horizontal).first {
-                    let worldTransform = rayResult.worldTransform
-                    let newPosition = SIMD3<Float>(worldTransform.columns.3.x, worldTransform.columns.3.y, worldTransform.columns.3.z)
+                    let newPosition = SIMD3<Float>(rayResult.worldTransform.columns.3.x,
+                                                   rayResult.worldTransform.columns.3.y,
+                                                   rayResult.worldTransform.columns.3.z)
                     entity.position = newPosition
                 }
             default:
@@ -120,7 +127,20 @@ import AudioPackage
         let results = arView.hitTest(location)
         return results.first?.entity
     }
-    
+}
+
+extension ARViewManager: ARSessionDelegate {
+    public func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        let cameraTransform = frame.camera.transform
+        let cameraPosition = SIMD3<Float>(cameraTransform.columns.3.x, cameraTransform.columns.3.y, cameraTransform.columns.3.z)
+        let cameraOrientation = frame.camera.eulerAngles
+        AudioUtils.shared.position = cameraPosition
+        AudioUtils.shared.orientation = cameraOrientation
+        AudioUtils.shared.viewMatrix = session.currentFrame?.camera.viewMatrix(for: .landscapeLeft)
+    }
+}
+
+extension ARViewManager: UIGestureRecognizerDelegate {
     // UIGestureRecognizerDelegate method to allow simultaneous gesture recognition
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
@@ -132,16 +152,5 @@ import AudioPackage
             return true
         }
         return false
-    }
-}
-
-extension ARViewManager: ARSessionDelegate {
-    public func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        let cameraTransform = frame.camera.transform
-        let cameraPosition = SIMD3<Float>(cameraTransform.columns.3.x, cameraTransform.columns.3.y, cameraTransform.columns.3.z)
-        let cameraOrientation = frame.camera.eulerAngles
-        AudioUtils.shared.position = cameraPosition
-        AudioUtils.shared.orientation = cameraOrientation
-        AudioUtils.shared.viewMatrix = session.currentFrame?.camera.viewMatrix(for: .landscapeLeft)
     }
 }

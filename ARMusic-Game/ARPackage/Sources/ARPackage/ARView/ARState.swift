@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Eduardo on 03/08/24.
 //
@@ -18,13 +18,20 @@ public enum ARState {
 
 @Observable public class ARStateMachine {
     public var state: ARState = .normal
-
+    
     func enterEditingMode(with entity: Entity) {
         state = .editing(entity)
+        
+        #warning("Change this")
+        WorldSystem.editEntity(entity)
+        
     }
-
+    
     func exitEditingMode() {
         state = .normal
+        
+        #warning("Change this")
+        WorldSystem.editEntity(nil)
     }
     
     func enterDraggingMode(with entity: Entity) {
@@ -37,10 +44,10 @@ public enum ARState {
     
     public func getEntity() -> Entity? {
         switch state {
-        case .editing(let entity), .dragging(let entity):
-            return entity
-        default:
-            return nil
+            case .editing(let entity), .dragging(let entity):
+                return entity
+            default:
+                return nil
         }
     }
     

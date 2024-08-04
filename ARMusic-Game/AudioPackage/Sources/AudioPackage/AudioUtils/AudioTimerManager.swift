@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 public class AudioTimerManager {
     static public var shared = AudioTimerManager()
     
