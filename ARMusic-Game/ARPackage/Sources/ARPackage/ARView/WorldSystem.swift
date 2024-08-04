@@ -20,10 +20,9 @@ public class WorldSystem: System {
         }
     }
     
-    public required init(scene: Scene) {
-    }
+    public required init(scene: Scene) {}
     
-    public static var worldSettings: ARSettings!
+//    public static var worldSettings: ARSettings!
     
     public static func editEntity(_ entity: ModelEntity) {
         entityBeingEditted = entity

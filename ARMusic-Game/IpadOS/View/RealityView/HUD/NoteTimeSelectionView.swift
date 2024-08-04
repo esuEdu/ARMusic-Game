@@ -42,8 +42,8 @@ struct TimeComponent: View {
 }
 
 struct NoteTimeSelectionView: View {
-    @Environment(InstrumentSystem.self) var instrumentSystem: InstrumentSystem
-    @Binding var entity: Entity?
+    @Environment(ARViewManager.self) var arViewManager: ARViewManager
+    @State var entity: Entity?
     @State private var tempo: Set<Int> = []
     
     var body: some View {
@@ -60,8 +60,11 @@ struct NoteTimeSelectionView: View {
                             tempo.insert(index)
                         }
                         
-                        if let updatedEntity = entity {
-                            instrumentSystem.changeEntity(for: updatedEntity, tempos: tempo)
+                        if entity != nil {
+                            if var audioComponent = entity?.components[AudioComponent.self] as? AudioComponent {
+                                audioComponent.tempo.toggleValues(at: tempo)
+                                entity?.components.set(audioComponent)
+                            }
                         }
                     }
                 }
@@ -81,7 +84,6 @@ struct NoteTimeSelectionView: View {
                     }
                 }
             }
-            
         }
     }
 }

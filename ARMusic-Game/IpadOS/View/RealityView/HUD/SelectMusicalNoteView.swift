@@ -9,6 +9,7 @@ import SwiftUI
 import ARPackage
 import RealityKit
 import DataPackage
+import AudioPackage
 
 struct NoteButton: View {
     let note: String
@@ -38,25 +39,30 @@ struct NoteButton: View {
 }
 
 struct SelectMusicalNoteView: View {
-    @Environment(InstrumentSystem.self) var instrumentSystem: InstrumentSystem
-    @Binding var entity: Entity?
+    @Environment(ARViewManager.self) var arViewManager: ARViewManager
+    @State var entity: Entity?
     @State private var showMenu: Bool = false
-    @State var notas = ["C", "D", "E", "A", "B"]
+    @State var notas = Notes.allCases
     
-    @Binding var selectedNote:String?
+    @Binding var selectedNote: String?
     
     var body: some View {
         VStack {
             Spacer()
             if showMenu {
                 ForEach(notas, id: \.self) { note in
-                    NoteButton(note: note, action: {
+                    NoteButton(note: note.rawValue, action: {
                         withAnimation {
-                            selectedNote = note
-                            if let selectNote = Notes(rawValue: note) {
-                                instrumentSystem.changeEntity(for: entity, note: selectNote)
-                                print("Nota selecionada: \(note)")
-                                
+                            selectedNote = note.rawValue
+                            if let selectNote = Notes(rawValue: note.rawValue) {
+                                //add change entity
+                                if let entity = arViewManager.stateMachine.getEntity() {
+                                    if var audioComponent = entity.components[AudioComponent.self] as? AudioComponent {
+                                        audioComponent.note = selectNote
+                                        
+                                        entity.components.set(audioComponent)
+                                    }
+                                }
                                 showMenu = false
                             }
                         }

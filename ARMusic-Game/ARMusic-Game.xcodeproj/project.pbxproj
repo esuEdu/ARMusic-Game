@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2853972F2C541D2200E37A4C /* AudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2853972E2C541D2200E37A4C /* AudioView.swift */; };
-		285397312C541D2A00E37A4C /* AuidoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285397302C541D2A00E37A4C /* AuidoViewModel.swift */; };
 		28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE729D2C49D8EC00051E74 /* ARMusic_GameApp.swift */; };
-		28CE72A02C49D8EC00051E74 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE729F2C49D8EC00051E74 /* ContentView.swift */; };
+		28CE72A02C49D8EC00051E74 /* RealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE729F2C49D8EC00051E74 /* RealityView.swift */; };
 		28CE72A22C49D8ED00051E74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28CE72A12C49D8ED00051E74 /* Assets.xcassets */; };
 		28CE72A52C49D8ED00051E74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28CE72A42C49D8ED00051E74 /* Preview Assets.xcassets */; };
 		28CE72AF2C49D8EE00051E74 /* ARMusic_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE72AE2C49D8EE00051E74 /* ARMusic_GameTests.swift */; };
@@ -18,7 +16,6 @@
 		28CE72BB2C49D8EE00051E74 /* ARMusic_GameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE72BA2C49D8EE00051E74 /* ARMusic_GameUITestsLaunchTests.swift */; };
 		28CE72CD2C49DAC900051E74 /* ARPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CC2C49DAC900051E74 /* ARPackage */; };
 		28CE72CF2C49DACD00051E74 /* AudioPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CE2C49DACD00051E74 /* AudioPackage */; };
-		28CE72D12C49DAD000051E74 /* CorePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D02C49DAD000051E74 /* CorePackage */; };
 		28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D22C49DAD200051E74 /* DataPackage */; };
 		C97A5CED2C5B570F0069285C /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CEC2C5B570F0069285C /* UIExtensions.swift */; };
 		C97A5CF02C5B58A50069285C /* ActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CEF2C5B58A50069285C /* ActionButtonView.swift */; };
@@ -28,7 +25,7 @@
 		C9DD7BBF2C5A0282004DCD03 /* SelectMusicalNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */; };
 		C9DD7BC12C5A0B3F004DCD03 /* NoteTimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DD7BC02C5A0B3F004DCD03 /* NoteTimeSelectionView.swift */; };
 		C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */; };
-		C9E01BAB2C56EDFC001CB428 /* ARViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */; };
+		C9E01BAB2C56EDFC001CB428 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BAA2C56EDFC001CB428 /* ARViewContainer.swift */; };
 		C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BB12C573F56001CB428 /* MainHUDView.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,11 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2853972E2C541D2200E37A4C /* AudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioView.swift; sourceTree = "<group>"; };
-		285397302C541D2A00E37A4C /* AuidoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuidoViewModel.swift; sourceTree = "<group>"; };
 		28CE729A2C49D8EC00051E74 /* ARMusic-Game (IpadOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARMusic-Game (IpadOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CE729D2C49D8EC00051E74 /* ARMusic_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMusic_GameApp.swift; sourceTree = "<group>"; };
-		28CE729F2C49D8EC00051E74 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		28CE729F2C49D8EC00051E74 /* RealityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityView.swift; sourceTree = "<group>"; };
 		28CE72A12C49D8ED00051E74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28CE72A42C49D8ED00051E74 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28CE72AA2C49D8EE00051E74 /* ARMusic-GameTests (IpadOS).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ARMusic-GameTests (IpadOS).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,7 +57,6 @@
 		28CE72B42C49D8EE00051E74 /* ARMusic-GameUITests (IpadOS).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ARMusic-GameUITests (IpadOS).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CE72B82C49D8EE00051E74 /* ARMusic_GameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMusic_GameUITests.swift; sourceTree = "<group>"; };
 		28CE72BA2C49D8EE00051E74 /* ARMusic_GameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMusic_GameUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		28CE72C72C49D95A00051E74 /* CorePackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CorePackage; sourceTree = "<group>"; };
 		28CE72C82C49D97B00051E74 /* DataPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataPackage; sourceTree = "<group>"; };
 		28CE72C92C49D99700051E74 /* AudioPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AudioPackage; sourceTree = "<group>"; };
 		28CE72CA2C49D9AD00051E74 /* ARPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ARPackage; sourceTree = "<group>"; };
@@ -74,7 +68,7 @@
 		C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicalNoteView.swift; sourceTree = "<group>"; };
 		C9DD7BC02C5A0B3F004DCD03 /* NoteTimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTimeSelectionView.swift; sourceTree = "<group>"; };
 		C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentListView.swift; sourceTree = "<group>"; };
-		C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewConfiguration.swift; sourceTree = "<group>"; };
+		C9E01BAA2C56EDFC001CB428 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		C9E01BB12C573F56001CB428 /* MainHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHUDView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +79,6 @@
 			files = (
 				28CE72CF2C49DACD00051E74 /* AudioPackage in Frameworks */,
 				28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */,
-				28CE72D12C49DAD000051E74 /* CorePackage in Frameworks */,
 				28CE72CD2C49DAC900051E74 /* ARPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,7 +106,6 @@
 				28CE729C2C49D8EC00051E74 /* IpadOS */,
 				28CE72AD2C49D8EE00051E74 /* ARMusic-GameTests */,
 				28CE72B72C49D8EE00051E74 /* ARMusic-GameUITests */,
-				28CE72C72C49D95A00051E74 /* CorePackage */,
 				28CE72CA2C49D9AD00051E74 /* ARPackage */,
 				28CE72C92C49D99700051E74 /* AudioPackage */,
 				28CE72C82C49D97B00051E74 /* DataPackage */,
@@ -136,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				28CE72D42C49DB3200051E74 /* View */,
-				28CE72D72C49DB6600051E74 /* Navigation */,
 				28CE72D62C49DB4E00051E74 /* Assets */,
 				C97A5CEB2C5B56F80069285C /* Utils */,
 				28CE72D52C49DB4500051E74 /* Sys */,
@@ -180,11 +171,7 @@
 		28CE72D42C49DB3200051E74 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C9DD7BB92C596B91004DCD03 /* HUD */,
-				28CE729F2C49D8EC00051E74 /* ContentView.swift */,
-				C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */,
-				2853972E2C541D2200E37A4C /* AudioView.swift */,
-				285397302C541D2A00E37A4C /* AuidoViewModel.swift */,
+				28E7A9D02C5EB8F8001294B9 /* RealityView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,11 +192,14 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		28CE72D72C49DB6600051E74 /* Navigation */ = {
+		28E7A9D02C5EB8F8001294B9 /* RealityView */ = {
 			isa = PBXGroup;
 			children = (
+				C9DD7BB92C596B91004DCD03 /* HUD */,
+				C9E01BAA2C56EDFC001CB428 /* ARViewContainer.swift */,
+				28CE729F2C49D8EC00051E74 /* RealityView.swift */,
 			);
-			path = Navigation;
+			path = RealityView;
 			sourceTree = "<group>";
 		};
 		C97A5CEB2C5B56F80069285C /* Utils */ = {
@@ -262,7 +252,6 @@
 			packageProductDependencies = (
 				28CE72CC2C49DAC900051E74 /* ARPackage */,
 				28CE72CE2C49DACD00051E74 /* AudioPackage */,
-				28CE72D02C49DAD000051E74 /* CorePackage */,
 				28CE72D22C49DAD200051E74 /* DataPackage */,
 			);
 			productName = "ARMusic-Game";
@@ -380,16 +369,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C97A5CF02C5B58A50069285C /* ActionButtonView.swift in Sources */,
-				28CE72A02C49D8EC00051E74 /* ContentView.swift in Sources */,
-				285397312C541D2A00E37A4C /* AuidoViewModel.swift in Sources */,
+				28CE72A02C49D8EC00051E74 /* RealityView.swift in Sources */,
 				C9DD7BC12C5A0B3F004DCD03 /* NoteTimeSelectionView.swift in Sources */,
 				C97A5CED2C5B570F0069285C /* UIExtensions.swift in Sources */,
-				2853972F2C541D2200E37A4C /* AudioView.swift in Sources */,
 				28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */,
 				C9DD7BBD2C5985A0004DCD03 /* BPMSelectorView.swift in Sources */,
 				C97A5CF22C5B58CD0069285C /* PauseButtonView.swift in Sources */,
 				C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */,
-				C9E01BAB2C56EDFC001CB428 /* ARViewConfiguration.swift in Sources */,
+				C9E01BAB2C56EDFC001CB428 /* ARViewContainer.swift in Sources */,
 				C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */,
 				C9DD7BBF2C5A0282004DCD03 /* SelectMusicalNoteView.swift in Sources */,
 				C97A5CF42C5B590F0069285C /* MuteButtonView.swift in Sources */,
@@ -771,10 +758,6 @@
 		28CE72CE2C49DACD00051E74 /* AudioPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AudioPackage;
-		};
-		28CE72D02C49DAD000051E74 /* CorePackage */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CorePackage;
 		};
 		28CE72D22C49DAD200051E74 /* DataPackage */ = {
 			isa = XCSwiftPackageProductDependency;

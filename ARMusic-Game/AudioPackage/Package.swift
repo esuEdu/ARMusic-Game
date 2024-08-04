@@ -27,8 +27,6 @@ let package = Package(
             name: "AudioPackage",
             dependencies: [
                 .product(name: "DataPackage", package: "DataPackage", condition: nil),
-                
-
             ]
         ),
         .testTarget(

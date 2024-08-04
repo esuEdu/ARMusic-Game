@@ -34,10 +34,6 @@ public class AudioSystem: System {
     
     public static var entityBeingEditted: ModelEntity?
     
-    public static var dependencies: [SystemDependency] {
-        return []
-    }
-    
     public func update(context: SceneUpdateContext) {
         if AudioTimerManager.shared.soundPlayedForCurrentNote {
             return
