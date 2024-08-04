@@ -1,8 +1,8 @@
 //
 //  File.swift
+//  
 //
-//
-//  Created by Eduardo on 23/07/24.
+//  Created by Eduardo on 02/08/24.
 //
 
 import Foundation
@@ -10,27 +10,24 @@ import Foundation
 /**
  Struct representing audio data for a specific instrument and note.
  */
-public struct AudioData {
+public struct ModelData {
     
     /// The instrument associated with the audio data.
     let instrument: Instruments
 
-    /// The note associated with the audio data.
-    let note: Notes
     
-    public init(instrument: Instruments, note: Notes) {
+    public init(instrument: Instruments) {
         self.instrument = instrument
-        self.note = note
     }
     
     /// The file name of the audio data based on the instrument and note.
     var fileName: String {
-        return "\(instrument.rawValue)_\(note.rawValue)"
+        return "\(instrument.rawValue)"
     }
     
     /// The URL of the audio file in the main bundle.
     var url: URL? {
-        return Bundle.module.url(forResource: fileName, withExtension: "mpeg")
+        return Bundle.module.url(forResource: fileName, withExtension: "usdz")
     }
     
     /**

@@ -11,8 +11,7 @@ import SwiftUI
 struct ARMusic_GameApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .ignoresSafeArea()
+            RealityView()
         }
     }
 }

@@ -6,51 +6,79 @@
 //
 
 import RealityKit
-import Foundation
 import Combine
-import UIKit
+import Foundation
 import AudioPackage
+import DataPackage
 
 public class ModelLoader {
-    private static var cancellables = Set<AnyCancellable>()
-    private static var models: [String: CharacterEntity] = [:]
-
-    public required init() {}
-
-    public static func load(name: String, completion: @escaping (Entity?) -> Void) {
-        // Verifica se o modelo já está no cache
-        if let model = models[name] {
-            completion(model.clone(recursive: true))
-            return
+    var cancellable: AnyCancellable?
+    var loadedModels: [String: Entity] = [:]
+    
+    func loadModel(for instrumentEntity: InstrumentEntity, into anchor: AnchorEntity, with arView: ARView) {
+        let modelName = instrumentEntity.instrument.rawValue
+        
+        let position: SIMD3<Float> = getPosition(arView)
+        
+        if let existingModel = loadedModels[modelName] {
+            
+            // Clone the existing model
+            let clonedEntity = existingModel.clone(recursive: true)
+            instrumentEntity.addChild(clonedEntity)
+            
+            instrumentEntity.addCollisionComponent()
+            positionEntity(instrumentEntity, in: anchor, at: position)
+            
+            print("Cloned model for \(instrumentEntity.instrument) loaded successfully")
+            
+        } else {
+            // Load a new model
+            cancellable = Entity.loadModelAsync(contentsOf: getURL(instrument: instrumentEntity.instrument))
+                .sink(receiveCompletion: { loadCompletion in
+                    switch loadCompletion {
+                        case .failure(let error):
+                            print("Error loading model: \(error.localizedDescription)")
+                        case .finished:
+                            break
+                    }
+                }, receiveValue: { entity in
+                    self.loadedModels[modelName] = entity
+                    instrumentEntity.addChild(entity)
+                    
+                    instrumentEntity.addCollisionComponent()
+                    self.positionEntity(instrumentEntity, in: anchor, at: position)
+                    print("Model for \(instrumentEntity.instrument) loaded successfully")
+                })
+        }
+    }
+    
+    private func positionEntity(_ entity: Entity, in anchor: AnchorEntity, at position: SIMD3<Float>) {
+        entity.position = position
+        anchor.addChild(entity)
+    }
+    
+    private func getPosition(_ arView: ARView) -> SIMD3<Float> {
+        var position: SIMD3<Float> = .zero
+        
+        if let query = arView.makeRaycastQuery(from: arView.center, allowing: .estimatedPlane, alignment: .horizontal) {
+            let results = arView.session.raycast(query)
+            
+            if let firstResult = results.first {
+                position = SIMD3<Float> (firstResult.worldTransform.columns.3.x,
+                                         firstResult.worldTransform.columns.3.y,
+                                         firstResult.worldTransform.columns.3.z)
+            }
         }
         
-        // Obtém a URL do recurso do modelo
-        guard let url = Bundle.module.url(forResource: name, withExtension: "usdz") else {
-            fatalError("Model '\(name)' not found.")
+        return position
+    }
+    
+    private func getURL(instrument: Instruments) -> URL {
+        let audioData = ModelData(instrument: instrument)
+        
+        guard let url = audioData.getURL() else {
+            fatalError("Audio file not found")
         }
-
-        // Carrega o modelo de forma assíncrona
-        Entity.loadModelAsync(contentsOf: url)
-            .sink(receiveCompletion: { loadCompletion in
-                switch loadCompletion {
-                case .failure(let error):
-                    print("DEBUG - unable to load model entity for modelName: \(name). Error: \(error)")
-                    completion(nil)
-                case .finished:
-                    break
-                }
-            }, receiveValue: { modelEntity in
-                // Armazena o modelo carregado no cache
-                
-                let characterEntity = CharacterEntity.fromModelEntity(modelEntity)
-                
-                self.models[name] = characterEntity
-                // Retorna um clone do modelo carregado
-                completion(characterEntity.clone(recursive: true))
-                print("DEBUG - successfully loaded model entity for modelName: \(name)")
-            })
-            .store(in: &cancellables)
+        return url
     }
 }
-
-
