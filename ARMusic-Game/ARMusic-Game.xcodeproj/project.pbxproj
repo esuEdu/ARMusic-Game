@@ -1,0 +1,769 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE729D2C49D8EC00051E74 /* ARMusic_GameApp.swift */; };
+		28CE72A02C49D8EC00051E74 /* RealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE729F2C49D8EC00051E74 /* RealityView.swift */; };
+		28CE72A22C49D8ED00051E74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28CE72A12C49D8ED00051E74 /* Assets.xcassets */; };
+		28CE72A52C49D8ED00051E74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28CE72A42C49D8ED00051E74 /* Preview Assets.xcassets */; };
+		28CE72AF2C49D8EE00051E74 /* ARMusic_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE72AE2C49D8EE00051E74 /* ARMusic_GameTests.swift */; };
+		28CE72B92C49D8EE00051E74 /* ARMusic_GameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE72B82C49D8EE00051E74 /* ARMusic_GameUITests.swift */; };
+		28CE72BB2C49D8EE00051E74 /* ARMusic_GameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE72BA2C49D8EE00051E74 /* ARMusic_GameUITestsLaunchTests.swift */; };
+		28CE72CD2C49DAC900051E74 /* ARPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CC2C49DAC900051E74 /* ARPackage */; };
+		28CE72CF2C49DACD00051E74 /* AudioPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CE2C49DACD00051E74 /* AudioPackage */; };
+		28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D22C49DAD200051E74 /* DataPackage */; };
+		C97A5CED2C5B570F0069285C /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CEC2C5B570F0069285C /* UIExtensions.swift */; };
+		C97A5CF02C5B58A50069285C /* ActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CEF2C5B58A50069285C /* ActionButtonView.swift */; };
+		C97A5CF22C5B58CD0069285C /* PauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CF12C5B58CD0069285C /* PauseButtonView.swift */; };
+		C97A5CF42C5B590F0069285C /* MuteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CF32C5B590F0069285C /* MuteButtonView.swift */; };
+		C9DD7BBD2C5985A0004DCD03 /* BPMSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DD7BBC2C5985A0004DCD03 /* BPMSelectorView.swift */; };
+		C9DD7BBF2C5A0282004DCD03 /* SelectMusicalNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */; };
+		C9DD7BC12C5A0B3F004DCD03 /* NoteTimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DD7BC02C5A0B3F004DCD03 /* NoteTimeSelectionView.swift */; };
+		C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */; };
+		C9E01BAB2C56EDFC001CB428 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BAA2C56EDFC001CB428 /* ARViewContainer.swift */; };
+		C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BB12C573F56001CB428 /* MainHUDView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		28CE72AB2C49D8EE00051E74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28CE72922C49D8EC00051E74 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28CE72992C49D8EC00051E74;
+			remoteInfo = "ARMusic-Game";
+		};
+		28CE72B52C49D8EE00051E74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28CE72922C49D8EC00051E74 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28CE72992C49D8EC00051E74;
+			remoteInfo = "ARMusic-Game";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		28CE729A2C49D8EC00051E74 /* ARMusic-Game (IpadOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARMusic-Game (IpadOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28CE729D2C49D8EC00051E74 /* ARMusic_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMusic_GameApp.swift; sourceTree = "<group>"; };
+		28CE729F2C49D8EC00051E74 /* RealityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityView.swift; sourceTree = "<group>"; };
+		28CE72A12C49D8ED00051E74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28CE72A42C49D8ED00051E74 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		28CE72AA2C49D8EE00051E74 /* ARMusic-GameTests (IpadOS).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ARMusic-GameTests (IpadOS).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28CE72AE2C49D8EE00051E74 /* ARMusic_GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMusic_GameTests.swift; sourceTree = "<group>"; };
+		28CE72B42C49D8EE00051E74 /* ARMusic-GameUITests (IpadOS).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ARMusic-GameUITests (IpadOS).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28CE72B82C49D8EE00051E74 /* ARMusic_GameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMusic_GameUITests.swift; sourceTree = "<group>"; };
+		28CE72BA2C49D8EE00051E74 /* ARMusic_GameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMusic_GameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		28CE72C82C49D97B00051E74 /* DataPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataPackage; sourceTree = "<group>"; };
+		28CE72C92C49D99700051E74 /* AudioPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AudioPackage; sourceTree = "<group>"; };
+		28CE72CA2C49D9AD00051E74 /* ARPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ARPackage; sourceTree = "<group>"; };
+		C97A5CEC2C5B570F0069285C /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		C97A5CEF2C5B58A50069285C /* ActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonView.swift; sourceTree = "<group>"; };
+		C97A5CF12C5B58CD0069285C /* PauseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButtonView.swift; sourceTree = "<group>"; };
+		C97A5CF32C5B590F0069285C /* MuteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuteButtonView.swift; sourceTree = "<group>"; };
+		C9DD7BBC2C5985A0004DCD03 /* BPMSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPMSelectorView.swift; sourceTree = "<group>"; };
+		C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicalNoteView.swift; sourceTree = "<group>"; };
+		C9DD7BC02C5A0B3F004DCD03 /* NoteTimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTimeSelectionView.swift; sourceTree = "<group>"; };
+		C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentListView.swift; sourceTree = "<group>"; };
+		C9E01BAA2C56EDFC001CB428 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
+		C9E01BB12C573F56001CB428 /* MainHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHUDView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28CE72972C49D8EC00051E74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28CE72CF2C49DACD00051E74 /* AudioPackage in Frameworks */,
+				28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */,
+				28CE72CD2C49DAC900051E74 /* ARPackage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28CE72A72C49D8EE00051E74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28CE72B12C49D8EE00051E74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28CE72912C49D8EC00051E74 = {
+			isa = PBXGroup;
+			children = (
+				28CE729C2C49D8EC00051E74 /* IpadOS */,
+				28CE72AD2C49D8EE00051E74 /* ARMusic-GameTests */,
+				28CE72B72C49D8EE00051E74 /* ARMusic-GameUITests */,
+				28CE72CA2C49D9AD00051E74 /* ARPackage */,
+				28CE72C92C49D99700051E74 /* AudioPackage */,
+				28CE72C82C49D97B00051E74 /* DataPackage */,
+				28CE729B2C49D8EC00051E74 /* Products */,
+				28CE72CB2C49DAC900051E74 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		28CE729B2C49D8EC00051E74 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28CE729A2C49D8EC00051E74 /* ARMusic-Game (IpadOS).app */,
+				28CE72AA2C49D8EE00051E74 /* ARMusic-GameTests (IpadOS).xctest */,
+				28CE72B42C49D8EE00051E74 /* ARMusic-GameUITests (IpadOS).xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28CE729C2C49D8EC00051E74 /* IpadOS */ = {
+			isa = PBXGroup;
+			children = (
+				28CE72D42C49DB3200051E74 /* View */,
+				28CE72D62C49DB4E00051E74 /* Assets */,
+				C97A5CEB2C5B56F80069285C /* Utils */,
+				28CE72D52C49DB4500051E74 /* Sys */,
+				28CE72A32C49D8ED00051E74 /* Preview Content */,
+			);
+			path = IpadOS;
+			sourceTree = "<group>";
+		};
+		28CE72A32C49D8ED00051E74 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				28CE72A42C49D8ED00051E74 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		28CE72AD2C49D8EE00051E74 /* ARMusic-GameTests */ = {
+			isa = PBXGroup;
+			children = (
+				28CE72AE2C49D8EE00051E74 /* ARMusic_GameTests.swift */,
+			);
+			path = "ARMusic-GameTests";
+			sourceTree = "<group>";
+		};
+		28CE72B72C49D8EE00051E74 /* ARMusic-GameUITests */ = {
+			isa = PBXGroup;
+			children = (
+				28CE72B82C49D8EE00051E74 /* ARMusic_GameUITests.swift */,
+				28CE72BA2C49D8EE00051E74 /* ARMusic_GameUITestsLaunchTests.swift */,
+			);
+			path = "ARMusic-GameUITests";
+			sourceTree = "<group>";
+		};
+		28CE72CB2C49DAC900051E74 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		28CE72D42C49DB3200051E74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28E7A9D02C5EB8F8001294B9 /* RealityView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28CE72D52C49DB4500051E74 /* Sys */ = {
+			isa = PBXGroup;
+			children = (
+				28CE729D2C49D8EC00051E74 /* ARMusic_GameApp.swift */,
+			);
+			path = Sys;
+			sourceTree = "<group>";
+		};
+		28CE72D62C49DB4E00051E74 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				28CE72A12C49D8ED00051E74 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		28E7A9D02C5EB8F8001294B9 /* RealityView */ = {
+			isa = PBXGroup;
+			children = (
+				C9DD7BB92C596B91004DCD03 /* HUD */,
+				C9E01BAA2C56EDFC001CB428 /* ARViewContainer.swift */,
+				28CE729F2C49D8EC00051E74 /* RealityView.swift */,
+			);
+			path = RealityView;
+			sourceTree = "<group>";
+		};
+		C97A5CEB2C5B56F80069285C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C97A5CEC2C5B570F0069285C /* UIExtensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C97A5CEE2C5B587E0069285C /* ActionButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				C97A5CEF2C5B58A50069285C /* ActionButtonView.swift */,
+				C97A5CF12C5B58CD0069285C /* PauseButtonView.swift */,
+				C97A5CF32C5B590F0069285C /* MuteButtonView.swift */,
+			);
+			path = ActionButtonView;
+			sourceTree = "<group>";
+		};
+		C9DD7BB92C596B91004DCD03 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				C97A5CEE2C5B587E0069285C /* ActionButtonView */,
+				C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */,
+				C9E01BB12C573F56001CB428 /* MainHUDView.swift */,
+				C9DD7BBC2C5985A0004DCD03 /* BPMSelectorView.swift */,
+				C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */,
+				C9DD7BC02C5A0B3F004DCD03 /* NoteTimeSelectionView.swift */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28CE72992C49D8EC00051E74 /* ARMusic-Game (IpadOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28CE72BE2C49D8EE00051E74 /* Build configuration list for PBXNativeTarget "ARMusic-Game (IpadOS)" */;
+			buildPhases = (
+				28CE72962C49D8EC00051E74 /* Sources */,
+				28CE72972C49D8EC00051E74 /* Frameworks */,
+				28CE72982C49D8EC00051E74 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ARMusic-Game (IpadOS)";
+			packageProductDependencies = (
+				28CE72CC2C49DAC900051E74 /* ARPackage */,
+				28CE72CE2C49DACD00051E74 /* AudioPackage */,
+				28CE72D22C49DAD200051E74 /* DataPackage */,
+			);
+			productName = "ARMusic-Game";
+			productReference = 28CE729A2C49D8EC00051E74 /* ARMusic-Game (IpadOS).app */;
+			productType = "com.apple.product-type.application";
+		};
+		28CE72A92C49D8EE00051E74 /* ARMusic-GameTests (IpadOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28CE72C12C49D8EE00051E74 /* Build configuration list for PBXNativeTarget "ARMusic-GameTests (IpadOS)" */;
+			buildPhases = (
+				28CE72A62C49D8EE00051E74 /* Sources */,
+				28CE72A72C49D8EE00051E74 /* Frameworks */,
+				28CE72A82C49D8EE00051E74 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28CE72AC2C49D8EE00051E74 /* PBXTargetDependency */,
+			);
+			name = "ARMusic-GameTests (IpadOS)";
+			productName = "ARMusic-GameTests";
+			productReference = 28CE72AA2C49D8EE00051E74 /* ARMusic-GameTests (IpadOS).xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		28CE72B32C49D8EE00051E74 /* ARMusic-GameUITests (IpadOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28CE72C42C49D8EE00051E74 /* Build configuration list for PBXNativeTarget "ARMusic-GameUITests (IpadOS)" */;
+			buildPhases = (
+				28CE72B02C49D8EE00051E74 /* Sources */,
+				28CE72B12C49D8EE00051E74 /* Frameworks */,
+				28CE72B22C49D8EE00051E74 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28CE72B62C49D8EE00051E74 /* PBXTargetDependency */,
+			);
+			name = "ARMusic-GameUITests (IpadOS)";
+			productName = "ARMusic-GameUITests";
+			productReference = 28CE72B42C49D8EE00051E74 /* ARMusic-GameUITests (IpadOS).xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28CE72922C49D8EC00051E74 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					28CE72992C49D8EC00051E74 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					28CE72A92C49D8EE00051E74 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 28CE72992C49D8EC00051E74;
+					};
+					28CE72B32C49D8EE00051E74 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 28CE72992C49D8EC00051E74;
+					};
+				};
+			};
+			buildConfigurationList = 28CE72952C49D8EC00051E74 /* Build configuration list for PBXProject "ARMusic-Game" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28CE72912C49D8EC00051E74;
+			productRefGroup = 28CE729B2C49D8EC00051E74 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28CE72992C49D8EC00051E74 /* ARMusic-Game (IpadOS) */,
+				28CE72A92C49D8EE00051E74 /* ARMusic-GameTests (IpadOS) */,
+				28CE72B32C49D8EE00051E74 /* ARMusic-GameUITests (IpadOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28CE72982C49D8EC00051E74 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28CE72A52C49D8ED00051E74 /* Preview Assets.xcassets in Resources */,
+				28CE72A22C49D8ED00051E74 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28CE72A82C49D8EE00051E74 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28CE72B22C49D8EE00051E74 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28CE72962C49D8EC00051E74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C97A5CF02C5B58A50069285C /* ActionButtonView.swift in Sources */,
+				28CE72A02C49D8EC00051E74 /* RealityView.swift in Sources */,
+				C9DD7BC12C5A0B3F004DCD03 /* NoteTimeSelectionView.swift in Sources */,
+				C97A5CED2C5B570F0069285C /* UIExtensions.swift in Sources */,
+				28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */,
+				C9DD7BBD2C5985A0004DCD03 /* BPMSelectorView.swift in Sources */,
+				C97A5CF22C5B58CD0069285C /* PauseButtonView.swift in Sources */,
+				C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */,
+				C9E01BAB2C56EDFC001CB428 /* ARViewContainer.swift in Sources */,
+				C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */,
+				C9DD7BBF2C5A0282004DCD03 /* SelectMusicalNoteView.swift in Sources */,
+				C97A5CF42C5B590F0069285C /* MuteButtonView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28CE72A62C49D8EE00051E74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28CE72AF2C49D8EE00051E74 /* ARMusic_GameTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28CE72B02C49D8EE00051E74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28CE72B92C49D8EE00051E74 /* ARMusic_GameUITests.swift in Sources */,
+				28CE72BB2C49D8EE00051E74 /* ARMusic_GameUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		28CE72AC2C49D8EE00051E74 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28CE72992C49D8EC00051E74 /* ARMusic-Game (IpadOS) */;
+			targetProxy = 28CE72AB2C49D8EE00051E74 /* PBXContainerItemProxy */;
+		};
+		28CE72B62C49D8EE00051E74 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28CE72992C49D8EC00051E74 /* ARMusic-Game (IpadOS) */;
+			targetProxy = 28CE72B52C49D8EE00051E74 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		28CE72BC2C49D8EE00051E74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		28CE72BD2C49D8EE00051E74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		28CE72BF2C49D8EE00051E74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
+				DEVELOPMENT_TEAM = SVGXRR5RRA;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Eduardo.ARMusic-Game";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		28CE72C02C49D8EE00051E74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
+				DEVELOPMENT_TEAM = SVGXRR5RRA;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Eduardo.ARMusic-Game";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		28CE72C22C49D8EE00051E74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SVGXRR5RRA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Eduardo.ARMusic-GameTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARMusic-Game.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ARMusic-Game";
+			};
+			name = Debug;
+		};
+		28CE72C32C49D8EE00051E74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SVGXRR5RRA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Eduardo.ARMusic-GameTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARMusic-Game.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ARMusic-Game";
+			};
+			name = Release;
+		};
+		28CE72C52C49D8EE00051E74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SVGXRR5RRA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Eduardo.ARMusic-GameUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ARMusic-Game";
+			};
+			name = Debug;
+		};
+		28CE72C62C49D8EE00051E74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SVGXRR5RRA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Eduardo.ARMusic-GameUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ARMusic-Game";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28CE72952C49D8EC00051E74 /* Build configuration list for PBXProject "ARMusic-Game" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28CE72BC2C49D8EE00051E74 /* Debug */,
+				28CE72BD2C49D8EE00051E74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28CE72BE2C49D8EE00051E74 /* Build configuration list for PBXNativeTarget "ARMusic-Game (IpadOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28CE72BF2C49D8EE00051E74 /* Debug */,
+				28CE72C02C49D8EE00051E74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28CE72C12C49D8EE00051E74 /* Build configuration list for PBXNativeTarget "ARMusic-GameTests (IpadOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28CE72C22C49D8EE00051E74 /* Debug */,
+				28CE72C32C49D8EE00051E74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28CE72C42C49D8EE00051E74 /* Build configuration list for PBXNativeTarget "ARMusic-GameUITests (IpadOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28CE72C52C49D8EE00051E74 /* Debug */,
+				28CE72C62C49D8EE00051E74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		28CE72CC2C49DAC900051E74 /* ARPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ARPackage;
+		};
+		28CE72CE2C49DACD00051E74 /* AudioPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AudioPackage;
+		};
+		28CE72D22C49DAD200051E74 /* DataPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DataPackage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 28CE72922C49D8EC00051E74 /* Project object */;
+}
