@@ -15,11 +15,9 @@ struct ARViewContainer: UIViewRepresentable {
 
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
-        let arViewManager = ARSettings(arView: arView)
-        
-        WorldSystem.worldSettings = arViewManager
+       
         AudioTimerManager.shared.start()
-        arViewManager.setupAR()
+        
         registerSystem()
         registerComponents()
         registerSystem()

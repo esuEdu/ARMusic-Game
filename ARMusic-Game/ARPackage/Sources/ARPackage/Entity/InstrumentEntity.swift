@@ -11,15 +11,48 @@ import AudioPackage
 import DataPackage
 
 public class InstrumentEntity: Entity, HasModel, HasAnchoring, HasCollision {
-    var instrument: Instruments
+    var instrument: Instruments!
     
-    init(instrument: Instruments) {
+    init(instrument: Instruments, modelComponent: ModelComponent) {
         self.instrument = instrument
         super.init()
+       
+        components.set(modelComponent)
+        
+        model = modelComponent
+    
+        
+        addAudioComponent()
+        addCollisionComponent()
+        addOutline()
+    }
+    
+    
+    
+    public static func fromModelEntity(_ modelEntity: ModelEntity, instrument: Instruments) -> InstrumentEntity {
+        
+        
+        guard let model = modelEntity.model else {
+            fatalError("Model Entity has no model")
+            
+        }
+        
+        let instrumentEntity = InstrumentEntity(instrument: instrument, modelComponent: model)
+        
+       return instrumentEntity
     }
     
     required init() {
-        fatalError("init() has not been implemented")
+       
+    }
+    
+    
+    
+    func addOutline() {
+        
+        let outlineEntity = OutlineEntity(entity: self)
+        addChild(outlineEntity)
+        
     }
     
     func addAudioComponent() {

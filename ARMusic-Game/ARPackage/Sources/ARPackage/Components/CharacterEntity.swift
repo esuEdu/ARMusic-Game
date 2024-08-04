@@ -5,7 +5,7 @@ import AudioPackage
 public class CharacterEntity: Entity, HasCollision, HasModel {
     
     public var outline: OutlineComponent! {
-        self.components[OutlineComponent.self] as! OutlineComponent
+        self.components[OutlineComponent.self] as? OutlineComponent
     }
     
     public var audio: AudioComponent? {
@@ -20,7 +20,7 @@ public class CharacterEntity: Entity, HasCollision, HasModel {
         let shape: ShapeResource = .generateSphere(radius: boxRadius)
         
         let audioComponent = AudioComponent(note: .d, instrument: .piano, tom: 123.0)
-        let inputComponent = InputComponent()
+//        let inputComponent = InputComponent()
         let outlineComponent = OutlineComponent()
         
         self.components[ModelComponent.self] = ModelComponent(mesh: mesh, materials: materials)
@@ -28,7 +28,7 @@ public class CharacterEntity: Entity, HasCollision, HasModel {
             shape
         ]))
         components.set(audioComponent)
-        components.set(inputComponent)
+//        components.set(inputComponent)
         components.set(outlineComponent)
         
         let outlineEntity = OutlineEntity(entity: self)

@@ -50,7 +50,7 @@
 /* Begin PBXFileReference section */
 		28CE729A2C49D8EC00051E74 /* ARMusic-Game (IpadOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARMusic-Game (IpadOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CE729D2C49D8EC00051E74 /* ARMusic_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMusic_GameApp.swift; sourceTree = "<group>"; };
-		28CE729F2C49D8EC00051E74 /* RealityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityView.swift; sourceTree = "<group>"; };
+		28CE729F2C49D8EC00051E74 /* RealityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RealityView.swift; path = ../RealityView.swift; sourceTree = "<group>"; };
 		28CE72A12C49D8ED00051E74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28CE72A42C49D8ED00051E74 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28CE72AA2C49D8EE00051E74 /* ARMusic-GameTests (IpadOS).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ARMusic-GameTests (IpadOS).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,12 +173,6 @@
 		28CE72D42C49DB3200051E74 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				28CE729F2C49D8EC00051E74 /* ContentView.swift */,
-				C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */,
-				C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */,
-				C9E01BB12C573F56001CB428 /* MainHUDView.swift */,
-				2853972E2C541D2200E37A4C /* AudioView.swift */,
-				285397302C541D2A00E37A4C /* AuidoViewModel.swift */,
 				98CAC6102C5E9DA100463B95 /* OutlineShader.metal */,
 				28E7A9D02C5EB8F8001294B9 /* RealityView */,
 			);
@@ -204,9 +198,8 @@
 		28E7A9D02C5EB8F8001294B9 /* RealityView */ = {
 			isa = PBXGroup;
 			children = (
-				C9DD7BB92C596B91004DCD03 /* HUD */,
 				C9E01BAA2C56EDFC001CB428 /* ARViewContainer.swift */,
-				28CE729F2C49D8EC00051E74 /* RealityView.swift */,
+				C9DD7BB92C596B91004DCD03 /* HUD */,
 			);
 			path = RealityView;
 			sourceTree = "<group>";
@@ -232,12 +225,13 @@
 		C9DD7BB92C596B91004DCD03 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
-				C97A5CEE2C5B587E0069285C /* ActionButtonView */,
 				C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */,
 				C9E01BB12C573F56001CB428 /* MainHUDView.swift */,
+				C97A5CEE2C5B587E0069285C /* ActionButtonView */,
 				C9DD7BBC2C5985A0004DCD03 /* BPMSelectorView.swift */,
 				C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */,
 				C9DD7BC02C5A0B3F004DCD03 /* NoteTimeSelectionView.swift */,
+				28CE729F2C49D8EC00051E74 /* RealityView.swift */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
@@ -377,9 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28CE72A02C49D8EC00051E74 /* ContentView.swift in Sources */,
-				285397312C541D2A00E37A4C /* AuidoViewModel.swift in Sources */,
-				2853972F2C541D2200E37A4C /* AudioView.swift in Sources */,
+				28CE72A02C49D8EC00051E74 /* RealityView.swift in Sources */,
 				98CAC6112C5E9DA100463B95 /* OutlineShader.metal in Sources */,
 				C97A5CF02C5B58A50069285C /* ActionButtonView.swift in Sources */,
 				28CE72A02C49D8EC00051E74 /* RealityView.swift in Sources */,

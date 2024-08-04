@@ -18,7 +18,7 @@ void OutlineSurfaceShader(realitykit::surface_parameters params) {
 [[visible]]
 void OutlineGeometryShader(realitykit::geometry_parameters params) {
 
-    float outlineWidth = 0.5;
+    float outlineWidth = 1.0;
     
     float3 normal = normalize(params.geometry().model_position());
     
