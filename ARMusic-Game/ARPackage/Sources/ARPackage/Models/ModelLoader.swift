@@ -8,101 +8,77 @@
 import RealityKit
 import Combine
 import Foundation
-import UIKit
 import AudioPackage
+import DataPackage
 
 public class ModelLoader {
-    private static var cancellables = Set<AnyCancellable>()
-    private static var models: [String: Entity] = [:]
+    var cancellable: AnyCancellable?
+    var loadedModels: [String: Entity] = [:]
     
-    public required init() {}
-    
-    public static func load(instrument: Instrument, instrumentSystem: InstrumentSystem, completion: @escaping (Entity?) -> Void) {
+    func loadModel(for instrumentEntity: InstrumentEntity, into anchor: AnchorEntity, with arView: ARView) {
+        let modelName = instrumentEntity.instrument.rawValue
         
-        // Verifica se o modelo já está no cache
-        if let model = models[instrument.name] {
-//            let instrumentEntity = Entity(instrument: Instrument(
-//                name: instrument.name,
-//                modelName: instrument.modelName,
-//                notes: instrument.notes,
-//                sequence: instrument.sequence
-//            ))
+        let position: SIMD3<Float> = getPosition(arView)
+        
+        if let existingModel = loadedModels[modelName] {
             
-            // Clona o modelo
-            let modelClone = model.clone(recursive: true)
-//            instrumentEntity.addChild(modelClone)
+            // Clone the existing model
+            let clonedEntity = existingModel.clone(recursive: true)
+            instrumentEntity.addChild(clonedEntity)
             
-            // Cria e configura os componentes
-            var inputComponent = InputComponent()
-            let audioComponent = AudioComponent(note: .d, instrument: .piano, tom: 123.0)
+            instrumentEntity.addCollisionComponent()
+            positionEntity(instrumentEntity, in: anchor, at: position)
             
-            // Adiciona a função de gesto ao InputComponent
-            inputComponent.addGestureFunc(gesture: UITapGestureRecognizer.self) { gesture in
-                instrumentSystem.handleTapOnEntity(modelClone)
-                WorldSystem.editEntity(modelClone as! ModelEntity) // Use modelClone para manter a consistência
+            print("Cloned model for \(instrumentEntity.instrument) loaded successfully")
+            
+        } else {
+            // Load a new model
+            cancellable = Entity.loadModelAsync(contentsOf: getURL(instrument: instrumentEntity.instrument))
+                .sink(receiveCompletion: { loadCompletion in
+                    switch loadCompletion {
+                        case .failure(let error):
+                            print("Error loading model: \(error.localizedDescription)")
+                        case .finished:
+                            break
+                    }
+                }, receiveValue: { entity in
+                    self.loadedModels[modelName] = entity
+                    instrumentEntity.addChild(entity)
+                    
+                    instrumentEntity.addCollisionComponent()
+                    self.positionEntity(instrumentEntity, in: anchor, at: position)
+                    print("Model for \(instrumentEntity.instrument) loaded successfully")
+                })
+        }
+    }
+    
+    private func positionEntity(_ entity: Entity, in anchor: AnchorEntity, at position: SIMD3<Float>) {
+        entity.position = position
+        anchor.addChild(entity)
+    }
+    
+    private func getPosition(_ arView: ARView) -> SIMD3<Float> {
+        var position: SIMD3<Float> = .zero
+        
+        if let query = arView.makeRaycastQuery(from: arView.center, allowing: .estimatedPlane, alignment: .horizontal) {
+            let results = arView.session.raycast(query)
+            
+            if let firstResult = results.first {
+                position = SIMD3<Float> (firstResult.worldTransform.columns.3.x,
+                                         firstResult.worldTransform.columns.3.y,
+                                         firstResult.worldTransform.columns.3.z)
             }
-            
-            // Adiciona os componentes à entidade
-            modelClone.components.set(audioComponent)
-            modelClone.components.set(inputComponent)
-            
-            // Retorna a InstrumentEntity já configurada
-            completion(modelClone)
-            
-            print("DEBUG - successfully loaded model entity for modelName: \(instrument.modelName)")
-            return
         }
         
-        // Obtém a URL do recurso do modelo
-        guard let url = Bundle.module.url(forResource: instrument.modelName, withExtension: "usdz") else {
-            fatalError("Model '\(instrument.modelName)' not found.")
-        }
+        return position
+    }
+    
+    private func getURL(instrument: Instruments) -> URL {
+        let audioData = ModelData(instrument: instrument)
         
-        // Carrega o modelo de forma assíncrona
-        Entity.loadModelAsync(contentsOf: url)
-            .sink(receiveCompletion: { loadCompletion in
-                switch loadCompletion {
-                case .failure(let error):
-                    print("DEBUG - unable to load model entity for modelName: \(instrument.modelName). Error: \(error)")
-                    completion(nil)
-                case .finished:
-                    break
-                }
-            }, receiveValue: { modelEntity in
-                // Armazena o modelo carregado no cache
-                self.models[instrument.name] = modelEntity
-                
-//                let instrumentEntity = InstrumentEntity(instrument: Instrument(
-//                    name: instrument.name,
-//                    modelName: instrument.modelName,
-//                    notes: instrument.notes,
-//                    sequence: instrument.sequence
-//                ))
-                
-//                instrumentEntity.addChild(modelEntity)
-                
-                var inputComponent = InputComponent()
-                var audioComponent = AudioComponent(note: .d, instrument: .piano, tom: 123.0)
-                
-                audioComponent.tempo.toggleValue(at: 0)
-                
-                inputComponent.addGestureFunc(gesture: UITapGestureRecognizer.self) { gesture in
-                    instrumentSystem.handleTapOnEntity(modelEntity)
-                    WorldSystem.editEntity(modelEntity)
-                }
-                
-                modelEntity.components.set(audioComponent)
-                modelEntity.components.set(inputComponent)
-                
-                // Retorna a InstrumentEntity já configurada
-                completion(modelEntity)
-                
-                print("DEBUG - successfully loaded model entity for modelName: \(instrument.modelName)")
-            })
-            .store(in: &cancellables)
+        guard let url = audioData.getURL() else {
+            fatalError("Audio file not found")
+        }
+        return url
     }
 }
-
-
-
-

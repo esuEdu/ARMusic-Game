@@ -8,17 +8,19 @@
 import SwiftUI
 import ARPackage
 
-struct ContentView: View {
-    @State private var instrumentSystem = InstrumentSystem.shared
-
+@MainActor
+struct RealityView: View {
+    @State var arViewManager = ARViewManager()
+    
     var body: some View {
         ZStack {
-            ARViewConfiguration()
+            ARViewContainer()
                 .edgesIgnoringSafeArea(.all)
             
             MainHUDView()
         }
-        .environment(instrumentSystem)
+        .environment(arViewManager)
+        .ignoresSafeArea()
     }
 }
 
