@@ -20,6 +20,7 @@
 		28CE72CF2C49DACD00051E74 /* AudioPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CE2C49DACD00051E74 /* AudioPackage */; };
 		28CE72D12C49DAD000051E74 /* CorePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D02C49DAD000051E74 /* CorePackage */; };
 		28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D22C49DAD200051E74 /* DataPackage */; };
+		98CAC6112C5E9DA100463B95 /* OutlineShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 98CAC6102C5E9DA100463B95 /* OutlineShader.metal */; };
 		C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */; };
 		C9E01BAB2C56EDFC001CB428 /* ARViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */; };
 		C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E01BB12C573F56001CB428 /* MainHUDView.swift */; };
@@ -59,6 +60,7 @@
 		28CE72C82C49D97B00051E74 /* DataPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataPackage; sourceTree = "<group>"; };
 		28CE72C92C49D99700051E74 /* AudioPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AudioPackage; sourceTree = "<group>"; };
 		28CE72CA2C49D9AD00051E74 /* ARPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ARPackage; sourceTree = "<group>"; };
+		98CAC6102C5E9DA100463B95 /* OutlineShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = OutlineShader.metal; sourceTree = "<group>"; };
 		C9E01BA82C56EDA0001CB428 /* InstrumentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentListView.swift; sourceTree = "<group>"; };
 		C9E01BAA2C56EDFC001CB428 /* ARViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewConfiguration.swift; sourceTree = "<group>"; };
 		C9E01BB12C573F56001CB428 /* MainHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHUDView.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				C9E01BB12C573F56001CB428 /* MainHUDView.swift */,
 				2853972E2C541D2200E37A4C /* AudioView.swift */,
 				285397302C541D2A00E37A4C /* AuidoViewModel.swift */,
+				98CAC6102C5E9DA100463B95 /* OutlineShader.metal */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				28CE72A02C49D8EC00051E74 /* ContentView.swift in Sources */,
 				285397312C541D2A00E37A4C /* AuidoViewModel.swift in Sources */,
 				2853972F2C541D2200E37A4C /* AudioView.swift in Sources */,
+				98CAC6112C5E9DA100463B95 /* OutlineShader.metal in Sources */,
 				28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */,
 				C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */,
 				C9E01BAB2C56EDFC001CB428 /* ARViewConfiguration.swift in Sources */,
