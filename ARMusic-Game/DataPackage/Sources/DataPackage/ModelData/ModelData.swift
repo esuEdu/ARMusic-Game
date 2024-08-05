@@ -21,7 +21,7 @@ public struct ModelData {
     }
     
     /// The file name of the audio data based on the instrument and note.
-    var fileName: String {
+    public var fileName: String {
         return "\(instrument.rawValue)"
     }
     

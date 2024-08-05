@@ -10,16 +10,59 @@ import RealityKit
 import AudioPackage
 import DataPackage
 
-public class InstrumentEntity: Entity, HasModel, HasAnchoring, HasCollision {
-    var instrument: Instruments
+public class InstrumentEntity: Entity, HasModel, HasCollision {
+    var instrument: Instruments!
     
-    init(instrument: Instruments) {
+    init(instrument: Instruments, modelComponent: ModelComponent) {
         self.instrument = instrument
         super.init()
+       
+
+        
+       
+        
+        components.set(modelComponent)
+        
+        addAudioComponent()
+        addCollisionComponent()
+        addOutline()
+        
+    }
+    
+    public override func didClone(from source: Entity) {
+        self.transform.scale = simd_float3(x: 0.01, y: 0.01, z: 0.01)
+    }
+    
+    
+    
+    public static func fromModelEntity(_ modelEntity: ModelEntity, instrument: Instruments) -> InstrumentEntity {
+        
+        
+        guard let model = modelEntity.model else {
+            fatalError("Model Entity has no model")
+            
+        }
+        
+        let instrumentEntity = InstrumentEntity(instrument: instrument, modelComponent: model)
+        
+       return instrumentEntity
     }
     
     required init() {
-        fatalError("init() has not been implemented")
+        super.init()
+    }
+    
+    
+    
+    func addOutline() {
+        
+        let outlineEntity = OutlineEntity(entity: self)
+        
+        addChild(outlineEntity)
+        
+        let component = OutlineComponent(isOutlined: false)
+        components.set(component)
+        
     }
     
     func addAudioComponent() {
