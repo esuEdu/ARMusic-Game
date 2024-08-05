@@ -22,6 +22,11 @@ public enum ARState {
     func enterEditingMode(with entity: Entity) {
         state = .editing(entity)
         
+        
+        if let instrumentEntity = currentEntity as? InstrumentEntity {
+            instrumentEntity.activeOutline()
+        }
+        
         #warning("Change this")
         WorldSystem.editEntity(entity)
         
@@ -29,6 +34,10 @@ public enum ARState {
     
     func exitEditingMode() {
         state = .normal
+        
+        if let instrumentEntity = currentEntity as? InstrumentEntity {
+            instrumentEntity.activeOutline()
+        }
         
         #warning("Change this")
         WorldSystem.editEntity(nil)

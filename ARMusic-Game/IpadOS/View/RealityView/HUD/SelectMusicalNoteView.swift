@@ -40,7 +40,6 @@ struct NoteButton: View {
 
 struct SelectMusicalNoteView: View {
     @Environment(ARViewManager.self) var arViewManager: ARViewManager
-    @State var entity: Entity?
     @State private var showMenu: Bool = false
     @State var notas = Notes.allCases
     
@@ -55,10 +54,7 @@ struct SelectMusicalNoteView: View {
                         withAnimation {
                             selectedNote = note.rawValue
                             if let selectNote = Notes(rawValue: note.rawValue) {
-                                //add change entity
-                                if let instrumentEntity = entity as? InstrumentEntity {
-                                    instrumentEntity.changeAudioComponent(note: selectNote)
-                                }
+                                arViewManager.changeAudioComponent(note: selectNote)
                                 showMenu = false
                             }
                         }

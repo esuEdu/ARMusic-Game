@@ -12,7 +12,7 @@ using namespace metal;
 [[visible]]
 void OutlineSurfaceShader(realitykit::surface_parameters params) {
     
-    params.surface().set_base_color(half3(0));
+    params.surface().set_base_color(half3(1.0, 0.482, 0.0));
 }
 
 [[visible]]

@@ -16,10 +16,6 @@ public class InstrumentEntity: Entity, HasModel, HasCollision {
     init(instrument: Instruments, modelComponent: ModelComponent) {
         self.instrument = instrument
         super.init()
-       
-
-        
-       
         
         components.set(modelComponent)
         
@@ -32,8 +28,6 @@ public class InstrumentEntity: Entity, HasModel, HasCollision {
     public override func didClone(from source: Entity) {
         self.transform.scale = simd_float3(x: 0.01, y: 0.01, z: 0.01)
     }
-    
-    
     
     public static func fromModelEntity(_ modelEntity: ModelEntity, instrument: Instruments) -> InstrumentEntity {
         
@@ -52,17 +46,22 @@ public class InstrumentEntity: Entity, HasModel, HasCollision {
         super.init()
     }
     
-    
-    
     func addOutline() {
         
         let outlineEntity = OutlineEntity(entity: self)
         
-        addChild(outlineEntity)
+        self.addChild(outlineEntity)
         
         let component = OutlineComponent(isOutlined: false)
-        components.set(component)
+        self.components.set(component)
         
+    }
+    
+    func activeOutline() {
+        if var outLineComponent = self.components[OutlineComponent.self] as? OutlineComponent {
+            outLineComponent.isOutlined.toggle()
+            self.components.set(outLineComponent)
+        }
     }
     
     func addAudioComponent() {
