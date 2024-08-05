@@ -18,6 +18,7 @@
 		28CE72CF2C49DACD00051E74 /* AudioPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CE2C49DACD00051E74 /* AudioPackage */; };
 		28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D22C49DAD200051E74 /* DataPackage */; };
 		98CAC6112C5E9DA100463B95 /* OutlineShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 98CAC6102C5E9DA100463B95 /* OutlineShader.metal */; };
+		AF8660112C5AD52C00D92541 /* pancakes.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AF8660102C5AD52C00D92541 /* pancakes.usdz */; };
 		C97A5CED2C5B570F0069285C /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CEC2C5B570F0069285C /* UIExtensions.swift */; };
 		C97A5CF02C5B58A50069285C /* ActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CEF2C5B58A50069285C /* ActionButtonView.swift */; };
 		C97A5CF22C5B58CD0069285C /* PauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CF12C5B58CD0069285C /* PauseButtonView.swift */; };
@@ -62,6 +63,11 @@
 		28CE72C92C49D99700051E74 /* AudioPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AudioPackage; sourceTree = "<group>"; };
 		28CE72CA2C49D9AD00051E74 /* ARPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ARPackage; sourceTree = "<group>"; };
 		98CAC6102C5E9DA100463B95 /* OutlineShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = OutlineShader.metal; sourceTree = "<group>"; };
+		AF8660022C596DD000D92541 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		AF8660042C5970B000D92541 /* ScaledFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
+		AF8660062C59743900D92541 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		AF8660102C5AD52C00D92541 /* pancakes.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = pancakes.usdz; sourceTree = "<group>"; };
+		AF8660152C5C1FD900D92541 /* Custom3DView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custom3DView.swift; sourceTree = "<group>"; };
 		C97A5CEC2C5B570F0069285C /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		C97A5CEF2C5B58A50069285C /* ActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonView.swift; sourceTree = "<group>"; };
 		C97A5CF12C5B58CD0069285C /* PauseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButtonView.swift; sourceTree = "<group>"; };
@@ -129,7 +135,9 @@
 		28CE729C2C49D8EC00051E74 /* IpadOS */ = {
 			isa = PBXGroup;
 			children = (
+				AF8660172C5C20BB00D92541 /* 3DAssets */,
 				28CE72D42C49DB3200051E74 /* View */,
+				AF8660142C5C1F8200D92541 /* Components */,
 				28CE72D62C49DB4E00051E74 /* Assets */,
 				C97A5CEB2C5B56F80069285C /* Utils */,
 				28CE72D52C49DB4500051E74 /* Sys */,
@@ -174,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				98CAC6102C5E9DA100463B95 /* OutlineShader.metal */,
+				AF8660022C596DD000D92541 /* StartView.swift */,
+				AF8660062C59743900D92541 /* MotionManager.swift */,
 				28E7A9D02C5EB8F8001294B9 /* RealityView */,
 			);
 			path = View;
@@ -202,6 +212,23 @@
 				C9DD7BB92C596B91004DCD03 /* HUD */,
 			);
 			path = RealityView;
+			sourceTree = "<group>";
+		};
+		AF8660142C5C1F8200D92541 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AF8660152C5C1FD900D92541 /* Custom3DView.swift */,
+				AF8660042C5970B000D92541 /* ScaledFont.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AF8660172C5C20BB00D92541 /* 3DAssets */ = {
+			isa = PBXGroup;
+			children = (
+				AF8660102C5AD52C00D92541 /* pancakes.usdz */,
+			);
+			path = 3DAssets;
 			sourceTree = "<group>";
 		};
 		C97A5CEB2C5B56F80069285C /* Utils */ = {
@@ -345,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8660112C5AD52C00D92541 /* pancakes.usdz in Resources */,
 				28CE72A52C49D8ED00051E74 /* Preview Assets.xcassets in Resources */,
 				28CE72A22C49D8ED00051E74 /* Assets.xcassets in Resources */,
 			);
