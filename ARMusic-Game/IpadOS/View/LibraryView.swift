@@ -14,6 +14,8 @@ struct LibraryView: View {
     @State private var draggedItem: Int? = nil
     @State private var itemPositions: [Int: CGSize] = [:]
     
+    @State private var searchText: String = ""
+    
     var body: some View {
         VStack {
             HStack {
@@ -22,10 +24,11 @@ struct LibraryView: View {
                     
                     scroll
                 }
-                .frame(width: UIScreen.main.bounds.width * 0.66)
+                .frame(width: UIScreen.main.bounds.width * 0.6712)
                 
                 //MARK: - Tocador
                 player
+                    .frame(width: UIScreen.main.bounds.width * 0.323)
             }
         }
     }
@@ -48,25 +51,47 @@ struct LibraryView: View {
     
     var toolbar: some View {
         HStack {
-            Button(action: {
-                // Ação do botão de voltar
-            }) {
-                Image(systemName: "arrow.left")
-                    .font(.title)
-                    .foregroundColor(.blue)
-            }
+            Circle()
+                .frame(
+                    width: UIScreen.main.bounds.width * 0.1025,
+                    height: UIScreen.main.bounds.height * 0.1367
+                )
+                .foregroundStyle(.gray)
+                .overlay {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 32))
+                        .fontWeight(.heavy)
+                        .foregroundStyle(.black)
+                }
+
             Spacer()
-            TextField("Pesquisar", text: .constant(""))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: UIScreen.main.bounds.width * 0.5)
-            Spacer()
-            Button(action: {
-                // Ação do botão de filtro
-            }) {
-                Image(systemName: "line.horizontal.3.decrease.circle")
-                    .font(.title)
-                    .foregroundColor(.blue)
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.gray)
+                    .padding(.leading, 8)
+
+                TextField("Pesquisar", text: $searchText)
+                    .padding(8)
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(10)
             }
+            .frame(width: UIScreen.main.bounds.width * 0.5)
+            Spacer()
+         
+            
+            Circle()
+                .frame(
+                    width: UIScreen.main.bounds.width * 0.1025,
+                    height: UIScreen.main.bounds.height * 0.1367
+                )
+                .foregroundStyle(.gray)
+                .overlay {
+                    Image(systemName: "line.horizontal.3.decrease.circle")
+                        .font(.system(size: 32))
+                        .fontWeight(.heavy)
+                        .foregroundStyle(.black)
+                }
+
         }
     }
     
@@ -165,6 +190,22 @@ struct LibraryView: View {
             .overlay(
                 Text("Tocador")
                     .foregroundColor(.white)
+            )
+    }
+    
+    func cdCapa() -> some View {
+        Rectangle()
+            .frame(
+                width: UIScreen.main.bounds.width * 0.183,
+                height: UIScreen.main.bounds.height * 0.244
+            )
+    }
+    
+    func cd() -> some View {
+        Circle()
+            .frame(
+                width: UIScreen.main.bounds.width * 0.183,
+                height: UIScreen.main.bounds.height * 0.244
             )
     }
 }
