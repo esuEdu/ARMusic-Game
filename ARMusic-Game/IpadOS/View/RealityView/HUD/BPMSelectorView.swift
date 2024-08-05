@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import AudioPackage
 
 struct BPMSelectorView: View {
-    @State private var selectedBPM: Double = 150.0
+    @State private var selectedBPM: Double = Double(AudioUtils.shared.BPM)
     @State private var showSlider: Bool = false
     
-    let limitedBPM: Double = 300.0
+    let limitedBPM: Double = 150.0
 
     var body: some View {
         VStack(spacing: 20) {
@@ -40,6 +41,9 @@ struct BPMSelectorView: View {
         .padding()
         .frame(height: self.screenHeight * 0.32)
         .position(x: self.screenWidth * 0.1, y: self.screenHeight * 0.75)
+        .onChange(of: selectedBPM) { oldValue, newValue in
+            AudioUtils.shared.BPM = Int(newValue)
+        }
     }
 }
 
@@ -48,4 +52,3 @@ struct BPMSelectorView_Previews: PreviewProvider {
         BPMSelectorView()
     }
 }
-

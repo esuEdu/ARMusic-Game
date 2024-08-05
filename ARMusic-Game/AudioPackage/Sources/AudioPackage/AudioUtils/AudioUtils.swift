@@ -12,7 +12,13 @@ public class AudioUtils {
     public var viewMatrix: simd_float4x4?
     
     
-    public var BPM: Int = 5
+    public var BPM: Int = 5 {
+        didSet {
+            AudioTimerManager.shared.updateNoteDuration()
+            AudioTimerManager.shared.updateTimerInterval()
+            
+        }
+    }
     
     init() {}
     
