@@ -21,7 +21,7 @@ struct ActionButtonView: View {
             
             Image(systemName: iconName)
                 .foregroundColor(iconColor)
-                .font(.system(size: 45))
+                .font(.largeTitle)
                 .contentTransition(.symbolEffect(.replace))
         }
         .padding()
