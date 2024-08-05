@@ -26,16 +26,14 @@ public class OutlineEntity: Entity, HasModel {
         
         var customMaterial = try! CustomMaterial(from: material, surfaceShader: surfaceShader, geometryModifier: geometryShader)
         customMaterial.faceCulling = .front
-        
-        let materials = model.materials.map { material in
-            material
+        let materials = model.materials.map { _ in
+            customMaterial
         }
-
-        
         
         let modelComponent = ModelComponent(mesh: model.mesh, materials: materials)
         components.set(modelComponent)
         
+        self.model = modelComponent
     }
     
    

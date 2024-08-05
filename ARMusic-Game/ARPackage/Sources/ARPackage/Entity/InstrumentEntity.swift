@@ -10,21 +10,29 @@ import RealityKit
 import AudioPackage
 import DataPackage
 
-public class InstrumentEntity: Entity, HasModel, HasAnchoring, HasCollision {
+public class InstrumentEntity: Entity, HasModel, HasCollision {
     var instrument: Instruments!
     
     init(instrument: Instruments, modelComponent: ModelComponent) {
         self.instrument = instrument
         super.init()
        
-        components.set(modelComponent)
+
         
-        model = modelComponent
-    
+       
+        
+        components.set(modelComponent)
         
         addAudioComponent()
         addCollisionComponent()
         addOutline()
+        
+    }
+    
+    public override func didClone(from source: Entity) {
+        
+        self.transform.scale = simd_float3(x: 0.01, y: 0.01, z: 0.01)
+        
     }
     
     
@@ -43,7 +51,7 @@ public class InstrumentEntity: Entity, HasModel, HasAnchoring, HasCollision {
     }
     
     required init() {
-       
+        super.init()
     }
     
     
@@ -51,6 +59,7 @@ public class InstrumentEntity: Entity, HasModel, HasAnchoring, HasCollision {
     func addOutline() {
         
         let outlineEntity = OutlineEntity(entity: self)
+        
         addChild(outlineEntity)
         
     }

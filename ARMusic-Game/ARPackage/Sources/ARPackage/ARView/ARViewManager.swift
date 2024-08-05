@@ -140,9 +140,9 @@ extension ARViewManager: ARSessionDelegate {
             
             let planeEntity = ModelEntity(mesh: mesh, materials: [material])
             
-            anchorEntity.addChild(planeEntity)
+            newAnchor.addChild(planeEntity)
             
-//            arView.scene.addAnchor(newAnchor)
+            arView.scene.addAnchor(newAnchor)
             
         }
         
