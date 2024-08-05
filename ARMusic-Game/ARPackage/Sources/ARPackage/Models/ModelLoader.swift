@@ -37,14 +37,12 @@ public class ModelLoader {
         guard let url = modelData.getURL() else {
             fatalError("Incorrect instrument URL")
         }
-        
-        let modelName = modelData.fileName
-        
+                
         let entity = try! Entity.loadModel(contentsOf: url)
         
         let instrumentEntity = InstrumentEntity.fromModelEntity(entity, instrument: instrument)
     
-        loadedModels[modelName] = instrumentEntity
+        loadedModels[instrument.rawValue] = instrumentEntity
     }
     
     private func getPosition(_ arView: ARView) -> SIMD3<Float> {

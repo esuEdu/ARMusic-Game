@@ -27,6 +27,12 @@ public class ARStateMachine {
     public func enterEditingMode(with entity: Entity) {
         state = .editing(entity)
         
+        
+        if let instrumentEntity = currentEntity as? InstrumentEntity {
+            instrumentEntity.activeOutline()
+        }
+        
+        #warning("Change this")
         WorldSystem.editEntity(entity)
         
     }
@@ -34,7 +40,11 @@ public class ARStateMachine {
     public func exitEditingMode() {
         state = .normal
         
+        if let instrumentEntity = currentEntity as? InstrumentEntity {
+            instrumentEntity.activeOutline()
+        }
         
+        #warning("Change this")
         WorldSystem.stopEditting()
     }
     

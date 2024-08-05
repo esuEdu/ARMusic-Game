@@ -26,7 +26,16 @@ import AudioPackage
    
 }
 
-
+extension ARViewManager: ARSessionDelegate {
+    public func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        let cameraTransform = frame.camera.transform
+        let cameraPosition = SIMD3<Float>(cameraTransform.columns.3.x, cameraTransform.columns.3.y, cameraTransform.columns.3.z)
+        let cameraOrientation = frame.camera.eulerAngles
+        AudioUtils.shared.position = cameraPosition
+        AudioUtils.shared.orientation = cameraOrientation
+        AudioUtils.shared.viewMatrix = session.currentFrame?.camera.viewMatrix(for: .landscapeLeft)
+    }
+}
 
 extension ARViewManager: UIGestureRecognizerDelegate {
     // UIGestureRecognizerDelegate method to allow simultaneous gesture recognition

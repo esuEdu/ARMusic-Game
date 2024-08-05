@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Eduardo on 30/07/24.
 //
@@ -32,9 +32,11 @@ public struct FixedSizeBoolArray {
     }
     
     public mutating func toggleValues(at indices: Set<Int>) {
-        for index in indices {
+        boolArray = [Bool](repeating: false, count: size)
+        
+        indices.forEach { index in
             if index >= 0 && index < size {
-                boolArray[index].toggle()
+                boolArray[index] = true
             }
         }
     }

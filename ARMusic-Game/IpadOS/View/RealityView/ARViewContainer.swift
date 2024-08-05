@@ -12,9 +12,8 @@ import AudioPackage
 
 struct ARViewContainer: UIViewRepresentable {
     @Environment(ARViewManager.self) var arViewManager: ARViewManager
-    
-    
-    func makeUIView(context: Context) -> ARView {
+
+    func makeUIView(context: Context) -> ARView {       
         AudioTimerManager.shared.start()
         
         let arView = MainARView(arViewManager: arViewManager)
