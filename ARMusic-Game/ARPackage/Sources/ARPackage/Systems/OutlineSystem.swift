@@ -2,10 +2,7 @@ import RealityKit
 import ARKit
 
 public struct OutlineComponent: Component {
-    
-    
     var isOutlined = false
-    
 }
 
 public class OutlineEntity: Entity, HasModel {
@@ -17,6 +14,8 @@ public class OutlineEntity: Entity, HasModel {
         guard let model = entity.model else {
             fatalError("Entity has no model")
         }
+        
+        name = "outline_entity"
         
         
         let material = SimpleMaterial(color: .black, isMetallic: false)
@@ -57,24 +56,13 @@ public class OutlineSystem: System {
     public func update(context: SceneUpdateContext) {
         
         let withOutlineComp = context.scene.performQuery(query)
-        
         for entity in withOutlineComp {
             
-            if let entity = entity as? CharacterEntity {
-                
-                if entity.outline.isOutlined {
-                    
-                    
-                    
-                    
-                } else {
-                    
-                }
-                
-                
-                
-            }
+            let comp = entity.components[OutlineComponent.self] as! OutlineComponent
             
+            let outlineEntity = entity.findEntity(named: "outline_entity")
+            
+            outlineEntity?.isEnabled = comp.isOutlined
         }
         
         

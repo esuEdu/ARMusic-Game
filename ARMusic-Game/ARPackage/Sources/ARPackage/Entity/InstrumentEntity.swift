@@ -30,9 +30,7 @@ public class InstrumentEntity: Entity, HasModel, HasCollision {
     }
     
     public override func didClone(from source: Entity) {
-        
         self.transform.scale = simd_float3(x: 0.01, y: 0.01, z: 0.01)
-        
     }
     
     
@@ -61,6 +59,9 @@ public class InstrumentEntity: Entity, HasModel, HasCollision {
         let outlineEntity = OutlineEntity(entity: self)
         
         addChild(outlineEntity)
+        
+        let component = OutlineComponent(isOutlined: false)
+        components.set(component)
         
     }
     

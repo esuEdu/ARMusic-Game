@@ -28,10 +28,12 @@ struct ARViewContainer: UIViewRepresentable {
     
     func registerComponents() {
         AudioComponent.registerComponent()
+        OutlineComponent.registerComponent()
     }
     
     func registerSystem() {
         AudioSystem.registerSystem()
+        OutlineSystem.registerSystem()
     }
 }
 
