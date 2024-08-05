@@ -12,13 +12,15 @@ public class MainARView: ARView {
     
     let anchorEntity = AnchorEntity(plane: .horizontal)
     
+    var arViewManager: ARViewManager!
+    
     var stateMachine: ARStateMachine {
-        ARViewManager.shared.stateMachine
+        arViewManager.stateMachine
     }
     
-    public init() {
+    public init(arViewManager: ARViewManager) {
+        self.arViewManager = arViewManager
         super.init(frame: .zero)
-        
         setupARView()
     }
     

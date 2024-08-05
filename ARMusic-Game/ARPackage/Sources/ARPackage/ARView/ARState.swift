@@ -11,35 +11,38 @@ import RealityKit
 import ARKit
 
 public enum ARState: Equatable {
+    
+
     case normal
     case editing(Entity)
     case dragging(Entity)
+    
+    
 }
 
 @Observable
 public class ARStateMachine {
     public var state: ARState = .normal
     
-    func enterEditingMode(with entity: Entity) {
+    public func enterEditingMode(with entity: Entity) {
         state = .editing(entity)
         
-        #warning("Change this")
         WorldSystem.editEntity(entity)
         
     }
     
-    func exitEditingMode() {
+    public func exitEditingMode() {
         state = .normal
         
-        #warning("Change this")
-        WorldSystem.editEntity(nil)
+        
+        WorldSystem.stopEditting()
     }
     
-    func enterDraggingMode(with entity: Entity) {
+    public func enterDraggingMode(with entity: Entity) {
         state = .dragging(entity)
     }
     
-    func exitDraggingMode() {
+    public func exitDraggingMode() {
         state = .normal
     }
     

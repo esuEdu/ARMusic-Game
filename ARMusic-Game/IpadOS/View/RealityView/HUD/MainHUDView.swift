@@ -23,6 +23,7 @@ struct MainHUDView: View {
             case .normal:
                 InstrumentListView(isExpanded: $isExpandedInstrumentList)
                 showView(!isExpandedInstrumentList) {
+                   
                     PauseButtonView(isPaused: $isPaused)
                 }
                 showView(arViewManager.stateMachine.getEntity() == nil) {
@@ -34,7 +35,9 @@ struct MainHUDView: View {
                     NoteTimeSelectionView()
                         .transition(.move(edge: .bottom))
                 }
+                    BackButtonView()
                 showView(arViewManager.stateMachine.getEntity() != nil) {
+                    
                     MuteButtonView(isMuted: $isMuted)
                     SelectMusicalNoteView( selectedNote: $selectedNote)
                         .transition(.move(edge: .bottom))

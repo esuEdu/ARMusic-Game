@@ -17,6 +17,7 @@
 		28CE72CD2C49DAC900051E74 /* ARPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CC2C49DAC900051E74 /* ARPackage */; };
 		28CE72CF2C49DACD00051E74 /* AudioPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CE2C49DACD00051E74 /* AudioPackage */; };
 		28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D22C49DAD200051E74 /* DataPackage */; };
+		98B7B8272C615F430047F5A6 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7B8262C615F430047F5A6 /* BackButtonView.swift */; };
 		98CAC6112C5E9DA100463B95 /* OutlineShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 98CAC6102C5E9DA100463B95 /* OutlineShader.metal */; };
 		AF8660112C5AD52C00D92541 /* pancakes.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AF8660102C5AD52C00D92541 /* pancakes.usdz */; };
 		C97A5CED2C5B570F0069285C /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CEC2C5B570F0069285C /* UIExtensions.swift */; };
@@ -62,6 +63,7 @@
 		28CE72C82C49D97B00051E74 /* DataPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataPackage; sourceTree = "<group>"; };
 		28CE72C92C49D99700051E74 /* AudioPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AudioPackage; sourceTree = "<group>"; };
 		28CE72CA2C49D9AD00051E74 /* ARPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ARPackage; sourceTree = "<group>"; };
+		98B7B8262C615F430047F5A6 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		98CAC6102C5E9DA100463B95 /* OutlineShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = OutlineShader.metal; sourceTree = "<group>"; };
 		AF8660022C596DD000D92541 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		AF8660042C5970B000D92541 /* ScaledFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */,
 				C9DD7BC02C5A0B3F004DCD03 /* NoteTimeSelectionView.swift */,
 				28CE729F2C49D8EC00051E74 /* RealityView.swift */,
+				98B7B8262C615F430047F5A6 /* BackButtonView.swift */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				C97A5CF22C5B58CD0069285C /* PauseButtonView.swift in Sources */,
 				C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */,
 				C9E01BAB2C56EDFC001CB428 /* ARViewContainer.swift in Sources */,
+				98B7B8272C615F430047F5A6 /* BackButtonView.swift in Sources */,
 				C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */,
 				C9DD7BBF2C5A0282004DCD03 /* SelectMusicalNoteView.swift in Sources */,
 				C97A5CF42C5B590F0069285C /* MuteButtonView.swift in Sources */,

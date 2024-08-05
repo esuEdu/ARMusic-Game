@@ -14,18 +14,13 @@ import AudioPackage
 
 @MainActor
 @Observable public class ARViewManager: NSObject {
-    public static var shared = ARViewManager()
     public var arView: MainARView?
     public var stateMachine = ARStateMachine()
-    
     var modelLoader = ModelLoader()
-    
     
     public override init() {
         super.init()
         MetalConfig.initialize()
-
-    
     }
     
    

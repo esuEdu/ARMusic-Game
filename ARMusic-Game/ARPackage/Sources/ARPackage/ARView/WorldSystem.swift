@@ -27,4 +27,8 @@ public class WorldSystem: System {
     public static func editEntity(_ entity: Entity?) {
         entityBeingEditted = entity
     }
+    
+    public static func stopEditting() {
+        entityBeingEditted = nil
+    }
 }
