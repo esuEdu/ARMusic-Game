@@ -20,7 +20,9 @@ public class MainARView: ARView {
     
     public init(arViewManager: ARViewManager) {
         self.arViewManager = arViewManager
+        
         super.init(frame: .zero)
+        arViewManager.arView = self
         setupARView()
     }
     
