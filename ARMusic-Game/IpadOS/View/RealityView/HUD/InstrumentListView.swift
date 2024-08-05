@@ -58,7 +58,7 @@ struct InstrumentListView: View {
                                 .padding()
                                 .background(Circle().fill(Color.blue))
                                 .onTapGesture {
-                                    arViewManager.loadInstrumentModel(instrument: instrument)
+                                    arViewManager.arView?.loadInstrumentModel(instrument: instrument)
                                     isExpanded = false
                                 }
                                 .offset(dragOffsets[instrument, default: .zero])
@@ -69,7 +69,7 @@ struct InstrumentListView: View {
                                         }
                                         .onEnded { value in
                                             if isDropLocationOutside(bounds: geometry.frame(in: .global), dropLocation: value.location) {
-                                                arViewManager.loadInstrumentModel(instrument: instrument)
+                                                arViewManager.arView?.loadInstrumentModel(instrument: instrument)
                                             }
                                             dragOffsets[instrument] = .zero
                                             withAnimation {

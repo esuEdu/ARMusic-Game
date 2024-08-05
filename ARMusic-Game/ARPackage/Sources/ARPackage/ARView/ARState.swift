@@ -10,13 +10,14 @@ import SwiftUI
 import RealityKit
 import ARKit
 
-public enum ARState {
+public enum ARState: Equatable {
     case normal
     case editing(Entity)
     case dragging(Entity)
 }
 
-@Observable public class ARStateMachine {
+@Observable
+public class ARStateMachine {
     public var state: ARState = .normal
     
     func enterEditingMode(with entity: Entity) {

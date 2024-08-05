@@ -16,7 +16,6 @@ struct PauseButtonView: View {
             backgroundColor: .white,
             iconColor: .black
         )
-        .position(x: self.screenWidth * 0.9, y: self.screenHeight * 0.095)
     }
 }
 

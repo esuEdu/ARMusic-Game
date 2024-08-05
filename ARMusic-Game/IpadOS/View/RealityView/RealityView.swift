@@ -10,12 +10,12 @@ import ARPackage
 
 @MainActor
 struct RealityView: View {
-    @State var arViewManager = ARViewManager()
+    @State var arViewManager = ARViewManager.shared
     
     var body: some View {
         ZStack {
-            ARViewContainer()
-                .edgesIgnoringSafeArea(.all)
+//            ARViewContainer()
+//                .edgesIgnoringSafeArea(.all)
             
             MainHUDView()
         }

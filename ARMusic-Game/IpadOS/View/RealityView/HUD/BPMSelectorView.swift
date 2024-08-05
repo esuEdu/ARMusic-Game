@@ -38,8 +38,7 @@ struct BPMSelectorView: View {
             }
         }
         .padding()
-        .frame(height: self.screenHeight * 0.32)
-        .position(x: self.screenWidth * 0.1, y: self.screenHeight * 0.75)
+    
     }
 }
 
