@@ -7,10 +7,12 @@
 
 import Foundation
 import DataPackage
+import SceneKit
 
 struct InstrumentInfo {
     let name: String
     let imageName: String
+    let modelName:String?
     let description: String
     
     static func get(for instrument: Instruments) -> InstrumentInfo {
@@ -18,7 +20,7 @@ struct InstrumentInfo {
         case .piano:
             return InstrumentInfo(
                 name: "Piano Men",
-                imageName: "background",
+                imageName: "background", modelName: "guitarra.usdz",
                 description: "Boa pedida para quem gosta dos clássicos"
             )
         }
