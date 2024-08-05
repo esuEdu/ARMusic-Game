@@ -81,7 +81,7 @@ public class InstrumentEntity: Entity, HasModel, HasCollision {
     public func changeAudioComponent(tempo: Set<Int>? = nil, note: Notes? = nil, tom: Float? = nil, startBeat: Int? = nil, endBeat: Int? = nil) {
         guard var audioComponent = self.components[AudioComponent.self] as? AudioComponent else { return }
         
-        tempo?.forEach { audioComponent.tempo.toggleValue(at: $0) }
+        audioComponent.tempo.toggleValues(at: tempo ?? [])
         if let note = note { audioComponent.note = note }
         if let tom = tom { audioComponent.tom = tom }
         if let startBeat = startBeat { audioComponent.startBeat = startBeat }
