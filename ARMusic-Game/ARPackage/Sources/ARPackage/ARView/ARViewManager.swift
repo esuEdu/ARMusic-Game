@@ -21,6 +21,7 @@ import AudioPackage
     var anchorEntity = AnchorEntity(plane: .horizontal)
     
     public override init() {
+        MetalConfig.initialize()
         self.arView = ARView(frame: .zero)
         super.init()
         self.setupARView()
@@ -54,12 +55,7 @@ import AudioPackage
     }
     
     public func loadInstrumentModel(instrument: Instruments) {
-        let instrumentEntity = InstrumentEntity(instrument: instrument)
-        
-        // add components to entity before creation
-        instrumentEntity.addAudioComponent()
-        
-        modelLoader.loadModel(for: instrumentEntity, into: anchorEntity, with: arView)
+        modelLoader.loadModel(for: instrument, into: anchorEntity, with: arView)
     }
     
     public func resetSession() {
@@ -130,6 +126,28 @@ import AudioPackage
 }
 
 extension ARViewManager: ARSessionDelegate {
+    
+    public func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
+        
+        if let _ = anchors.first(where: {anchor in
+                                 anchor is ARPlaneAnchor}) {
+            
+            let newAnchor = AnchorEntity(.plane([.any], classification: .any, minimumBounds: [0.5, 0.5]))
+            
+            let mesh: MeshResource = .generatePlane(width: 1, depth: 1  )
+            
+            let material = SimpleMaterial(color: .red, isMetallic: false )
+            
+            let planeEntity = ModelEntity(mesh: mesh, materials: [material])
+            
+            newAnchor.addChild(planeEntity)
+            
+            arView.scene.addAnchor(newAnchor)
+            
+        }
+        
+    }
+    
     public func session(_ session: ARSession, didUpdate frame: ARFrame) {
         let cameraTransform = frame.camera.transform
         let cameraPosition = SIMD3<Float>(cameraTransform.columns.3.x, cameraTransform.columns.3.y, cameraTransform.columns.3.z)
