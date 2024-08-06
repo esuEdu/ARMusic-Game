@@ -10,16 +10,21 @@ import SwiftUI
 import RealityKit
 import ARKit
 
-public enum ARState {
+public enum ARState: Equatable {
+    
+
     case normal
     case editing(Entity)
     case dragging(Entity)
+    
+    
 }
 
-@Observable public class ARStateMachine {
+@Observable
+public class ARStateMachine {
     public var state: ARState = .normal
     
-    func enterEditingMode(with entity: Entity) {
+    public func enterEditingMode(with entity: Entity) {
         state = .editing(entity)
         
         
@@ -32,7 +37,7 @@ public enum ARState {
         
     }
     
-    func exitEditingMode() {
+    public func exitEditingMode() {
         state = .normal
         
         if let instrumentEntity = currentEntity as? InstrumentEntity {
@@ -40,14 +45,14 @@ public enum ARState {
         }
         
         #warning("Change this")
-        WorldSystem.editEntity(nil)
+        WorldSystem.stopEditting()
     }
     
-    func enterDraggingMode(with entity: Entity) {
+    public func enterDraggingMode(with entity: Entity) {
         state = .dragging(entity)
     }
     
-    func exitDraggingMode() {
+    public func exitDraggingMode() {
         state = .normal
     }
     

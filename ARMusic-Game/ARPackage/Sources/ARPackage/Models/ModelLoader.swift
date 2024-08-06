@@ -12,7 +12,8 @@ import AudioPackage
 import DataPackage
 
 public class ModelLoader {
-    var cancellable: AnyCancellable?
+
+    public static var shared = ModelLoader()
     var loadedModels: [String: InstrumentEntity] = [:]
     
     func loadModel(for instrument: Instruments, into anchor: AnchorEntity, with arView: ARView) {

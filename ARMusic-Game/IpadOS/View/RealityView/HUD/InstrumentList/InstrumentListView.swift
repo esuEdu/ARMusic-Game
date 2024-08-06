@@ -105,7 +105,7 @@ struct InstrumentCardDraggingView: View {
                     .onEnded { value in
                         currentDragOffset = .zero
                         if isDrop(geometry.frame(in: .global), value.location) {
-                            arViewManager.loadInstrumentModel(instrument: instrument)
+                            arViewManager.arView?.loadInstrumentModel(instrument: instrument)
                         }
                     }
             )
@@ -187,7 +187,7 @@ struct DraggableInstrumentCardView: View {
                         dragOffsets[instrument] = .zero
                         currentDragOffset = .zero
                         if  isDrop(geometry.frame(in: .global), value.location){
-                            arViewManager.loadInstrumentModel(instrument: instrument)
+                            arViewManager.arView?.loadInstrumentModel(instrument: instrument)
                         }
                         withAnimation {
                             draggingInstrument = nil
