@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import AudioPackage
+import ARPackage
 
 struct PauseModalView: View {
     @Binding var isPresented: Bool
     @State private var isMuted = false
+    @Environment(ARViewManager.self) private var arViewManager: ARViewManager
     
     var body: some View {
             ZStack {
@@ -19,7 +22,7 @@ struct PauseModalView: View {
                 ZStack {
                     VStack(spacing: 20) {
                         ButtonPauseView(title: "Continuar", action: {})
-                        ButtonPauseView(title: isMuted ? "Desmutar" : "Mutar", action: { isMuted.toggle() })
+                        ButtonPauseView(title: isMuted ? "Desmutar" : "Mutar", action: toggleMute)
                         ButtonPauseView(title: "Sair", action: {})
                     }
                     .frame(width: screenWidth * 0.5, height: screenHeight * 0.6)
@@ -61,6 +64,18 @@ struct PauseModalView: View {
                 .padding()
             }
         }
+    
+    private func toggleMute() {
+        isMuted.toggle()
+        
+        if isMuted {
+            AudioTimerManager.shared.pause()
+
+            return
+        }
+        
+        AudioTimerManager.shared.start()
+    }
 }
 
 
