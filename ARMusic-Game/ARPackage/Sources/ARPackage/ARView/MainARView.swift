@@ -18,6 +18,13 @@ public class MainARView: ARView {
         arViewManager.stateMachine
     }
     
+    var config: ARWorldTrackingConfiguration = {
+        let config = ARWorldTrackingConfiguration()
+        config.planeDetection = [.horizontal]
+        
+        return config
+    }()
+    
     public init(arViewManager: ARViewManager) {
         self.arViewManager = arViewManager
         
@@ -26,12 +33,12 @@ public class MainARView: ARView {
         setupARView()
     }
     
+    public var paused: Bool = false
+    
     private func setupARView() {
         // Configure AR session
         arView.addCoaching()
-        let config = ARWorldTrackingConfiguration()
-        config.planeDetection = [.horizontal]
-        arView.session.run(config)
+        runSession()
         arView.session.delegate = self
         // Add anchor to the scene
         arView.scene.anchors.append(anchorEntity)
@@ -53,9 +60,24 @@ public class MainARView: ARView {
         
     }
     
+    private func runSession() {
+        session.run(config)
+        paused = false
+    }
+    
+    public func pause() {
+        session.pause()
+        paused = true
+    }
+    
+    public func resume() {
+       runSession()
+    }
+    
     public func loadInstrumentModel(instrument: Instruments) {
         ModelLoader.shared.loadModel(for: instrument, into: anchorEntity, with: arView)
     }
+
     
     public func resetSession() {
         // Reset AR session
