@@ -75,7 +75,7 @@ public class MainARView: ARView {
     }
     
     public func loadInstrumentModel(instrument: Instruments) {
-        ModelLoader.shared.loadModel(for: instrument, into: anchorEntity, with: arView)
+        ModelLoader.loadModel(for: instrument, into: anchorEntity, with: arView)
     }
 
     
