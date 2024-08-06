@@ -41,7 +41,7 @@ struct MainHUDView: View {
                     BackButtonView()
                 showView(arViewManager.stateMachine.getEntity() != nil) {
                     
-                    MuteButtonView(isMuted: $isMuted)
+                    MuteButtonView()
                     SelectMusicalNoteView( selectedNote: $selectedNote)
                         .transition(.move(edge: .bottom))
                 }

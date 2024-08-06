@@ -13,15 +13,21 @@ import DataPackage
 
 public class ModelLoader {
 
-    private static var loadedModels: [String: InstrumentEntity] = [:]
-    
+    public static var loadedModels: [String: InstrumentEntity] = [:]
+    public static var allLoaded = false
     public static func loadAllModels() {
         
-        let instruments = Instruments.allCases
-        
-        for instrument in instruments {
-            load(instrument: instrument)
+        if (!allLoaded) {
+            let instruments = Instruments.allCases
+            
+            for instrument in instruments {
+                load(instrument: instrument)
+            }
+            
+            allLoaded = true
         }
+        
+        
         
     }
     

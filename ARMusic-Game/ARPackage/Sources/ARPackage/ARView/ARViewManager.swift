@@ -20,14 +20,30 @@ import AudioPackage
         }
     }
     
+    public var muted: Bool = false {
+        didSet {
+            muted ? mute() : unmute()
+        }
+    }
+    
     public var arView: MainARView?
     public var stateMachine = ARStateMachine()
     var modelLoader = ModelLoader()
+    var initialized = false
+    
     
     public override init() {
         super.init()
         MetalConfig.initialize()
         ModelLoader.loadAllModels()
+    }
+    
+    private func mute() {
+        AudioTimerManager.shared.muted = true
+    }
+    
+    private func unmute() {
+        AudioTimerManager.shared.muted = false
     }
 
     private func unpause() {
