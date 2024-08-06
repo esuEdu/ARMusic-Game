@@ -12,19 +12,22 @@ struct MainHUDView: View {
     @Environment(ARViewManager.self) var arViewManager: ARViewManager
     @State private var isExpandedInstrumentList = false
     
-    @State private var isPaused:Bool = false
     @State private var isMuted:Bool = false
     
     @State var selectedNote:String? = nil
     
     var body: some View {
+        @Bindable var arViewManager = arViewManager
+        
+        var isPaused = arViewManager.paused
+        
         ZStack {
             switch arViewManager.stateMachine.state {
             case .normal:
                 InstrumentListView(isExpanded: $isExpandedInstrumentList)
                 showView(!isExpandedInstrumentList) {
                    
-                    PauseButtonView(isPaused: $isPaused)
+                    PauseButtonView(isPaused: $arViewManager.paused)
                 }
                 showView(arViewManager.stateMachine.getEntity() == nil) {
                     BPMSelectorView()
@@ -51,7 +54,7 @@ struct MainHUDView: View {
         .overlay(
             Group {
                 if isPaused {
-                    PauseModalView(isPresented: $isPaused)
+                    PauseModalView(isPresented: $arViewManager.paused)
                 }
             }
         )

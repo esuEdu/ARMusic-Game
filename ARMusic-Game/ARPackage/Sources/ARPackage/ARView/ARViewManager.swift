@@ -14,6 +14,12 @@ import AudioPackage
 
 @MainActor
 @Observable public class ARViewManager: NSObject {
+    public var paused: Bool = false {
+        didSet {
+            paused ? pause() : unpause()
+        }
+    }
+    
     public var arView: MainARView?
     public var stateMachine = ARStateMachine()
     var modelLoader = ModelLoader()
@@ -22,8 +28,16 @@ import AudioPackage
         super.init()
         MetalConfig.initialize()
     }
+
+    private func unpause() {
+        AudioTimerManager.shared.start()
+        arView?.resume()
+    }
     
-   
+    private func pause() {
+        AudioTimerManager.shared.pause()
+        arView?.pause()
+    }
 }
 
 extension ARViewManager: ARSessionDelegate {

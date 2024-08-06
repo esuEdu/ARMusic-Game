@@ -18,11 +18,10 @@ struct PauseModalView: View {
             ZStack {
                 Color.black.opacity(0.5)
                     .edgesIgnoringSafeArea(.all)
-                
                 ZStack {
                     VStack(spacing: 20) {
-                        ButtonPauseView(title: "Continuar", action: {})
-                        ButtonPauseView(title: isMuted ? "Desmutar" : "Mutar", action: toggleMute)
+                        ButtonPauseView(title: "Continuar", action: { arViewManager.paused = false })
+//                        ButtonPauseView(title: isMuted ? "Desmutar" : "Mutar", action: toggleMute)
                         ButtonPauseView(title: "Sair", action: {})
                     }
                     .frame(width: screenWidth * 0.5, height: screenHeight * 0.6)
