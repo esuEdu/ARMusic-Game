@@ -11,7 +11,9 @@ import SwiftUI
 struct ARMusic_GameApp: App {
     var body: some Scene {
         WindowGroup {
-            RealityView()
+            NavigationStack {
+                StartView()
+            }
         }
     }
 }

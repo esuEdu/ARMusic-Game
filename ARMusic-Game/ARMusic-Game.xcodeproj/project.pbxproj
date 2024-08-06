@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2890BA7A2C629D4C00754C9D /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660022C596DD000D92541 /* StartView.swift */; };
+		2890BA7B2C629D5200754C9D /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660062C59743900D92541 /* MotionManager.swift */; };
+		2890BA7C2C629D5E00754C9D /* Custom3DView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660152C5C1FD900D92541 /* Custom3DView.swift */; };
+		2890BA7D2C629D6200754C9D /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660042C5970B000D92541 /* ScaledFont.swift */; };
 		28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE729D2C49D8EC00051E74 /* ARMusic_GameApp.swift */; };
 		28CE72A02C49D8EC00051E74 /* RealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE729F2C49D8EC00051E74 /* RealityView.swift */; };
 		28CE72A22C49D8ED00051E74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28CE72A12C49D8ED00051E74 /* Assets.xcassets */; };
@@ -57,7 +61,7 @@
 /* Begin PBXFileReference section */
 		28CE729A2C49D8EC00051E74 /* ARMusic-Game (IpadOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARMusic-Game (IpadOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CE729D2C49D8EC00051E74 /* ARMusic_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMusic_GameApp.swift; sourceTree = "<group>"; };
-		28CE729F2C49D8EC00051E74 /* RealityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RealityView.swift; path = ../RealityView.swift; sourceTree = "<group>"; };
+		28CE729F2C49D8EC00051E74 /* RealityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityView.swift; sourceTree = "<group>"; };
 		28CE72A12C49D8ED00051E74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28CE72A42C49D8ED00051E74 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28CE72AA2C49D8EE00051E74 /* ARMusic-GameTests (IpadOS).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ARMusic-GameTests (IpadOS).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E01BAA2C56EDFC001CB428 /* ARViewContainer.swift */,
+				28CE729F2C49D8EC00051E74 /* RealityView.swift */,
 				C9DD7BB92C596B91004DCD03 /* HUD */,
 			);
 			path = RealityView;
@@ -299,7 +304,6 @@
 				C9DD7BBC2C5985A0004DCD03 /* BPMSelectorView.swift */,
 				C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */,
 				C9DD7BC02C5A0B3F004DCD03 /* NoteTimeSelectionView.swift */,
-				28CE729F2C49D8EC00051E74 /* RealityView.swift */,
 				98B7B8262C615F430047F5A6 /* BackButtonView.swift */,
 			);
 			path = HUD;
@@ -443,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28CE72A02C49D8EC00051E74 /* RealityView.swift in Sources */,
+				2890BA7B2C629D5200754C9D /* MotionManager.swift in Sources */,
 				98CAC6112C5E9DA100463B95 /* OutlineShader.metal in Sources */,
 				C907E7AA2C61CC4D003C57A4 /* SwiftUIView.swift in Sources */,
 				C97A5CF02C5B58A50069285C /* ActionButtonView.swift in Sources */,
@@ -450,9 +455,12 @@
 				C9DD7BC12C5A0B3F004DCD03 /* NoteTimeSelectionView.swift in Sources */,
 				C907E7A02C6054CF003C57A4 /* InstrumentCardView.swift in Sources */,
 				C97A5CED2C5B570F0069285C /* UIExtensions.swift in Sources */,
+				2890BA7D2C629D6200754C9D /* ScaledFont.swift in Sources */,
 				28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */,
+				2890BA7C2C629D5E00754C9D /* Custom3DView.swift in Sources */,
 				C9DD7BBD2C5985A0004DCD03 /* BPMSelectorView.swift in Sources */,
 				C97A5CF22C5B58CD0069285C /* PauseButtonView.swift in Sources */,
+				2890BA7A2C629D4C00754C9D /* StartView.swift in Sources */,
 				C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */,
 				C9E01BAB2C56EDFC001CB428 /* ARViewContainer.swift in Sources */,
 				98B7B8272C615F430047F5A6 /* BackButtonView.swift in Sources */,
@@ -624,7 +632,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = SVGXRR5RRA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
@@ -664,7 +672,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = SVGXRR5RRA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
