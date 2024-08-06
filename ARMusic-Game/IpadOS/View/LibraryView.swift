@@ -24,6 +24,7 @@ struct LibraryView: View {
     @State private var itemPositions: [UUID: CGSize] = [:]
     
     @State private var searchText: String = ""
+    @State private var selectedItemIndex: Int? = nil // Estado para armazenar o índice do item selecionado
     
     var body: some View {
         VStack {
@@ -121,7 +122,7 @@ struct LibraryView: View {
             
             Rectangle()
                 .foregroundStyle(.green)
-                .frame(width: UIScreen.main.bounds.width * 0.2672,height: UIScreen.main.bounds.width * 0.2672)
+                .frame(width: UIScreen.main.bounds.width * 0.2342,height: UIScreen.main.bounds.width * 0.2342)
                 .overlay {
                     tocador
                 }
@@ -147,8 +148,8 @@ struct LibraryView: View {
     var scroll: some View {
         ScrollView(.vertical) {
             LazyVGrid(columns: fixedColumns) {
-                ForEach(data) { item in
-                    itemCDScrollView(item: item)
+                ForEach(data.indices, id: \.self) { index in
+                    itemCDScrollView(item: data[index], index: index)
                 }
             }
         }
@@ -161,7 +162,7 @@ struct LibraryView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding()
             .overlay(
-                Text("Tocador")
+                Text(selectedItemIndex != nil ? "Índice: \(selectedItemIndex!)" : "Tocador")
                     .foregroundColor(.white)
             )
     }
@@ -191,24 +192,54 @@ struct LibraryView: View {
             .frame(width: UIScreen.main.bounds.width * 0.2342,height: UIScreen.main.bounds.height * 0.2416)
     }
     
-    func itemCDScrollView(item: CDItem) -> some View {
+    func itemCDScrollView(item: CDItem, index: Int) -> some View {
         ZStack {
             VStack {
-                Rectangle()
-                    .frame(
-                        width: UIScreen.main.bounds.width * 0.183,
-                        height: UIScreen.main.bounds.height * 0.244
-                    )
-                    .padding(.bottom, 40)
+                HStack(spacing: 0) {
+                            Square()
+                                .fill(Color.gray)
+                                .frame(width: 100, height: 100)
+                            
+                            HalfCircle()
+                                .fill(Color.black)
+                                .frame(width: 100, height: 100)
+                        }
+                
                 
                 Text("Lorem ipsum dolor sit amet consecteur adpiscing elit, sed do ejusmod tempor.")
                     .bold()
                     .foregroundStyle(.black)
             }
         }
+        .onTapGesture {
+            selectedItemIndex = index // Atualiza o índice do item selecionado
+        }
     }
 }
 
 #Preview {
     LibraryView()
+}
+
+struct Square: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.addRect(CGRect(origin: .zero, size: rect.size))
+        return path
+    }
+}
+
+struct HalfCircle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.addArc(center: CGPoint(x: 0, y: rect.midY),
+                    radius: rect.midY,
+                    startAngle: .degrees(-90),
+                    endAngle: .degrees(90),
+                    clockwise: false)
+        path.addLine(to: CGPoint(x: 0, y: rect.maxY))
+        path.addLine(to: CGPoint(x: 0, y: 0))
+        path.closeSubpath()
+        return path
+    }
 }
