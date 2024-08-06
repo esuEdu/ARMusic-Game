@@ -34,7 +34,6 @@ struct LibraryView: View {
                     scroll
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.6712)
-                .foregroundStyle(.gray)
                 
                 //MARK: - Tocador
                 player
@@ -80,6 +79,7 @@ struct LibraryView: View {
     
     var toolbar: some View {
         HStack {
+            // back button
             Circle()
                 .frame(width: UIScreen.main.bounds.width * 0.1025,height: UIScreen.main.bounds.height * 0.1367)
                 .foregroundStyle(.gray)
@@ -91,6 +91,8 @@ struct LibraryView: View {
                 }
             
             Spacer()
+            
+            // search bar
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.gray)
@@ -104,11 +106,9 @@ struct LibraryView: View {
             .frame(width: UIScreen.main.bounds.width * 0.5)
             Spacer()
             
+            // filter button
             Circle()
-                .frame(
-                    width: UIScreen.main.bounds.width * 0.1025,
-                    height: UIScreen.main.bounds.height * 0.1367
-                )
+                .frame(width: UIScreen.main.bounds.width * 0.1025, height: UIScreen.main.bounds.height * 0.1367)
                 .foregroundStyle(.gray)
                 .overlay {
                     Image(systemName: "line.horizontal.3.decrease.circle")
@@ -118,99 +118,54 @@ struct LibraryView: View {
                 }
             
         }
+        .foregroundStyle(.clear)
     }
     
     //MARK: - Player
     var player: some View {
-        Rectangle()
-            .frame(maxHeight: .infinity)
-            .foregroundStyle(.blue)
-            .overlay {
-                VStack {
-                    Rectangle()
-                        .foregroundStyle(.gray)
+        VStack(spacing: 30) {
+            moreOptionsButton
+            Rectangle()
+                .foregroundStyle(.blue)
+                .overlay {
+                    Text("Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor.")
+                        .bold()
                         .padding()
-                        .overlay {
-                            Text("Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor.")
-                                .bold()
-                                .padding()
-                        }
-                    
-                    Rectangle()
-                        .foregroundStyle(.green)
-                        .padding()
-                        .frame(
-                            width: UIScreen.main.bounds.width * 0.2672,
-                            height: UIScreen.main.bounds.height * 0.3564
-                        )
-                    Circle()
-                        .overlay {
-                            Image(systemName: "pause.fill")
-                                .bold()
-                                .foregroundStyle(.red)
-                        }
-                        .overlay {
-                            tocador
-                        }
-                    
-                    
-                    //                    Button("Entrar") {
-                    //                        print("oie")
-                    //                    }
-                    //                    .foregroundStyle(.red)
-                    
-                    btn("Entrar")
-                    
                 }
-            }
-            .overlay(alignment: .topTrailing) {
-                Circle()
-                    .frame(width: 50, height: 50)
-                    .overlay {
-                        Text("...")
-                            .bold()
-                            .foregroundStyle(.white)
-                    }
-            }
+                .frame(width: UIScreen.main.bounds.width * 0.2342,height: UIScreen.main.bounds.height * 0.1416)
+            
+            Rectangle()
+                .foregroundStyle(.green)
+                .padding()
+                .frame(width: UIScreen.main.bounds.width * 0.2672,height: UIScreen.main.bounds.height * 0.3564)
+            
+            
+            Circle()
+                .overlay {
+                    Image(systemName: "pause.fill")
+                        .bold()
+                        .foregroundStyle(.red)
+                }
+                .overlay {
+                    tocador
+                }
+            
+            btn("Entrar")
+            
+        }
+        .padding(36)
+        .background(.gray)
     }
     
     var scroll: some View {
         ScrollView(.vertical) {
             LazyVGrid(columns: fixedColumns) {
                 ForEach(data) { item in
-                    ZStack {
-                        cd()
-                            .offset(itemPositions[item.id] ?? .zero)
-                            .gesture(
-                                DragGesture()
-                                    .onChanged { value in
-                                        isDragging = true
-                                        draggedItem = item
-                                        dragOffset = value.translation
-                                        itemPositions[item.id] = dragOffset
-                                    }
-                                    .onEnded { _ in
-                                        isDragging = false
-                                        print("Item \(item.text) movido para: \(dragOffset)")
-                                        draggedItem = nil
-                                        dragOffset = .zero
-                                    }
-                            )
-                        
-                    }
-                    //       .zIndex(draggedItem == item ? 1 : 0)
-                    //                    .overlay {
-                    //                        Text(item.text)
-                    //                            .font(.largeTitle)
-                    //                            .bold()
-                    //                            .fontDesign(.rounded)
-                    //                            .foregroundStyle(.black)
-                    //                    }
+                    itemCDScrollView(item: item)
                 }
             }
         }
         .frame(width: UIScreen.main.bounds.width * 0.66)
-        .background(Color.blue)
     }
     
     var tocador: some View {
@@ -221,6 +176,51 @@ struct LibraryView: View {
                 Text("Tocador")
                     .foregroundColor(.white)
             )
+    }
+    
+    var moreOptionsButton: some View {
+        HStack {
+            Spacer()
+            Circle()
+                .frame(width: 50, height: 50)
+                .overlay {
+                    Text("...")
+                        .bold()
+                        .foregroundStyle(.white)
+                }
+        }
+    }
+    
+    func itemCDScrollView(item: CDItem) -> some View {
+        ZStack {
+            cd()
+                .offset(itemPositions[item.id] ?? .zero)
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            isDragging = true
+                            draggedItem = item
+                            dragOffset = value.translation
+                            itemPositions[item.id] = dragOffset
+                        }
+                        .onEnded { _ in
+                            isDragging = false
+                            print("Item \(item.text) movido para: \(dragOffset)")
+                            draggedItem = nil
+                            dragOffset = .zero
+                        }
+                )
+            
+        }
+        //       .zIndex(draggedItem == item ? 1 : 0)
+        //                    .overlay {
+        //                        Text(item.text)
+        //                            .font(.largeTitle)
+        //                            .bold()
+        //                            .fontDesign(.rounded)
+        //                            .foregroundStyle(.black)
+        //                    }
+
     }
 }
 
