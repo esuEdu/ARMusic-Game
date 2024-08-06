@@ -121,7 +121,7 @@ struct LibraryView: View {
             
             Rectangle()
                 .foregroundStyle(.green)
-                .frame(width: UIScreen.main.bounds.width * 0.2672,height: UIScreen.main.bounds.height * 0.3564)
+                .frame(width: UIScreen.main.bounds.width * 0.2672,height: UIScreen.main.bounds.width * 0.2672)
                 .overlay {
                     tocador
                 }
@@ -158,7 +158,8 @@ struct LibraryView: View {
     var tocador: some View {
         Circle()
             .foregroundStyle(.black)
-            .frame(width: 100, height: 100)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding()
             .overlay(
                 Text("Tocador")
                     .foregroundColor(.white)
