@@ -42,25 +42,7 @@ struct LibraryView: View {
             }
         }
     }
-    
-    func cd() -> some View {
-        VStack {
-            Rectangle()
-                .frame(
-                    width: UIScreen.main.bounds.width * 0.183,
-                    height: UIScreen.main.bounds.height * 0.244
-                )
-                .padding(.bottom, 40)
-            
-            Text("Lorem ipsum dolor sit amet consecteur adpiscing elit, sed do ejusmod tempor.")
-                .bold()
-                .foregroundStyle(.black)
-        }
-    }
-    
-    
-    
-    
+
     func btn(_ text: String) -> some View {
         RoundedRectangle(cornerRadius: 25.0)
             .foregroundStyle(.pink)
@@ -210,34 +192,19 @@ struct LibraryView: View {
     
     func itemCDScrollView(item: CDItem) -> some View {
         ZStack {
-            cd()
-                .offset(itemPositions[item.id] ?? .zero)
-                .gesture(
-                    DragGesture()
-                        .onChanged { value in
-                            isDragging = true
-                            draggedItem = item
-                            dragOffset = value.translation
-                            itemPositions[item.id] = dragOffset
-                        }
-                        .onEnded { _ in
-                            isDragging = false
-                            print("Item \(item.text) movido para: \(dragOffset)")
-                            draggedItem = nil
-                            dragOffset = .zero
-                        }
-                )
-            
+            VStack {
+                Rectangle()
+                    .frame(
+                        width: UIScreen.main.bounds.width * 0.183,
+                        height: UIScreen.main.bounds.height * 0.244
+                    )
+                    .padding(.bottom, 40)
+                
+                Text("Lorem ipsum dolor sit amet consecteur adpiscing elit, sed do ejusmod tempor.")
+                    .bold()
+                    .foregroundStyle(.black)
+            }
         }
-        //       .zIndex(draggedItem == item ? 1 : 0)
-        //                    .overlay {
-        //                        Text(item.text)
-        //                            .font(.largeTitle)
-        //                            .bold()
-        //                            .fontDesign(.rounded)
-        //                            .foregroundStyle(.black)
-        //                    }
-
     }
 }
 
