@@ -13,10 +13,19 @@ import DataPackage
 
 public class ModelLoader {
 
-    public static var shared = ModelLoader()
-    var loadedModels: [String: InstrumentEntity] = [:]
+    private static var loadedModels: [String: InstrumentEntity] = [:]
     
-    func loadModel(for instrument: Instruments, into anchor: AnchorEntity, with arView: ARView) {
+    public static func loadAllModels() {
+        
+        let instruments = Instruments.allCases
+        
+        for instrument in instruments {
+            load(instrument: instrument)
+        }
+        
+    }
+    
+    public static func loadModel(for instrument: Instruments, into anchor: AnchorEntity, with arView: ARView) {
         let modelName = instrument.rawValue
         
         let position: SIMD3<Float> = getPosition(arView)
@@ -30,7 +39,7 @@ public class ModelLoader {
         anchor.addChild(entity)
     }
     
-    private func load(instrument: Instruments) {
+    private static func load(instrument: Instruments) {
         
         let modelData = ModelData(instrument: instrument)
         
@@ -45,7 +54,7 @@ public class ModelLoader {
         loadedModels[instrument.rawValue] = instrumentEntity
     }
     
-    private func getPosition(_ arView: ARView) -> SIMD3<Float> {
+    private static func getPosition(_ arView: ARView) -> SIMD3<Float> {
         var position: SIMD3<Float> = .zero
         
         let raycast = arView.raycast(from: arView.center, allowing: .estimatedPlane, alignment: .horizontal)
