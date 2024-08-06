@@ -41,9 +41,10 @@ struct StartView: View {
         ZStack {
             HStack {
                 VStack {
-                    btn()
+                    btn(text: "Start") {
+                        print("Start btn clicked")
+                    }
                     
-                    btn()
                 }
                 .padding(20)
                 
@@ -84,17 +85,18 @@ struct StartView: View {
         }
     }
     
-    func btn() -> some View {
+    func btn(text: String, action: @escaping ()->Void) -> some View {
         RoundedRectangle(cornerRadius: 25.0)
+            .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.20)
             .foregroundStyle(.pink)
             .overlay {
-                Text("text")
+                Text(text)
                     .font(.largeTitle)
                     .bold()
                     .foregroundStyle(.blue)
             }
             .onTapGesture {
-                print("clicked")
+                action()
             }
     }
 }

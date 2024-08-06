@@ -19,6 +19,17 @@
 		28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D22C49DAD200051E74 /* DataPackage */; };
 		98B7B8272C615F430047F5A6 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7B8262C615F430047F5A6 /* BackButtonView.swift */; };
 		98CAC6112C5E9DA100463B95 /* OutlineShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 98CAC6102C5E9DA100463B95 /* OutlineShader.metal */; };
+		AF4402922C62A0DF009F5951 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660022C596DD000D92541 /* StartView.swift */; };
+		AF4402932C62A0E0009F5951 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660022C596DD000D92541 /* StartView.swift */; };
+		AF4402942C62A0ED009F5951 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660062C59743900D92541 /* MotionManager.swift */; };
+		AF4402952C62A0ED009F5951 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660062C59743900D92541 /* MotionManager.swift */; };
+		AF4402962C62A0F5009F5951 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660062C59743900D92541 /* MotionManager.swift */; };
+		AF4402972C62A107009F5951 /* Custom3DView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660152C5C1FD900D92541 /* Custom3DView.swift */; };
+		AF4402982C62A107009F5951 /* Custom3DView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660152C5C1FD900D92541 /* Custom3DView.swift */; };
+		AF4402992C62A108009F5951 /* Custom3DView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660152C5C1FD900D92541 /* Custom3DView.swift */; };
+		AF44029A2C62A10A009F5951 /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660042C5970B000D92541 /* ScaledFont.swift */; };
+		AF44029B2C62A10B009F5951 /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660042C5970B000D92541 /* ScaledFont.swift */; };
+		AF44029C2C62A10B009F5951 /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660042C5970B000D92541 /* ScaledFont.swift */; };
 		AF8660112C5AD52C00D92541 /* pancakes.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AF8660102C5AD52C00D92541 /* pancakes.usdz */; };
 		C907E7A02C6054CF003C57A4 /* InstrumentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E79F2C6054CF003C57A4 /* InstrumentCardView.swift */; };
 		C907E7A32C607BA8003C57A4 /* InstrumentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E7A22C607BA8003C57A4 /* InstrumentInfo.swift */; };
@@ -443,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28CE72A02C49D8EC00051E74 /* RealityView.swift in Sources */,
+				AF4402952C62A0ED009F5951 /* MotionManager.swift in Sources */,
 				98CAC6112C5E9DA100463B95 /* OutlineShader.metal in Sources */,
 				C907E7AA2C61CC4D003C57A4 /* SwiftUIView.swift in Sources */,
 				C97A5CF02C5B58A50069285C /* ActionButtonView.swift in Sources */,
@@ -450,9 +462,12 @@
 				C9DD7BC12C5A0B3F004DCD03 /* NoteTimeSelectionView.swift in Sources */,
 				C907E7A02C6054CF003C57A4 /* InstrumentCardView.swift in Sources */,
 				C97A5CED2C5B570F0069285C /* UIExtensions.swift in Sources */,
+				AF44029C2C62A10B009F5951 /* ScaledFont.swift in Sources */,
 				28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */,
+				AF4402992C62A108009F5951 /* Custom3DView.swift in Sources */,
 				C9DD7BBD2C5985A0004DCD03 /* BPMSelectorView.swift in Sources */,
 				C97A5CF22C5B58CD0069285C /* PauseButtonView.swift in Sources */,
+				AF4402922C62A0DF009F5951 /* StartView.swift in Sources */,
 				C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */,
 				C9E01BAB2C56EDFC001CB428 /* ARViewContainer.swift in Sources */,
 				98B7B8272C615F430047F5A6 /* BackButtonView.swift in Sources */,
@@ -469,6 +484,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				28CE72AF2C49D8EE00051E74 /* ARMusic_GameTests.swift in Sources */,
+				AF4402942C62A0ED009F5951 /* MotionManager.swift in Sources */,
+				AF4402982C62A107009F5951 /* Custom3DView.swift in Sources */,
+				AF4402932C62A0E0009F5951 /* StartView.swift in Sources */,
+				AF44029B2C62A10B009F5951 /* ScaledFont.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +496,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				28CE72B92C49D8EE00051E74 /* ARMusic_GameUITests.swift in Sources */,
+				AF4402962C62A0F5009F5951 /* MotionManager.swift in Sources */,
+				AF4402972C62A107009F5951 /* Custom3DView.swift in Sources */,
 				28CE72BB2C49D8EE00051E74 /* ARMusic_GameUITestsLaunchTests.swift in Sources */,
+				AF44029A2C62A10A009F5951 /* ScaledFont.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,7 +646,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = 5Y55P884H9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
@@ -664,7 +686,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = 5Y55P884H9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
