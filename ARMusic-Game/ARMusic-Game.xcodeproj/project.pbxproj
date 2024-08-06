@@ -23,6 +23,8 @@
 		C907E7A02C6054CF003C57A4 /* InstrumentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E79F2C6054CF003C57A4 /* InstrumentCardView.swift */; };
 		C907E7A32C607BA8003C57A4 /* InstrumentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E7A22C607BA8003C57A4 /* InstrumentInfo.swift */; };
 		C907E7A52C60FCE1003C57A4 /* guitarra.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C907E7A42C60FCE1003C57A4 /* guitarra.usdz */; };
+		C907E7A82C616DB0003C57A4 /* PauseModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E7A72C616DB0003C57A4 /* PauseModalView.swift */; };
+		C907E7AA2C61CC4D003C57A4 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E7A92C61CC4D003C57A4 /* SwiftUIView.swift */; };
 		C97A5CED2C5B570F0069285C /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CEC2C5B570F0069285C /* UIExtensions.swift */; };
 		C97A5CF02C5B58A50069285C /* ActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CEF2C5B58A50069285C /* ActionButtonView.swift */; };
 		C97A5CF22C5B58CD0069285C /* PauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CF12C5B58CD0069285C /* PauseButtonView.swift */; };
@@ -76,6 +78,8 @@
 		C907E79F2C6054CF003C57A4 /* InstrumentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCardView.swift; sourceTree = "<group>"; };
 		C907E7A22C607BA8003C57A4 /* InstrumentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentInfo.swift; sourceTree = "<group>"; };
 		C907E7A42C60FCE1003C57A4 /* guitarra.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = guitarra.usdz; sourceTree = "<group>"; };
+		C907E7A72C616DB0003C57A4 /* PauseModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseModalView.swift; sourceTree = "<group>"; };
+		C907E7A92C61CC4D003C57A4 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		C97A5CEC2C5B570F0069285C /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		C97A5CEF2C5B58A50069285C /* ActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonView.swift; sourceTree = "<group>"; };
 		C97A5CF12C5B58CD0069285C /* PauseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButtonView.swift; sourceTree = "<group>"; };
@@ -258,6 +262,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C907E7A62C616D94003C57A4 /* PauseModal */ = {
+			isa = PBXGroup;
+			children = (
+				C907E7A72C616DB0003C57A4 /* PauseModalView.swift */,
+				C907E7A92C61CC4D003C57A4 /* SwiftUIView.swift */,
+			);
+			path = PauseModal;
+			sourceTree = "<group>";
+		};
 		C97A5CEB2C5B56F80069285C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +292,7 @@
 		C9DD7BB92C596B91004DCD03 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
+				C907E7A62C616D94003C57A4 /* PauseModal */,
 				C907E79E2C60542A003C57A4 /* InstrumentList */,
 				C9E01BB12C573F56001CB428 /* MainHUDView.swift */,
 				C97A5CEE2C5B587E0069285C /* ActionButtonView */,
@@ -430,6 +444,7 @@
 			files = (
 				28CE72A02C49D8EC00051E74 /* RealityView.swift in Sources */,
 				98CAC6112C5E9DA100463B95 /* OutlineShader.metal in Sources */,
+				C907E7AA2C61CC4D003C57A4 /* SwiftUIView.swift in Sources */,
 				C97A5CF02C5B58A50069285C /* ActionButtonView.swift in Sources */,
 				28CE72A02C49D8EC00051E74 /* RealityView.swift in Sources */,
 				C9DD7BC12C5A0B3F004DCD03 /* NoteTimeSelectionView.swift in Sources */,
@@ -441,6 +456,7 @@
 				C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */,
 				C9E01BAB2C56EDFC001CB428 /* ARViewContainer.swift in Sources */,
 				98B7B8272C615F430047F5A6 /* BackButtonView.swift in Sources */,
+				C907E7A82C616DB0003C57A4 /* PauseModalView.swift in Sources */,
 				C907E7A32C607BA8003C57A4 /* InstrumentInfo.swift in Sources */,
 				C9E01BA92C56EDA0001CB428 /* InstrumentListView.swift in Sources */,
 				C9DD7BBF2C5A0282004DCD03 /* SelectMusicalNoteView.swift in Sources */,

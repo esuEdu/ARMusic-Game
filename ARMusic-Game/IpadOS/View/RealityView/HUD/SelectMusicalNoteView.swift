@@ -64,7 +64,7 @@ struct SelectMusicalNoteView: View {
             }
             
             NoteButton(
-                note: showMenu ? "xmark" : (selectedNote != nil ? "music.note" : ""),
+                note: showMenu ? "xmark" : (selectedNote ?? "music.note"),
                 action: {
                     withAnimation {
                         if showMenu {
@@ -74,7 +74,7 @@ struct SelectMusicalNoteView: View {
                         showMenu.toggle()
                     }
                 },
-                isSystemImage: (selectedNote != nil) || showMenu
+                isSystemImage: selectedNote == nil || showMenu
             )
 
         }
