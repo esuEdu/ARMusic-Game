@@ -27,6 +27,7 @@ import AudioPackage
     public override init() {
         super.init()
         MetalConfig.initialize()
+        ModelLoader.loadAllModels()
     }
 
     private func unpause() {
