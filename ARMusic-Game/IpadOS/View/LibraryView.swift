@@ -80,15 +80,18 @@ struct LibraryView: View {
     var toolbar: some View {
         HStack {
             // back button
-            Circle()
-                .frame(width: UIScreen.main.bounds.width * 0.1025,height: UIScreen.main.bounds.height * 0.1367)
-                .foregroundStyle(.gray)
-                .overlay {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 32))
-                        .fontWeight(.heavy)
-                        .foregroundStyle(.black)
-                }
+            ZStack {
+                Circle()
+                    .frame(width: UIScreen.main.bounds.width * 0.1025,height: UIScreen.main.bounds.height * 0.1367)
+                    .foregroundStyle(.gray)
+                    .overlay {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 32))
+                            .fontWeight(.heavy)
+                            .foregroundStyle(.black)
+                    }
+            }
+            .padding(.leading, 20)
             
             Spacer()
             
@@ -103,54 +106,56 @@ struct LibraryView: View {
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
             }
-            .frame(width: UIScreen.main.bounds.width * 0.5)
+            .frame(maxWidth: .infinity)
             Spacer()
             
             // filter button
-            Circle()
-                .frame(width: UIScreen.main.bounds.width * 0.1025, height: UIScreen.main.bounds.height * 0.1367)
-                .foregroundStyle(.gray)
-                .overlay {
-                    Image(systemName: "line.horizontal.3.decrease.circle")
-                        .font(.system(size: 32))
-                        .fontWeight(.heavy)
-                        .foregroundStyle(.black)
-                }
+            ZStack {
+                Circle()
+                    .frame(width: UIScreen.main.bounds.width * 0.1025, height: UIScreen.main.bounds.height * 0.1367)
+                    .foregroundStyle(.gray)
+                    .overlay {
+                        Image(systemName: "line.horizontal.3.decrease.circle")
+                            .font(.system(size: 32))
+                            .fontWeight(.heavy)
+                            .foregroundStyle(.black)
+                    }
+            }
+            .padding(.trailing, 20)
             
         }
-        .foregroundStyle(.clear)
+        .background(.clear)
+        .frame(maxWidth: .infinity)
+        .padding(.vertical)
+            
     }
     
     //MARK: - Player
     var player: some View {
-        VStack(spacing: 30) {
+        VStack {
             moreOptionsButton
-            Rectangle()
-                .foregroundStyle(.blue)
-                .overlay {
-                    Text("Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor.")
-                        .bold()
-                        .padding()
-                }
-                .frame(width: UIScreen.main.bounds.width * 0.2342,height: UIScreen.main.bounds.height * 0.1416)
+            
+            explicationCDText
             
             Rectangle()
                 .foregroundStyle(.green)
-                .padding()
                 .frame(width: UIScreen.main.bounds.width * 0.2672,height: UIScreen.main.bounds.height * 0.3564)
-            
+                .overlay {
+                    tocador
+                }
+
             
             Circle()
+                .foregroundStyle(.black)
                 .overlay {
                     Image(systemName: "pause.fill")
                         .bold()
                         .foregroundStyle(.red)
                 }
-                .overlay {
-                    tocador
-                }
-            
-            btn("Entrar")
+                        
+            Button("Entrar") {
+                
+            }
             
         }
         .padding(36)
@@ -189,6 +194,18 @@ struct LibraryView: View {
                         .foregroundStyle(.white)
                 }
         }
+    }
+    
+    var explicationCDText: some View {
+        Rectangle()
+            .foregroundStyle(.blue)
+            .overlay {
+                Text("Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor.")
+                    .bold()
+                    .padding()
+                    .font(.caption)
+            }
+            .frame(width: UIScreen.main.bounds.width * 0.2342,height: UIScreen.main.bounds.height * 0.2416)
     }
     
     func itemCDScrollView(item: CDItem) -> some View {
