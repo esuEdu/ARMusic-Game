@@ -23,6 +23,8 @@ import AudioPackage
     public var arView: MainARView?
     public var stateMachine = ARStateMachine()
     var modelLoader = ModelLoader()
+    var initialized = false
+    
     
     public override init() {
         super.init()
