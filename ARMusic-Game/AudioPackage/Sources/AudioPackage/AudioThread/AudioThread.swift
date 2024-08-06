@@ -18,6 +18,7 @@ public class AudioThread: Thread {
     private let position: SIMD3<Float>
     private let audioUtil = AudioUtils.shared
     private let noteDuration: Float
+    public var maxVolume: Float = 1.0
     
     public init(at position: SIMD3<Float>, with url: URL, noteDuration: Float) {
         self.url = url
@@ -89,7 +90,7 @@ public class AudioThread: Thread {
         let minVolume: Float = 0.1
         let volume = max(minVolume, 1 - (distance / maxDistance))
         
-        audioPlayerNode.volume = volume
+        audioPlayerNode.volume = min(volume, maxVolume)
     }
     
     private func cleanup() {

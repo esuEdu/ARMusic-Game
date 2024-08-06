@@ -13,6 +13,7 @@ public class AudioTimerManager {
     var timer: Timer = Timer()
     var isRunning: Bool = false
     var pausedTime: TimeInterval = 0
+    public var muted = false
     
     public var noteDuration = {
         Float(7500/AudioUtils.shared.BPM)

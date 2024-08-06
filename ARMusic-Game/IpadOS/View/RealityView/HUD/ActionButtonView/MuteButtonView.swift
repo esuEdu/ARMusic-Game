@@ -6,14 +6,21 @@
 //
 
 import SwiftUI
+import ARPackage
 
 struct MuteButtonView: View {
-    @Binding var isMuted: Bool
+
+    @Environment(ARViewManager.self) var arViewManager: ARViewManager
+    
     var body: some View {
+        
+        @Bindable var arViewManager = arViewManager
+        
+        
         ActionButtonView(
-            iconName: isMuted ? "speaker.slash.fill" : "speaker.2.fill",
+            iconName: arViewManager.muted ? "speaker.slash.fill" : "speaker.2.fill",
             action: {
-                isMuted.toggle()
+                arViewManager.muted.toggle()
             },
             backgroundColor: .white,
             iconColor: .black
@@ -23,5 +30,5 @@ struct MuteButtonView: View {
 }
 
 #Preview {
-    MuteButtonView(isMuted: Binding.constant(true))
+    MuteButtonView()
 }
