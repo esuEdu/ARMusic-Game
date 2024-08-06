@@ -39,9 +39,6 @@ struct Custom3DView: UIViewRepresentable {
         let chairNode = scene.rootNode.childNodes.first
         chairNode?.eulerAngles.x = Float(rotation.x * .pi / 180)
         chairNode?.eulerAngles.y = Float(rotation.y * .pi / 180)
-        
-        print("x: \(chairNode?.eulerAngles.x ?? 0)")
-        print("y: \(chairNode?.eulerAngles.y ?? 0)")
     }
 }
  

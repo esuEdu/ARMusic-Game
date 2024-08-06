@@ -19,6 +19,7 @@ struct RealityView: View {
             
             MainHUDView()
         }
+        .navigationBarHidden(true) // Hides the navigation bar
         .environment(arViewManager)
         .ignoresSafeArea()
     }
