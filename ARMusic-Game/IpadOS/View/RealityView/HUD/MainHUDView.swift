@@ -16,7 +16,7 @@ struct MainHUDView: View {
     @State private var isMuted:Bool = false
     
     @State var selectedNote:String? = nil
-
+    
     var body: some View {
         ZStack {
             switch arViewManager.stateMachine.state {
@@ -45,6 +45,13 @@ struct MainHUDView: View {
                 EmptyView()
             }
         }
+        .overlay(
+            Group {
+                if isPaused {
+                    PauseModalView(isPresented: $isPaused)
+                }
+            }
+        )
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
