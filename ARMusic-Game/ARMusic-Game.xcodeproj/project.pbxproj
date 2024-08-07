@@ -21,13 +21,10 @@
 		28CE72CD2C49DAC900051E74 /* ARPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CC2C49DAC900051E74 /* ARPackage */; };
 		28CE72CF2C49DACD00051E74 /* AudioPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CE2C49DACD00051E74 /* AudioPackage */; };
 		28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D22C49DAD200051E74 /* DataPackage */; };
-		985B14FC2C62B734005404AF /* untitled.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 985B14FB2C62B734005404AF /* untitled.usdz */; };
 		98B7B8272C615F430047F5A6 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7B8262C615F430047F5A6 /* BackButtonView.swift */; };
 		98CAC6112C5E9DA100463B95 /* OutlineShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 98CAC6102C5E9DA100463B95 /* OutlineShader.metal */; };
-		AF8660112C5AD52C00D92541 /* pancakes.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AF8660102C5AD52C00D92541 /* pancakes.usdz */; };
 		C907E7A02C6054CF003C57A4 /* InstrumentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E79F2C6054CF003C57A4 /* InstrumentCardView.swift */; };
 		C907E7A32C607BA8003C57A4 /* InstrumentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E7A22C607BA8003C57A4 /* InstrumentInfo.swift */; };
-		C907E7A52C60FCE1003C57A4 /* guitarra.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C907E7A42C60FCE1003C57A4 /* guitarra.usdz */; };
 		C907E7A82C616DB0003C57A4 /* PauseModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E7A72C616DB0003C57A4 /* PauseModalView.swift */; };
 		C907E7AA2C61CC4D003C57A4 /* ButtonPauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E7A92C61CC4D003C57A4 /* ButtonPauseView.swift */; };
 		C97A5CED2C5B570F0069285C /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CEC2C5B570F0069285C /* UIExtensions.swift */; };
@@ -73,17 +70,14 @@
 		28CE72C82C49D97B00051E74 /* DataPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataPackage; sourceTree = "<group>"; };
 		28CE72C92C49D99700051E74 /* AudioPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AudioPackage; sourceTree = "<group>"; };
 		28CE72CA2C49D9AD00051E74 /* ARPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ARPackage; sourceTree = "<group>"; };
-		985B14FB2C62B734005404AF /* untitled.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = untitled.usdz; path = ../../../../../../Desktop/untitled.usdz; sourceTree = "<group>"; };
 		98B7B8262C615F430047F5A6 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		98CAC6102C5E9DA100463B95 /* OutlineShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = OutlineShader.metal; sourceTree = "<group>"; };
 		AF8660022C596DD000D92541 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		AF8660042C5970B000D92541 /* ScaledFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
 		AF8660062C59743900D92541 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
-		AF8660102C5AD52C00D92541 /* pancakes.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = pancakes.usdz; sourceTree = "<group>"; };
 		AF8660152C5C1FD900D92541 /* Custom3DView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custom3DView.swift; sourceTree = "<group>"; };
 		C907E79F2C6054CF003C57A4 /* InstrumentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCardView.swift; sourceTree = "<group>"; };
 		C907E7A22C607BA8003C57A4 /* InstrumentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentInfo.swift; sourceTree = "<group>"; };
-		C907E7A42C60FCE1003C57A4 /* guitarra.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = guitarra.usdz; sourceTree = "<group>"; };
 		C907E7A72C616DB0003C57A4 /* PauseModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseModalView.swift; sourceTree = "<group>"; };
 		C907E7A92C61CC4D003C57A4 /* ButtonPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPauseView.swift; sourceTree = "<group>"; };
 		C97A5CEC2C5B570F0069285C /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
@@ -154,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				C907E7A12C607B93003C57A4 /* Model */,
-				AF8660172C5C20BB00D92541 /* 3DAssets */,
 				28CE72D42C49DB3200051E74 /* View */,
 				AF8660142C5C1F8200D92541 /* Components */,
 				28CE72D62C49DB4E00051E74 /* Assets */,
@@ -241,16 +234,6 @@
 				AF8660042C5970B000D92541 /* ScaledFont.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		AF8660172C5C20BB00D92541 /* 3DAssets */ = {
-			isa = PBXGroup;
-			children = (
-				985B14FB2C62B734005404AF /* untitled.usdz */,
-				C907E7A42C60FCE1003C57A4 /* guitarra.usdz */,
-				AF8660102C5AD52C00D92541 /* pancakes.usdz */,
-			);
-			path = 3DAssets;
 			sourceTree = "<group>";
 		};
 		C907E79E2C60542A003C57A4 /* InstrumentList */ = {
@@ -421,9 +404,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C907E7A52C60FCE1003C57A4 /* guitarra.usdz in Resources */,
-				985B14FC2C62B734005404AF /* untitled.usdz in Resources */,
-				AF8660112C5AD52C00D92541 /* pancakes.usdz in Resources */,
 				28CE72A52C49D8ED00051E74 /* Preview Assets.xcassets in Resources */,
 				28CE72A22C49D8ED00051E74 /* Assets.xcassets in Resources */,
 			);
@@ -636,7 +616,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 4VHUF9729L;
+				DEVELOPMENT_TEAM = SVGXRR5RRA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
@@ -676,7 +656,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 4VHUF9729L;
+				DEVELOPMENT_TEAM = SVGXRR5RRA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";

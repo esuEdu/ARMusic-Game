@@ -26,7 +26,7 @@ public class InstrumentEntity: Entity, HasModel, HasCollision {
     }
     
     public override func didClone(from source: Entity) {
-        self.transform.scale = simd_float3(x: 0.01, y: 0.01, z: 0.01)
+        self.transform.scale = simd_float3(x: 0.5, y: 0.5, z: 0.5)
     }
     
     public static func fromModelEntity(_ modelEntity: ModelEntity, instrument: Instruments) -> InstrumentEntity {

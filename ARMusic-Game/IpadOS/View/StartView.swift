@@ -1,9 +1,13 @@
 import SwiftUI
 import SceneKit
 import CoreMotion
+import DataPackage
 import ARKit
 
 struct StartView: View {
+    
+    @State private var currentHue: Double = 0
+
     
     @ObservedObject var managerMotion = MotionManager()
     @State var scene: SCNScene? = .init(named: "pancakes.usdz")
@@ -73,6 +77,12 @@ struct StartView: View {
                         }
                     }
                     .onAppear {
+                        
+                        Task {
+                            if let modelURL = ModelData(instrument: .piano).getURL() {
+                                scene = try? .init(url: modelURL)
+                            }
+                        }
                         if motionManager.isDeviceMotionAvailable {
                             self.motionManager.deviceMotionUpdateInterval = 1.0 / 60.0
                             self.motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { (data, error) in
@@ -83,6 +93,7 @@ struct StartView: View {
                                 
                             }
                         }
+
                     }
                 }
                 .padding()
@@ -91,6 +102,8 @@ struct StartView: View {
                         .resizable()
                         .frame(width: UIScreen.main.bounds.size.height * 3.0)
                         .frame(height: UIScreen.main.bounds.size.height * 3.0)
+                        .blendMode(.softLight)
+                        .background(waveGradient())
                         .offset(x: managerMotion.roll * 100, y: managerMotion.pitch * 100)
                         .onAppear {
                             managerMotion.startMonitoringMotionUpdates()
@@ -113,6 +126,17 @@ struct StartView: View {
                     EmptyView()
                 }
             }
+        }
+    }
+    
+    func waveGradient() -> LinearGradient {
+        return LinearGradient(gradient: Gradient(colors: [Color(hue: currentHue, saturation: 1.0, brightness: 1.0), Color(hue: currentHue + 0.1, saturation: 1.0, brightness: 1.0)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    }
+    
+    func updateColor() {
+        currentHue += 0.0001 // Adjust the rate of color change here
+        if currentHue >= 1.0 {
+            currentHue = 0.0
         }
     }
 }
