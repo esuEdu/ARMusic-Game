@@ -14,6 +14,8 @@ struct PauseModalView: View {
     @State private var isMuted = false
     @Environment(ARViewManager.self) private var arViewManager: ARViewManager
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     var body: some View {
             ZStack {
                 Color.black.opacity(0.5)
@@ -22,7 +24,7 @@ struct PauseModalView: View {
                     VStack(spacing: 20) {
                         ButtonPauseView(title: "Continuar", action: { arViewManager.paused = false })
 //                        ButtonPauseView(title: isMuted ? "Desmutar" : "Mutar", action: toggleMute)
-                        ButtonPauseView(title: "Sair", action: {})
+                        ButtonPauseView(title: "Sair", action: { presentationMode.wrappedValue.dismiss() })
                     }
                     .frame(width: screenWidth * 0.5, height: screenHeight * 0.6)
                     .padding()
