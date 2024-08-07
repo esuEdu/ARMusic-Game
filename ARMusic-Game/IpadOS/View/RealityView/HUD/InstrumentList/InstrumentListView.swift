@@ -1,16 +1,8 @@
-//
-//  InstrumentListView.swift
-//  ARMusic-Game (IpadOS)
-//
-//  Created by Erick Ribeiro on 28/07/24.
-//
-
 import SwiftUI
 import ARPackage
 import ARKit
 import RealityKit
 import DataPackage
-
 
 struct InstrumentListView: View {
     @Binding var isExpanded: Bool
@@ -31,85 +23,68 @@ struct InstrumentListView: View {
         GeometryReader { geometry in
             ZStack {
                 HStack {
-                    Spacer()
-                    
                     ExpandButton(isExpanded: $isExpanded)
-                    
                     VStack(alignment: .leading, spacing: 0) {
-                        Spacer()
-                        
                         HeaderView(isExpanded: isExpanded)
                         
-                        ScrollView {
-                            if isExpanded {
-                                LazyVGrid(columns: columns, spacing: 10) {
-                                    ForEach(instruments, id: \.self) { instrument in
-                                        DraggableInstrumentCardView(
-                                            instrument: instrument, geometry: geometry,
-                                            dragOffsets: $dragOffsets,
-                                            draggingInstrument: $draggingInstrument,
-                                            currentDragOffset: $currentDragOffset,
-                                            isDrop: isDropLocationOutside
-                                        )
-                                    }
+                        LazyVGrid(columns: columns, spacing: 10) {
+                            ForEach(instruments, id: \.self) { instrument in
+                                ZStack {
+                                    InstrumentCardDraggingView(
+                                        instrument: instrument, geometry: geometry,
+                                        currentDragOffset: $currentDragOffset, isExpanded: $isExpanded
+                                    )
+                                    
+                                    DraggableInstrumentCardView(
+                                        instrument: instrument, geometry: geometry, isExpanded: $isExpanded,
+                                        dragOffsets: $dragOffsets,
+                                        draggingInstrument: $draggingInstrument,
+                                        currentDragOffset: $currentDragOffset,
+                                        isDrop:  isDropLocationOutside
+                                    )
                                 }
-                                .padding()
-                                .frame(width: geometry.size.width * 0.4)
                             }
                         }
-                        .padding(.vertical, 5)
+                        .padding()
+                        .frame(width: geometry.size.width * 0.4)
+                        
+                        Spacer()
                     }
+                    .padding(5)
                     .transition(.move(edge: .trailing))
-                    .frame(width: isExpanded ? geometry.size.width * 0.4 : 0)
                     .background(
                         RoundedRectangle(cornerRadius: 15)
                             .fill(Color.white)
                     )
+                    .frame(width: geometry.size.width * 0.4)
                 }
-                
-                if let instrument = draggingInstrument {
-                    InstrumentCardDraggingView(
-                        instrument: instrument, geometry: geometry,
-                        currentDragOffset: $currentDragOffset,
-                        isDrop: isDropLocationOutside
-                    )
-                }
+                .offset(x: isExpanded ? geometry.size.width * 0.28 : geometry.size.width * 0.6825)
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
         }
     }
     
-    private func isDropLocationOutside(bounds: CGRect, dropLocation: CGPoint) -> Bool {
-        return !bounds.contains(dropLocation)
+    private func isDropLocationOutside(_ geometry: GeometryProxy, _ location: CGSize) -> Bool {
+        let dropAreaWidth = geometry.size.width * 0.45
+        return abs(location.width) > dropAreaWidth / 2
     }
-}
 
+}
 
 struct InstrumentCardDraggingView: View {
     let instrument: Instruments
-    let geometry:GeometryProxy
+    let geometry: GeometryProxy
     @Binding var currentDragOffset: CGSize
+    @Binding var isExpanded: Bool
     @Environment(ARViewManager.self) private var arViewManager: ARViewManager
-    
-    let isDrop: (CGRect, CGPoint) -> Bool
-
+        
     var body: some View {
-        InstrumentCardView(instrumentInfo: InstrumentInfo.get(for: instrument))
-            .scaleEffect(1.1)
+        USDZSceneView(modelName: "guitarra.usdz")
+            .scaleEffect(1.5)
             .offset(currentDragOffset)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        currentDragOffset = value.translation
-                    }
-                    .onEnded { value in
-                        currentDragOffset = .zero
-                        if isDrop(geometry.frame(in: .global), value.location) {
-                            arViewManager.arView?.loadInstrumentModel(instrument: instrument)
-                        }
-                    }
-            )
+            .opacity(isExpanded ? 0 : 1)
             .frame(width: geometry.size.width * 0.2)
+            .opacity(currentDragOffset != .zero ? 1 : 0)
     }
 }
 
@@ -152,7 +127,7 @@ struct HeaderView: View {
             .foregroundStyle(.black)
             .frame(maxWidth: .infinity)
             .multilineTextAlignment(.center)
-            .opacity(isExpanded ? 1 : 0) // Show only if expanded
+            .opacity(isExpanded ? 1 : 0)
             .transition(.move(edge: .trailing).combined(with: .opacity))
             .padding()
     }
@@ -160,39 +135,93 @@ struct HeaderView: View {
 
 struct DraggableInstrumentCardView: View {
     let instrument: Instruments
-    let geometry:GeometryProxy
+    let geometry: GeometryProxy
     
+    @Binding var isExpanded: Bool
     @Binding var dragOffsets: [Instruments: CGSize]
     @Binding var draggingInstrument: Instruments?
     @Binding var currentDragOffset: CGSize
     @Environment(ARViewManager.self) private var arViewManager: ARViewManager
     
-    let isDrop: (CGRect, CGPoint) -> Bool
+    @State private var isPressed = false
+    
+    let isDrop: (GeometryProxy, CGSize) -> Bool
     
     var body: some View {
         InstrumentCardView(instrumentInfo: InstrumentInfo.get(for: instrument))
-            .scaleEffect(draggingInstrument == instrument ? 1.1 : 1.0)
-            .opacity((draggingInstrument != nil) ? 0 : 1)
+            .scaleEffect(draggingInstrument == instrument ? 1.1 : (isPressed ? 0.9 : 1.0))
+            .opacity(isExpanded ? 1 : 0)
             .offset(dragOffsets[instrument, default: .zero])
+            .onTapGesture {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    isPressed = true
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        isPressed = false
+                    }
+                }
+                arViewManager.arView?.loadInstrumentModel(instrument: instrument)
+            }
             .gesture(
-                DragGesture()
+                DragGesture(minimumDistance: 0)
                     .onChanged { value in
                         dragOffsets[instrument] = value.translation
                         currentDragOffset = value.translation
                         withAnimation {
                             draggingInstrument = instrument
+                            if isDrop(geometry, value.translation) {
+                                isExpanded = false
+                                
+                                return
+                            }
+                            
+                            isExpanded = true
                         }
                     }
                     .onEnded { value in
-                        dragOffsets[instrument] = .zero
-                        currentDragOffset = .zero
-                        if  isDrop(geometry.frame(in: .global), value.location){
+                        print(isDrop(geometry, value.translation))
+                        if isDrop(geometry, value.translation) {
                             arViewManager.arView?.loadInstrumentModel(instrument: instrument)
                         }
+                        dragOffsets[instrument] = .zero
+                        currentDragOffset = .zero
                         withAnimation {
                             draggingInstrument = nil
                         }
                     }
             )
+    }
+}
+
+struct USDZSceneView: UIViewRepresentable {
+    let modelName: String
+    
+    func makeUIView(context: Context) -> SCNView {
+        let sceneView = SCNView()
+        sceneView.backgroundColor = .clear
+        sceneView.autoenablesDefaultLighting = true
+        sceneView.allowsCameraControl = false
+        
+        // Carregar a cena com o modelo USDZ de forma assíncrona
+        loadModelAsync(modelName: modelName) { scene in
+            DispatchQueue.main.async {
+                sceneView.scene = scene
+                sceneView.scene?.rootNode.scale = SCNVector3(x: 0.85, y: 0.85, z: 0.85)
+            }
+        }
+        
+        return sceneView
+    }
+    
+    func updateUIView(_ uiView: SCNView, context: Context) {
+        // Atualizações necessárias quando a view é atualizada
+    }
+    
+    private func loadModelAsync(modelName: String, completion: @escaping (SCNScene?) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let scene = SCNScene(named: modelName)
+            completion(scene)
+        }
     }
 }

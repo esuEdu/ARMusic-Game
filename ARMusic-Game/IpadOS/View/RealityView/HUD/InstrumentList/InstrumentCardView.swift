@@ -16,7 +16,7 @@ struct InstrumentCardView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .clipShape(.rect(cornerRadius: 15))
-                .containerRelativeFrame(.vertical){ height, _ in height * 0.25}
+                .containerRelativeFrame(.vertical){ height, _ in height * 0.3}
             
             VStack(spacing: 5) {
                 Text(instrumentInfo.name)
@@ -30,7 +30,7 @@ struct InstrumentCardView: View {
                     .multilineTextAlignment(.center)
 
             }
-            .containerRelativeFrame(.vertical){ height, _ in height * 0.1}
+            .containerRelativeFrame(.vertical){ height, _ in height * 0.25}
         }
         .padding(10)
         .background(.blue)
