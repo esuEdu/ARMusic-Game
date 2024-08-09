@@ -29,7 +29,7 @@ public class ARStateMachine {
         
         
         if let instrumentEntity = currentEntity as? InstrumentEntity {
-            instrumentEntity.activeOutline()
+            instrumentEntity.changeOutlineComponent()
         }
         
         #warning("Change this")
@@ -41,7 +41,7 @@ public class ARStateMachine {
         state = .normal
         
         if let instrumentEntity = currentEntity as? InstrumentEntity {
-            instrumentEntity.activeOutline()
+            instrumentEntity.changeOutlineComponent()
         }
         
         #warning("Change this")

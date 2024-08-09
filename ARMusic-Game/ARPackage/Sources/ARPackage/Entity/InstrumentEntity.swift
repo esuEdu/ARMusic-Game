@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Erick Ribeiro on 01/08/24.
 //
@@ -10,57 +10,32 @@ import RealityKit
 import AudioPackage
 import DataPackage
 
-public class InstrumentEntity: Entity, HasModel, HasCollision {
-    var instrument: Instruments!
+public class InstrumentEntity: Entity, HasModel, HasAnchoring, HasCollision {
+    var instrument: Instruments
     
-    init(instrument: Instruments, modelComponent: ModelComponent) {
+    init(instrument: Instruments) {
         self.instrument = instrument
         super.init()
-        
-        components.set(modelComponent)
-        
-        addAudioComponent()
-        addCollisionComponent()
-        addOutline()
-        
-    }
-    
-    public override func didClone(from source: Entity) {
-        self.transform.scale = simd_float3(x: 0.5, y: 0.5, z: 0.5)
-    }
-    
-    public static func fromModelEntity(_ modelEntity: ModelEntity, instrument: Instruments) -> InstrumentEntity {
-        
-        
-        guard let model = modelEntity.model else {
-            fatalError("Model Entity has no model")
-            
-        }
-        
-        let instrumentEntity = InstrumentEntity(instrument: instrument, modelComponent: model)
-        
-       return instrumentEntity
     }
     
     required init() {
-        super.init()
+        fatalError("init() has not been implemented")
     }
     
-    func addOutline() {
-        
-        let outlineEntity = OutlineEntity(entity: self)
-        
-        self.addChild(outlineEntity)
-        
-        let component = OutlineComponent(isOutlined: false)
-        self.components.set(component)
-        
+    func addOutlineComponent() {
+        let outLineComponent = OutlineComponent(isOutlined: true)
+        children[0].addChild(OutlineEntity(entity: children[0] as! HasModel))
+        children[0].components.set(outLineComponent)
     }
     
-    func activeOutline() {
-        if var outLineComponent = self.components[OutlineComponent.self] as? OutlineComponent {
-            outLineComponent.isOutlined.toggle()
-            self.components.set(outLineComponent)
+    func changeOutlineComponent() {
+        if var component = self.components[OutlineComponent.self] as? OutlineComponent {
+            if component.isOutlined {
+                component.isOutlined = false
+            }else {
+                component.isOutlined = true
+            }
+            self.components.set(component)
         }
     }
     
@@ -80,7 +55,7 @@ public class InstrumentEntity: Entity, HasModel, HasCollision {
     public func changeAudioComponent(tempo: Set<Int>? = nil, note: Notes? = nil, tom: Float? = nil, startBeat: Int? = nil, endBeat: Int? = nil) {
         guard var audioComponent = self.components[AudioComponent.self] as? AudioComponent else { return }
         
-        audioComponent.tempo.toggleValues(at: tempo ?? [])
+        tempo?.forEach { audioComponent.tempo.toggleValue(at: $0) }
         if let note = note { audioComponent.note = note }
         if let tom = tom { audioComponent.tom = tom }
         if let startBeat = startBeat { audioComponent.startBeat = startBeat }
