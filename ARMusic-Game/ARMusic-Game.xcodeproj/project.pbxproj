@@ -21,6 +21,7 @@
 		28CE72CD2C49DAC900051E74 /* ARPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CC2C49DAC900051E74 /* ARPackage */; };
 		28CE72CF2C49DACD00051E74 /* AudioPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72CE2C49DACD00051E74 /* AudioPackage */; };
 		28CE72D32C49DAD200051E74 /* DataPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 28CE72D22C49DAD200051E74 /* DataPackage */; };
+		981A5A7D2C6532E3006A13B6 /* GradientShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 981A5A7C2C6532E3006A13B6 /* GradientShader.metal */; };
 		98B7B8272C615F430047F5A6 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7B8262C615F430047F5A6 /* BackButtonView.swift */; };
 		98CAC6112C5E9DA100463B95 /* OutlineShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 98CAC6102C5E9DA100463B95 /* OutlineShader.metal */; };
 		AF1150372C65050100A33EB4 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1150362C65050100A33EB4 /* LibraryView.swift */; };
@@ -74,6 +75,7 @@
 		28CE72C82C49D97B00051E74 /* DataPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataPackage; sourceTree = "<group>"; };
 		28CE72C92C49D99700051E74 /* AudioPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AudioPackage; sourceTree = "<group>"; };
 		28CE72CA2C49D9AD00051E74 /* ARPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ARPackage; sourceTree = "<group>"; };
+		981A5A7C2C6532E3006A13B6 /* GradientShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GradientShader.metal; sourceTree = "<group>"; };
 		98B7B8262C615F430047F5A6 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		98CAC6102C5E9DA100463B95 /* OutlineShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = OutlineShader.metal; sourceTree = "<group>"; };
 		AF1150362C65050100A33EB4 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				AF1150362C65050100A33EB4 /* LibraryView.swift */,
 				AF8660062C59743900D92541 /* MotionManager.swift */,
 				28E7A9D02C5EB8F8001294B9 /* RealityView */,
+				981A5A7C2C6532E3006A13B6 /* GradientShader.metal */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				C907E7A02C6054CF003C57A4 /* InstrumentCardView.swift in Sources */,
 				C97A5CED2C5B570F0069285C /* UIExtensions.swift in Sources */,
 				2890BA7D2C629D6200754C9D /* ScaledFont.swift in Sources */,
+				981A5A7D2C6532E3006A13B6 /* GradientShader.metal in Sources */,
 				28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */,
 				2890BA7C2C629D5E00754C9D /* Custom3DView.swift in Sources */,
 				C9DD7BBD2C5985A0004DCD03 /* BPMSelectorView.swift in Sources */,
@@ -632,7 +636,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 5Y55P884H9;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
@@ -672,7 +676,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 5Y55P884H9;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";

@@ -35,7 +35,7 @@ import AudioPackage
     public override init() {
         super.init()
         MetalConfig.initialize()
-        ModelLoader.loadAllModels()
+//        ModelLoader.loadAllModels()
     }
     
     private func mute() {

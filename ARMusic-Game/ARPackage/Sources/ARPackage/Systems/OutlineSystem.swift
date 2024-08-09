@@ -35,14 +35,7 @@ public class OutlineEntity: Entity, HasModel {
         self.model = modelComponent
     }
     
-   
-    
-    required init() {
-       
-    }
-    
-    
-    
+    required init() {}
 }
 
 public class OutlineSystem: System {
