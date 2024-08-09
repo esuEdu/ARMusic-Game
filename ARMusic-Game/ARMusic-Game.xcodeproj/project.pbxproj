@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		287707192C669FF50074B9CA /* DeleteBuddyButtomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287707182C669FF50074B9CA /* DeleteBuddyButtomView.swift */; };
 		2890BA7A2C629D4C00754C9D /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660022C596DD000D92541 /* StartView.swift */; };
 		2890BA7B2C629D5200754C9D /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660062C59743900D92541 /* MotionManager.swift */; };
 		2890BA7C2C629D5E00754C9D /* Custom3DView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8660152C5C1FD900D92541 /* Custom3DView.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		287707182C669FF50074B9CA /* DeleteBuddyButtomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBuddyButtomView.swift; sourceTree = "<group>"; };
 		28CE729A2C49D8EC00051E74 /* ARMusic-Game (IpadOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARMusic-Game (IpadOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CE729D2C49D8EC00051E74 /* ARMusic_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMusic_GameApp.swift; sourceTree = "<group>"; };
 		28CE729F2C49D8EC00051E74 /* RealityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityView.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */,
 				C9DD7BC02C5A0B3F004DCD03 /* NoteTimeSelectionView.swift */,
 				98B7B8262C615F430047F5A6 /* BackButtonView.swift */,
+				287707182C669FF50074B9CA /* DeleteBuddyButtomView.swift */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				2890BA7D2C629D6200754C9D /* ScaledFont.swift in Sources */,
 				981A5A7D2C6532E3006A13B6 /* GradientShader.metal in Sources */,
 				28CE729E2C49D8EC00051E74 /* ARMusic_GameApp.swift in Sources */,
+				287707192C669FF50074B9CA /* DeleteBuddyButtomView.swift in Sources */,
 				2890BA7C2C629D5E00754C9D /* Custom3DView.swift in Sources */,
 				C9DD7BBD2C5985A0004DCD03 /* BPMSelectorView.swift in Sources */,
 				C97A5CF22C5B58CD0069285C /* PauseButtonView.swift in Sources */,
@@ -636,7 +640,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = SVGXRR5RRA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
@@ -676,7 +680,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = SVGXRR5RRA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";

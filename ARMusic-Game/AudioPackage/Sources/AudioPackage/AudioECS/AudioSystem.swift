@@ -15,15 +15,13 @@ public struct AudioComponent: Component {
     var instrument: Instruments
     public var tom: Float
     public var tempo = FixedSizeBoolArray(size: 8)
-    public var startBeat: Int
-    public var endBeat: Int
+    public var beatRange: BeatRange
     
     public init(note: Notes = .d, instrument: Instruments, tom: Float = 0.0, startBeat: Int = 0, endBeat: Int = 1) {
         self.note = note
         self.instrument = instrument
         self.tom = tom
-        self.startBeat = startBeat
-        self.endBeat = endBeat
+        self.beatRange = BeatRange(startBeat: startBeat, endBeat: endBeat)
     }
 }
 
@@ -64,11 +62,11 @@ public class AudioSystem: System {
         // Retrieve the AudioComponent of the entity
         if let audio = entity.components[AudioComponent.self] as? AudioComponent {
             // Update the maximum beat if necessary
-            getMaxBeat(beat: audio.endBeat)
+            getMaxBeat(beat: audio.beatRange.endBeat)
             
             // Check if the current beat is within the audio's play range
-            if AudioTimerManager.shared.currentBeat >= audio.startBeat &&
-               AudioTimerManager.shared.currentBeat <= audio.endBeat {
+            if AudioTimerManager.shared.currentBeat >= audio.beatRange.startBeat &&
+               AudioTimerManager.shared.currentBeat <= audio.beatRange.endBeat {
                 // Get the tempo array for the entity
                 let entityTempo = audio.tempo.getArray()
                 
