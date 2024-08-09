@@ -29,7 +29,7 @@ public class InstrumentEntity: Entity, HasModel, HasAnchoring, HasCollision {
     }
     
     func changeOutlineComponent() {
-        if var component = self.components[OutlineComponent.self] as? OutlineComponent {
+        if var component = self.children[0].components[OutlineComponent.self] as? OutlineComponent {
             if component.isOutlined {
                 component.isOutlined = false
             }else {
@@ -58,8 +58,8 @@ public class InstrumentEntity: Entity, HasModel, HasAnchoring, HasCollision {
         tempo?.forEach { audioComponent.tempo.toggleValue(at: $0) }
         if let note = note { audioComponent.note = note }
         if let tom = tom { audioComponent.tom = tom }
-        if let startBeat = startBeat { audioComponent.startBeat = startBeat }
-        if let endBeat = endBeat { audioComponent.endBeat = endBeat }
+        if let startBeat = startBeat { audioComponent.beatRange.updateBeat(startBeat: startBeat) }
+        if let endBeat = endBeat { audioComponent.beatRange.updateBeat(endBeat: endBeat) }
         
         self.components.set(audioComponent)
     }

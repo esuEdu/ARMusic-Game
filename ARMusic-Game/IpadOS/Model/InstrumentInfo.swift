@@ -23,6 +23,12 @@ struct InstrumentInfo {
                 imageName: "background", modelName: "guitarra.usdz",
                 description: "Boa pedida para quem gosta dos clássicos"
             )
+            case .guitar:
+                return InstrumentInfo(
+                    name: "Guitar Men",
+                    imageName: "background", modelName: "guitarra.usdz",
+                    description: "Boa pedida para quem gosta dos clássicos"
+                )
         }
     }
 }
