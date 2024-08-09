@@ -30,7 +30,7 @@ public struct AudioData {
     
     /// The URL of the audio file in the main bundle.
     var url: URL? {
-        return Bundle.module.url(forResource: fileName, withExtension: "mpeg")
+        return Bundle.module.url(forResource: fileName, withExtension: "mp3")
     }
     
     /**

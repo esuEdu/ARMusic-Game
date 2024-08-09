@@ -13,21 +13,26 @@ import AudioPackage
 struct ARViewContainer: UIViewRepresentable {
     @Environment(ARViewManager.self) var arViewManager: ARViewManager
 
-    func makeUIView(context: Context) -> ARView {
+    func makeUIView(context: Context) -> ARView {       
         AudioTimerManager.shared.start()
-        registerComponents()
+        
+        let arView = MainARView(arViewManager: arViewManager)
+    
         registerSystem()
-        return arViewManager.arView
+        registerComponents()
+        return arView
     }
 
     func updateUIView(_ uiView: ARView, context: Context) {}
     
     func registerComponents() {
         AudioComponent.registerComponent()
+        OutlineComponent.registerComponent()
     }
     
     func registerSystem() {
         AudioSystem.registerSystem()
+        OutlineSystem.registerSystem()
     }
 }
 

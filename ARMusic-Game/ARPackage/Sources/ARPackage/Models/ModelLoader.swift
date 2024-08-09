@@ -18,6 +18,8 @@ public class ModelLoader {
     func loadModel(for instrumentEntity: InstrumentEntity, into anchor: AnchorEntity, with arView: ARView) {
         let modelName = instrumentEntity.instrument.rawValue
         
+        instrumentEntity.transform.scale = simd_float3(0.05, 0.05, 0.05)
+        
         let position: SIMD3<Float> = getPosition(arView)
         
         if let existingModel = loadedModels[modelName] {
@@ -26,6 +28,7 @@ public class ModelLoader {
             let clonedEntity = existingModel.clone(recursive: true)
             instrumentEntity.addChild(clonedEntity)
             
+            instrumentEntity.addOutlineComponent()
             instrumentEntity.addCollisionComponent()
             positionEntity(instrumentEntity, in: anchor, at: position)
             

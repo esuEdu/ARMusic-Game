@@ -13,8 +13,9 @@ public class AudioTimerManager {
     var timer: Timer = Timer()
     var isRunning: Bool = false
     var pausedTime: TimeInterval = 0
+    public var muted = false
     
-    var noteDuration = {
+    public var noteDuration = {
         Float(7500/AudioUtils.shared.BPM)
     }()
     
@@ -64,5 +65,16 @@ public class AudioTimerManager {
         soundPlayedForCurrentNote = false
         print("Current Beat: \(currentBeat), Current Note: \(currentNote)")
         
+    }
+    
+    public func updateTimerInterval() {
+        if isRunning {
+            timer.invalidate()
+            timer = Timer.scheduledTimer(timeInterval: TimeInterval(noteDuration / 1000), target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        }
+    }
+    public func updateNoteDuration() {
+        noteDuration = Float(7500/AudioUtils.shared.BPM)
+
     }
 }

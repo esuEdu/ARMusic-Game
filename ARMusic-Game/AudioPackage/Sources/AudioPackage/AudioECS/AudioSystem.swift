@@ -89,6 +89,8 @@ public class AudioSystem: System {
             
             // Create an audio thread with the URL and entity position
             let audioThread = AudioThread(at: entity.position, with: url, noteDuration: AudioTimerManager.shared.noteDuration)
+            audioThread.maxVolume = AudioTimerManager.shared.muted ? 0.0 : 1.0
+            
             
             // Start the audio thread
             audioThread.start()

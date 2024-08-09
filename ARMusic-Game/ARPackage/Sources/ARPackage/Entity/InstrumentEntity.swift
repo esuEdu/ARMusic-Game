@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Erick Ribeiro on 01/08/24.
 //
@@ -20,6 +20,23 @@ public class InstrumentEntity: Entity, HasModel, HasAnchoring, HasCollision {
     
     required init() {
         fatalError("init() has not been implemented")
+    }
+    
+    func addOutlineComponent() {
+        let outLineComponent = OutlineComponent(isOutlined: true)
+        children[0].addChild(OutlineEntity(entity: children[0] as! HasModel))
+        children[0].components.set(outLineComponent)
+    }
+    
+    func changeOutlineComponent() {
+        if var component = self.components[OutlineComponent.self] as? OutlineComponent {
+            if component.isOutlined {
+                component.isOutlined = false
+            }else {
+                component.isOutlined = true
+            }
+            self.components.set(component)
+        }
     }
     
     func addAudioComponent() {

@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "28CE72992C49D8EC00051E74"
-               BuildableName = "ARMusic-Game (IpadOS).app"
-               BlueprintName = "ARMusic-Game (IpadOS)"
+               BuildableName = "ARMusic-Game.app"
+               BlueprintName = "ARMusic-Game"
                ReferencedContainer = "container:ARMusic-Game.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "28CE72992C49D8EC00051E74"
-            BuildableName = "ARMusic-Game (IpadOS).app"
-            BlueprintName = "ARMusic-Game (IpadOS)"
+            BuildableName = "ARMusic-Game.app"
+            BlueprintName = "ARMusic-Game"
             ReferencedContainer = "container:ARMusic-Game.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "28CE72992C49D8EC00051E74"
-            BuildableName = "ARMusic-Game (IpadOS).app"
-            BlueprintName = "ARMusic-Game (IpadOS)"
+            BuildableName = "ARMusic-Game.app"
+            BlueprintName = "ARMusic-Game"
             ReferencedContainer = "container:ARMusic-Game.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

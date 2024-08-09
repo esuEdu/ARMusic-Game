@@ -14,118 +14,46 @@ import AudioPackage
 
 @MainActor
 @Observable public class ARViewManager: NSObject {
-    public var arView: ARView
-    public var stateMachine = ARStateMachine()
+    public var paused: Bool = false {
+        didSet {
+            paused ? pause() : unpause()
+        }
+    }
     
+    public var muted: Bool = false {
+        didSet {
+            muted ? mute() : unmute()
+        }
+    }
+    
+    public var arView: MainARView?
+    public var stateMachine = ARStateMachine()
     var modelLoader = ModelLoader()
-    var anchorEntity = AnchorEntity(plane: .horizontal)
+    var initialized = false
+    
     
     public override init() {
-        self.arView = ARView(frame: .zero)
         super.init()
-        self.setupARView()
+        MetalConfig.initialize()
+//        ModelLoader.loadAllModels()
     }
     
-    private func setupARView() {
-        // Configure AR session
-        arView.addCoaching()
-        let config = ARWorldTrackingConfiguration()
-        config.planeDetection = [.horizontal]
-        arView.session.run(config)
-        arView.session.delegate = self
-        // Add anchor to the scene
-        arView.scene.anchors.append(anchorEntity)
-        
-        // Add gesture recognizers
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleEntityTouch(_:)))
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(onLongPress(_:)))
-        longPressGesture.minimumPressDuration = 2.0 // Set the long press duration to 2 seconds
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(onDrag(_:)))
-        
-        // Set delegate for gesture recognizers
-        tapGesture.delegate = self
-        longPressGesture.delegate = self
-        panGesture.delegate = self
-        
-        arView.addGestureRecognizer(tapGesture)
-        arView.addGestureRecognizer(longPressGesture)
-        arView.addGestureRecognizer(panGesture)
-        
+    private func mute() {
+        AudioTimerManager.shared.muted = true
     }
     
-    public func loadInstrumentModel(instrument: Instruments) {
-        let instrumentEntity = InstrumentEntity(instrument: instrument)
-        
-        // add components to entity before creation
-        instrumentEntity.addAudioComponent()
-        
-        modelLoader.loadModel(for: instrumentEntity, into: anchorEntity, with: arView)
+    private func unmute() {
+        AudioTimerManager.shared.muted = false
+    }
+
+    private func unpause() {
+        AudioTimerManager.shared.start()
+        arView?.resume()
     }
     
-    public func resetSession() {
-        // Reset AR session
-        let config = ARWorldTrackingConfiguration()
-        config.planeDetection = [.horizontal]
-        arView.session.run(config, options: [.resetTracking, .removeExistingAnchors])
-        
-        // Clear existing models
-        anchorEntity.children.removeAll()
-    }
-    
-    @objc private func handleEntityTouch(_ gesture: UITapGestureRecognizer) {
-        let location = gesture.location(in: arView)
-        
-        guard let entity = getEntity(at: location) else {
-            stateMachine.exitEditingMode()
-            return
-        }
-        
-        if let instrumentEntity = entity as? InstrumentEntity ?? entity.parent as? InstrumentEntity {
-            stateMachine.enterEditingMode(with: instrumentEntity)
-        } else {
-            stateMachine.exitEditingMode()
-        }
-    }
-    
-    
-    @objc private func onLongPress(_ gesture: UILongPressGestureRecognizer) {
-        let location = gesture.location(in: arView)
-        
-        switch gesture.state {
-            case .began:
-                if let entity = getEntity(at: location),
-                   let instrumentEntity = entity as? InstrumentEntity ?? entity.parent as? InstrumentEntity {
-                    stateMachine.enterDraggingMode(with: instrumentEntity)
-                }
-            case .ended:
-                stateMachine.exitDraggingMode()
-            default:
-                break
-        }
-    }
-    
-    
-    @objc private func onDrag(_ gesture: UIPanGestureRecognizer) {
-        guard let entity = stateMachine.currentEntity else { return }
-        
-        let location = gesture.location(in: arView)
-        
-        switch gesture.state {
-            case .changed:
-                if let rayResult = arView.raycast(from: location, allowing: .estimatedPlane, alignment: .horizontal).first {
-                    let newPosition = SIMD3<Float>(rayResult.worldTransform.columns.3.x,
-                                                   rayResult.worldTransform.columns.3.y,
-                                                   rayResult.worldTransform.columns.3.z)
-                    entity.position = newPosition
-                }
-            default:
-                break
-        }
-    }
-    
-    private func getEntity(at location: CGPoint) -> Entity? {
-        let results = arView.hitTest(location)
-        return results.first?.entity
+    private func pause() {
+        AudioTimerManager.shared.pause()
+        arView?.pause()
     }
 }
 
