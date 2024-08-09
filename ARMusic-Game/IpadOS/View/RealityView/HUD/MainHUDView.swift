@@ -19,7 +19,7 @@ struct MainHUDView: View {
     var body: some View {
         @Bindable var arViewManager = arViewManager
         
-        var isPaused = arViewManager.paused
+        let isPaused = arViewManager.paused
         
         ZStack {
             switch arViewManager.stateMachine.state {
@@ -40,7 +40,7 @@ struct MainHUDView: View {
                 }
                     BackButtonView()
                 showView(arViewManager.stateMachine.getEntity() != nil) {
-                    
+                    DeleteBuddyButtonView()
                     MuteButtonView()
                     SelectMusicalNoteView( selectedNote: $selectedNote)
                         .transition(.move(edge: .bottom))

@@ -38,12 +38,12 @@ public class ARStateMachine {
     }
     
     public func exitEditingMode() {
-        state = .normal
         
         if let instrumentEntity = currentEntity as? InstrumentEntity {
             instrumentEntity.changeOutlineComponent()
         }
-        
+        state = .normal
+
         #warning("Change this")
         WorldSystem.stopEditting()
     }

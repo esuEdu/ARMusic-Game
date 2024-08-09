@@ -108,6 +108,7 @@ public class MainARView: ARView {
         }
         
         if let instrumentEntity = entity as? InstrumentEntity ?? entity.parent as? InstrumentEntity {
+            stateMachine.exitEditingMode()
             stateMachine.enterEditingMode(with: instrumentEntity)
         } else {
             stateMachine.exitEditingMode()
@@ -148,6 +149,15 @@ public class MainARView: ARView {
             default:
                 break
         }
+    }
+    
+    public func removeEntity() {
+        guard let entity = stateMachine.currentEntity else { return }
+        
+        entity.removeFromParent()
+        
+        stateMachine.exitEditingMode()
+        
     }
     
     private func getEntity(at location: CGPoint) -> Entity? {
