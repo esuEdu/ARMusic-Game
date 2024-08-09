@@ -64,7 +64,7 @@
 
 /* Begin PBXFileReference section */
 		287707182C669FF50074B9CA /* DeleteBuddyButtomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBuddyButtomView.swift; sourceTree = "<group>"; };
-		28CE729A2C49D8EC00051E74 /* ARMusic-Game (IpadOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARMusic-Game (IpadOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28CE729A2C49D8EC00051E74 /* ARMusic-Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARMusic-Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CE729D2C49D8EC00051E74 /* ARMusic_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMusic_GameApp.swift; sourceTree = "<group>"; };
 		28CE729F2C49D8EC00051E74 /* RealityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityView.swift; sourceTree = "<group>"; };
 		28CE72A12C49D8ED00051E74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		28CE729B2C49D8EC00051E74 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				28CE729A2C49D8EC00051E74 /* ARMusic-Game (IpadOS).app */,
+				28CE729A2C49D8EC00051E74 /* ARMusic-Game.app */,
 				28CE72AA2C49D8EE00051E74 /* ARMusic-GameTests (IpadOS).xctest */,
 				28CE72B42C49D8EE00051E74 /* ARMusic-GameUITests (IpadOS).xctest */,
 			);
@@ -316,9 +316,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		28CE72992C49D8EC00051E74 /* ARMusic-Game (IpadOS) */ = {
+		28CE72992C49D8EC00051E74 /* ARMusic-Game */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 28CE72BE2C49D8EE00051E74 /* Build configuration list for PBXNativeTarget "ARMusic-Game (IpadOS)" */;
+			buildConfigurationList = 28CE72BE2C49D8EE00051E74 /* Build configuration list for PBXNativeTarget "ARMusic-Game" */;
 			buildPhases = (
 				28CE72962C49D8EC00051E74 /* Sources */,
 				28CE72972C49D8EC00051E74 /* Frameworks */,
@@ -328,14 +328,14 @@
 			);
 			dependencies = (
 			);
-			name = "ARMusic-Game (IpadOS)";
+			name = "ARMusic-Game";
 			packageProductDependencies = (
 				28CE72CC2C49DAC900051E74 /* ARPackage */,
 				28CE72CE2C49DACD00051E74 /* AudioPackage */,
 				28CE72D22C49DAD200051E74 /* DataPackage */,
 			);
 			productName = "ARMusic-Game";
-			productReference = 28CE729A2C49D8EC00051E74 /* ARMusic-Game (IpadOS).app */;
+			productReference = 28CE729A2C49D8EC00051E74 /* ARMusic-Game.app */;
 			productType = "com.apple.product-type.application";
 		};
 		28CE72A92C49D8EE00051E74 /* ARMusic-GameTests (IpadOS) */ = {
@@ -410,7 +410,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				28CE72992C49D8EC00051E74 /* ARMusic-Game (IpadOS) */,
+				28CE72992C49D8EC00051E74 /* ARMusic-Game */,
 				28CE72A92C49D8EE00051E74 /* ARMusic-GameTests (IpadOS) */,
 				28CE72B32C49D8EE00051E74 /* ARMusic-GameUITests (IpadOS) */,
 			);
@@ -502,12 +502,12 @@
 /* Begin PBXTargetDependency section */
 		28CE72AC2C49D8EE00051E74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 28CE72992C49D8EC00051E74 /* ARMusic-Game (IpadOS) */;
+			target = 28CE72992C49D8EC00051E74 /* ARMusic-Game */;
 			targetProxy = 28CE72AB2C49D8EE00051E74 /* PBXContainerItemProxy */;
 		};
 		28CE72B62C49D8EE00051E74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 28CE72992C49D8EC00051E74 /* ARMusic-Game (IpadOS) */;
+			target = 28CE72992C49D8EC00051E74 /* ARMusic-Game */;
 			targetProxy = 28CE72B52C49D8EE00051E74 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -644,7 +644,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "Beat Buddy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -660,7 +660,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Eduardo.ARMusic-Game";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Jubs.ARMusic-Game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -684,7 +684,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "Beat Buddy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -700,7 +700,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Eduardo.ARMusic-Game";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Jubs.ARMusic-Game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -818,7 +818,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		28CE72BE2C49D8EE00051E74 /* Build configuration list for PBXNativeTarget "ARMusic-Game (IpadOS)" */ = {
+		28CE72BE2C49D8EE00051E74 /* Build configuration list for PBXNativeTarget "ARMusic-Game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28CE72BF2C49D8EE00051E74 /* Debug */,
