@@ -6,6 +6,8 @@ import DataPackage
 
 public class MainARView: ARView {
     
+    private var modelLoader = ModelLoader()
+    
     private var arView: ARView {
         self
     }
@@ -39,9 +41,12 @@ public class MainARView: ARView {
         // Configure AR session
         arView.addCoaching()
         runSession()
+//        arView.debugOptions = [.showAnchorOrigins,.showAnchorGeometry,.showPhysics]
         arView.session.delegate = self
         // Add anchor to the scene
         arView.scene.anchors.append(anchorEntity)
+        
+        
         
         // Add gesture recognizers
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleEntityTouch(_:)))
@@ -75,7 +80,12 @@ public class MainARView: ARView {
     }
     
     public func loadInstrumentModel(instrument: Instruments) {
-        ModelLoader.loadModel(for: instrument, into: anchorEntity, with: arView)
+        let instrumentEntity = InstrumentEntity(instrument: instrument)
+        
+        // add components to entity before creation
+        instrumentEntity.addAudioComponent()
+        
+        modelLoader.loadModel(for: instrumentEntity, into: anchorEntity, with: arView)
     }
 
     

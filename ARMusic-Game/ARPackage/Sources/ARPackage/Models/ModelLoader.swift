@@ -12,71 +12,76 @@ import AudioPackage
 import DataPackage
 
 public class ModelLoader {
-
-    public static var loadedModels: [String: InstrumentEntity] = [:]
-    public static var allLoaded = false
-    public static func loadAllModels() {
-        
-        if (!allLoaded) {
-            let instruments = Instruments.allCases
-            
-            for instrument in instruments {
-                load(instrument: instrument)
-            }
-            
-            allLoaded = true
-        }
-        
-        
-        
-    }
+    var cancellable: AnyCancellable?
+    var loadedModels: [String: Entity] = [:]
     
-    public static func loadModel(for instrument: Instruments, into anchor: AnchorEntity, with arView: ARView) {
-        let modelName = instrument.rawValue
+    func loadModel(for instrumentEntity: InstrumentEntity, into anchor: AnchorEntity, with arView: ARView) {
+        let modelName = instrumentEntity.instrument.rawValue
+        
+        instrumentEntity.transform.scale = simd_float3(0.05, 0.05, 0.05)
         
         let position: SIMD3<Float> = getPosition(arView)
         
-        if loadedModels[modelName] == nil {
-            load(instrument: instrument)
+        if let existingModel = loadedModels[modelName] {
+            
+            // Clone the existing model
+            let clonedEntity = existingModel.clone(recursive: true)
+            instrumentEntity.addChild(clonedEntity)
+            
+            instrumentEntity.addOutlineComponent()
+            instrumentEntity.addCollisionComponent()
+            positionEntity(instrumentEntity, in: anchor, at: position)
+            
+            print("Cloned model for \(instrumentEntity.instrument) loaded successfully")
+            
+        } else {
+            // Load a new model
+            cancellable = Entity.loadModelAsync(contentsOf: getURL(instrument: instrumentEntity.instrument))
+                .sink(receiveCompletion: { loadCompletion in
+                    switch loadCompletion {
+                        case .failure(let error):
+                            print("Error loading model: \(error.localizedDescription)")
+                        case .finished:
+                            break
+                    }
+                }, receiveValue: { entity in
+                    self.loadedModels[modelName] = entity
+                    instrumentEntity.addChild(entity)
+                    
+                    instrumentEntity.addCollisionComponent()
+                    self.positionEntity(instrumentEntity, in: anchor, at: position)
+                    print("Model for \(instrumentEntity.instrument) loaded successfully")
+                })
         }
-        
-        let entity = loadedModels[modelName]!.clone(recursive: true)
+    }
+    
+    private func positionEntity(_ entity: Entity, in anchor: AnchorEntity, at position: SIMD3<Float>) {
         entity.position = position
         anchor.addChild(entity)
     }
     
-    private static func load(instrument: Instruments) {
-        
-        let modelData = ModelData(instrument: instrument)
-        
-        guard let url = modelData.getURL() else {
-            fatalError("Incorrect instrument URL")
-        }
-                
-        let entity = try! Entity.loadModel(contentsOf: url)
-        
-        let instrumentEntity = InstrumentEntity.fromModelEntity(entity, instrument: instrument)
-    
-        loadedModels[instrument.rawValue] = instrumentEntity
-    }
-    
-    private static func getPosition(_ arView: ARView) -> SIMD3<Float> {
+    private func getPosition(_ arView: ARView) -> SIMD3<Float> {
         var position: SIMD3<Float> = .zero
         
-        let raycast = arView.raycast(from: arView.center, allowing: .estimatedPlane, alignment: .horizontal)
-
-        if let first = raycast.first {
-            position = first.worldTransform.position
+        if let query = arView.makeRaycastQuery(from: arView.center, allowing: .estimatedPlane, alignment: .horizontal) {
+            let results = arView.session.raycast(query)
+            
+            if let firstResult = results.first {
+                position = SIMD3<Float> (firstResult.worldTransform.columns.3.x,
+                                         firstResult.worldTransform.columns.3.y,
+                                         firstResult.worldTransform.columns.3.z)
+            }
         }
         
         return position
     }
-}
-
-extension simd_float4x4 {
-    public var position: simd_float3 {
+    
+    private func getURL(instrument: Instruments) -> URL {
+        let audioData = ModelData(instrument: instrument)
         
-        simd_float3(x: columns.3.x, y: columns.3.y, z: columns.3.z)
-        
+        guard let url = audioData.getURL() else {
+            fatalError("Audio file not found")
+        }
+        return url
     }
 }
