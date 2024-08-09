@@ -14,6 +14,7 @@ import Foundation
  */
 public enum Instruments: String, CaseIterable {
     case piano
+    case guitar
 }
 
 // Extension to get all cases as an array
