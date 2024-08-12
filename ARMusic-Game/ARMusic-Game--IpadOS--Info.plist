@@ -4,5 +4,10 @@
 <dict>
 	<key></key>
 	<dict/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Metarin.otf</string>
+		<string>GoodBakwan.otf</string>
+	</array>
 </dict>
 </plist>

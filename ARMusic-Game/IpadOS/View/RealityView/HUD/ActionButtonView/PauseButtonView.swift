@@ -11,7 +11,7 @@ struct PauseButtonView: View {
     @Binding var isPaused: Bool
     var body: some View {
         ActionButtonView(
-            iconName: "pause.fill",
+            iconName: "pause",
             action: { isPaused.toggle() },
             backgroundColor: .white,
             iconColor: .black

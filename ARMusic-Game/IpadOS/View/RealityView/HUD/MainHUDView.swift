@@ -38,9 +38,9 @@ struct MainHUDView: View {
                     NoteTimeSelectionView()
                         .transition(.move(edge: .bottom))
                 }
-                    BackButtonView()
                 showView(arViewManager.stateMachine.getEntity() != nil) {
                     DeleteBuddyButtonView()
+                    BackButtonView()
                     MuteButtonView()
                     SelectMusicalNoteView( selectedNote: $selectedNote)
                         .transition(.move(edge: .bottom))

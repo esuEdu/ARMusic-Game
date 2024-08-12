@@ -25,18 +25,12 @@ struct BPMSelectorView: View {
             
             Spacer()
             
-            Button(action: {
+            BPMButton(action: {
                 withAnimation {
                     showSlider.toggle()
                 }
-            }) {
-                Text("\(Int(selectedBPM)) BPM")
-                    .font(.headline)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
+            }, title: "\(Int(selectedBPM)) BPM")
+            
         }
         .padding()
         .frame(height: self.screenHeight * 0.32)
@@ -46,6 +40,52 @@ struct BPMSelectorView: View {
         }
     }
 }
+
+struct BPMButton: View {
+    var action: () -> Void
+    var title: String
+    @State private var isPressed = false
+
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .customFont(.metarin, textStyle: .title)
+                .bold()
+                .foregroundStyle(.primaryPurple)
+                .padding(.horizontal, 15)
+                .padding(.vertical, 15)
+                .shadow(
+                    color: Color.black.opacity(0.5),
+                    radius: 0.5,
+                    x: 1.2,
+                    y: 2.97
+                )
+        }
+        .frame(maxWidth: .infinity, minHeight: 50)
+        .background(
+            Image(.bpmButton)
+                .resizable()
+                .scaledToFit()
+        )
+        .scaleEffect(isPressed ? 0.85 : 1.0)
+        .animation(.easeInOut(duration: 0.4), value: isPressed)
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 0)
+                .onChanged { _ in
+                    withAnimation {
+                        isPressed = true
+                    }
+                }
+                .onEnded { _ in
+                    withAnimation {
+                        isPressed = false
+                    }
+                }
+        )
+    }
+}
+
+
 
 struct BPMSelectorView_Previews: PreviewProvider {
     static var previews: some View {

@@ -12,33 +12,62 @@ struct InstrumentCardView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
-            Image(instrumentInfo.imageName)
+            ZStack{
+                VStack{
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(LinearGradient(
+                            gradient: Gradient(stops: [
+                                .init(color: .gradiente1, location: 0.0),
+                                .init(color: .gradiente2, location: 0.5),
+                                .init(color: .gradiente3, location: 1.0)
+                            ]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        ))
+                        .blur(radius: 8.1)
+                        .blendMode(.multiply)
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                        .padding()
+                }
+
+                VStack {
+                    VStack{
+                        Image(instrumentInfo.imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(.rect(cornerRadius: 15))
+                            .containerRelativeFrame(.vertical){ height, _ in height * 0.18}
+                            .padding(.vertical, 5)
+                        
+                        VStack(spacing: 5) {
+                            Image(instrumentInfo.name)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .multilineTextAlignment(.center)
+                                .containerRelativeFrame(.vertical){ height, _ in height * 0.09}
+                            
+                            Text(instrumentInfo.description)
+                                .customFont(.goodBakwan, textStyle: .footnote)
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.center)
+                            
+                        }
+                    }
+                    .padding(30)
+                    
+                    Spacer()
+                }
+            }
+        }
+        .background(
+            Image(.backgroundCardInstrument)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .clipShape(.rect(cornerRadius: 15))
-                .containerRelativeFrame(.vertical){ height, _ in height * 0.3}
-            
-            VStack(spacing: 5) {
-                Text(instrumentInfo.name)
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                
-                Text(instrumentInfo.description)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-
-            }
-            .containerRelativeFrame(.vertical){ height, _ in height * 0.25}
-        }
-        .padding(10)
-        .background(.blue)
+        )
         .clipShape(.rect(cornerRadius: 15))
-        .frame(maxWidth: .infinity)
-        .shadow(color: .gray, radius: 5)
     }
 }
+
 
 //#Preview {
 //    InstrumentCardView(instrumentInfo: InstrumentInfo(name: "", imageName: "", description: ""))

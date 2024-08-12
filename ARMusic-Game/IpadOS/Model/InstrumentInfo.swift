@@ -19,14 +19,14 @@ struct InstrumentInfo {
         switch instrument {
         case .piano:
             return InstrumentInfo(
-                name: "Piano Men",
-                imageName: "background", modelName: "guitarra.usdz",
+                name: "orcano",
+                imageName: "background", modelName: "piano.usdz",
                 description: "Boa pedida para quem gosta dos clássicos"
             )
             case .guitar:
                 return InstrumentInfo(
                     name: "Guitar Men",
-                    imageName: "background", modelName: "guitarra.usdz",
+                    imageName: "background", modelName: "guitar.usdz",
                     description: "Boa pedida para quem gosta dos clássicos"
                 )
         }
