@@ -33,6 +33,11 @@
 		C907E7A32C607BA8003C57A4 /* InstrumentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E7A22C607BA8003C57A4 /* InstrumentInfo.swift */; };
 		C907E7A82C616DB0003C57A4 /* PauseModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E7A72C616DB0003C57A4 /* PauseModalView.swift */; };
 		C907E7AA2C61CC4D003C57A4 /* ButtonPauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C907E7A92C61CC4D003C57A4 /* ButtonPauseView.swift */; };
+		C938973B2C69661F00D3ED79 /* BackgroundBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938973A2C69661F00D3ED79 /* BackgroundBlurView.swift */; };
+		C938973D2C697AF800D3ED79 /* GoodBakwan.otf in Resources */ = {isa = PBXBuildFile; fileRef = C938973C2C697AF800D3ED79 /* GoodBakwan.otf */; };
+		C938973F2C697B0300D3ED79 /* Metarin.otf in Resources */ = {isa = PBXBuildFile; fileRef = C938973E2C697B0300D3ED79 /* Metarin.otf */; };
+		C93897412C697DFE00D3ED79 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93897402C697DFE00D3ED79 /* CustomFont.swift */; };
+		C93897442C6994EE00D3ED79 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93897432C6994EE00D3ED79 /* PrimaryButton.swift */; };
 		C97A5CED2C5B570F0069285C /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CEC2C5B570F0069285C /* UIExtensions.swift */; };
 		C97A5CF02C5B58A50069285C /* ActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CEF2C5B58A50069285C /* ActionButtonView.swift */; };
 		C97A5CF22C5B58CD0069285C /* PauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A5CF12C5B58CD0069285C /* PauseButtonView.swift */; };
@@ -92,6 +97,11 @@
 		C907E7A22C607BA8003C57A4 /* InstrumentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentInfo.swift; sourceTree = "<group>"; };
 		C907E7A72C616DB0003C57A4 /* PauseModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseModalView.swift; sourceTree = "<group>"; };
 		C907E7A92C61CC4D003C57A4 /* ButtonPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPauseView.swift; sourceTree = "<group>"; };
+		C938973A2C69661F00D3ED79 /* BackgroundBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBlurView.swift; sourceTree = "<group>"; };
+		C938973C2C697AF800D3ED79 /* GoodBakwan.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GoodBakwan.otf; sourceTree = "<group>"; };
+		C938973E2C697B0300D3ED79 /* Metarin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Metarin.otf; sourceTree = "<group>"; };
+		C93897402C697DFE00D3ED79 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
+		C93897432C6994EE00D3ED79 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		C97A5CEC2C5B570F0069285C /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		C97A5CEF2C5B58A50069285C /* ActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonView.swift; sourceTree = "<group>"; };
 		C97A5CF12C5B58CD0069285C /* PauseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButtonView.swift; sourceTree = "<group>"; };
@@ -205,6 +215,7 @@
 		28CE72D42C49DB3200051E74 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C93897422C6994AF00D3ED79 /* UI */,
 				98CAC6102C5E9DA100463B95 /* OutlineShader.metal */,
 				AF8660022C596DD000D92541 /* StartView.swift */,
 				AF1150362C65050100A33EB4 /* LibraryView.swift */,
@@ -279,10 +290,22 @@
 			path = PauseModal;
 			sourceTree = "<group>";
 		};
+		C93897422C6994AF00D3ED79 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C938973A2C69661F00D3ED79 /* BackgroundBlurView.swift */,
+				C93897432C6994EE00D3ED79 /* PrimaryButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		C97A5CEB2C5B56F80069285C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C938973C2C697AF800D3ED79 /* GoodBakwan.otf */,
+				C938973E2C697B0300D3ED79 /* Metarin.otf */,
 				C97A5CEC2C5B570F0069285C /* UIExtensions.swift */,
+				C93897402C697DFE00D3ED79 /* CustomFont.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -291,6 +314,8 @@
 			isa = PBXGroup;
 			children = (
 				C97A5CEF2C5B58A50069285C /* ActionButtonView.swift */,
+				287707182C669FF50074B9CA /* DeleteBuddyButtomView.swift */,
+				98B7B8262C615F430047F5A6 /* BackButtonView.swift */,
 				C97A5CF12C5B58CD0069285C /* PauseButtonView.swift */,
 				C97A5CF32C5B590F0069285C /* MuteButtonView.swift */,
 			);
@@ -307,8 +332,6 @@
 				C9DD7BBC2C5985A0004DCD03 /* BPMSelectorView.swift */,
 				C9DD7BBE2C5A0282004DCD03 /* SelectMusicalNoteView.swift */,
 				C9DD7BC02C5A0B3F004DCD03 /* NoteTimeSelectionView.swift */,
-				98B7B8262C615F430047F5A6 /* BackButtonView.swift */,
-				287707182C669FF50074B9CA /* DeleteBuddyButtomView.swift */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
@@ -424,6 +447,8 @@
 			files = (
 				28CE72A52C49D8ED00051E74 /* Preview Assets.xcassets in Resources */,
 				28CE72A22C49D8ED00051E74 /* Assets.xcassets in Resources */,
+				C938973F2C697B0300D3ED79 /* Metarin.otf in Resources */,
+				C938973D2C697AF800D3ED79 /* GoodBakwan.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +478,7 @@
 				2890BA7B2C629D5200754C9D /* MotionManager.swift in Sources */,
 				98CAC6112C5E9DA100463B95 /* OutlineShader.metal in Sources */,
 				C907E7AA2C61CC4D003C57A4 /* ButtonPauseView.swift in Sources */,
+				C93897442C6994EE00D3ED79 /* PrimaryButton.swift in Sources */,
 				AF1150372C65050100A33EB4 /* LibraryView.swift in Sources */,
 				C97A5CF02C5B58A50069285C /* ActionButtonView.swift in Sources */,
 				28CE72A02C49D8EC00051E74 /* RealityView.swift in Sources */,
@@ -467,6 +493,8 @@
 				C9DD7BBD2C5985A0004DCD03 /* BPMSelectorView.swift in Sources */,
 				C97A5CF22C5B58CD0069285C /* PauseButtonView.swift in Sources */,
 				2890BA7A2C629D4C00754C9D /* StartView.swift in Sources */,
+				C93897412C697DFE00D3ED79 /* CustomFont.swift in Sources */,
+				C938973B2C69661F00D3ED79 /* BackgroundBlurView.swift in Sources */,
 				AF11503D2C650AC400A33EB4 /* CDItemCell.swift in Sources */,
 				C9E01BB22C573F56001CB428 /* MainHUDView.swift in Sources */,
 				C9E01BAB2C56EDFC001CB428 /* ARViewContainer.swift in Sources */,
@@ -640,7 +668,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
-				DEVELOPMENT_TEAM = SVGXRR5RRA;
+				DEVELOPMENT_TEAM = 4VHUF9729L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
@@ -668,7 +696,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -680,7 +708,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IpadOS/Preview Content\"";
-				DEVELOPMENT_TEAM = SVGXRR5RRA;
+				DEVELOPMENT_TEAM = 4VHUF9729L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
@@ -708,7 +736,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

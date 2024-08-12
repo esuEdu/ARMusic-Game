@@ -50,23 +50,14 @@ struct StartView: View {
                 ZStack {
                     HStack {
                         VStack {
-                            Button(action: {
+                            PrimaryButton(action: {
                                 isLoading = true
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                     isLoading = false
                                     navigateToRealityView = true
                                 }
-                            }) {
-                                RoundedRectangle(cornerRadius: 25.0)
-                                    .foregroundStyle(.pink)
-                                    .overlay {
-                                        Text("Play")
-                                            .font(.largeTitle)
-                                            .bold()
-                                            .foregroundStyle(.blue)
-                                    }
-                            }
-                            .padding(20)
+                            }, title: "Criar")
+                            
                         }
                         
                         ZStack {

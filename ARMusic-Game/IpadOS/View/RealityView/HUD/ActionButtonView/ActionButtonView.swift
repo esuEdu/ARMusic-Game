@@ -12,23 +12,53 @@ struct ActionButtonView: View {
     let action: () -> Void
     let backgroundColor: Color
     let iconColor: Color
-
+    @State private var isPressed = false
+    
     var body: some View {
-        ZStack(alignment: .center) {
-            Circle()
-                .fill(backgroundColor)
-                .containerRelativeFrame(.vertical){ width, _ in width * 0.12}
-            
-            Image(systemName: iconName)
-                .foregroundColor(iconColor)
-                .font(.largeTitle)
-                .contentTransition(.symbolEffect(.replace))
+        Button(action: action) {
+            ZStack {
+                Image(.actionButton)
+                    .resizable()
+                    .scaledToFit()
+                    .shadow(
+                        color: Color.black.opacity(0.56),
+                        radius: 18.19,
+                        x: 3.94,
+                        y: 4.38
+                    )
+                
+                Image(.purpleSphere)
+                    .resizable()
+                    .scaledToFit()
+                    .containerRelativeFrame(.vertical){ width, _ in width/8 }
+                
+                Image(iconName)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(iconColor)
+                    .containerRelativeFrame(.vertical){ width, _ in width/14 }
+
+                
+            }
+            .scaleEffect(isPressed ? 0.95 : 1.0)
+            .animation(.spring(), value: isPressed)
+            .frame(width: self.screenWidth * 0.085)
         }
-        .padding()
-        .onTapGesture {
-            
-            action()
-        }
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 0)
+                .onChanged { _ in
+                    withAnimation {
+                        isPressed = true
+                    }
+                }
+                .onEnded { _ in
+                    withAnimation {
+                        isPressed = false
+                    }
+                }
+        )
     }
 }
+
+
 

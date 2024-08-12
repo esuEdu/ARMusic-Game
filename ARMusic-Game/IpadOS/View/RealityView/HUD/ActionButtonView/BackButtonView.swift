@@ -13,12 +13,12 @@ struct BackButtonView: View {
     
     var body: some View {
         ActionButtonView(
-            iconName: "arrowshape.backward",
+            iconName: "back",
             action: { arViewManager.stateMachine.exitEditingMode() },
             backgroundColor: .white,
             iconColor: .black
         )
-        .position(x: self.screenWidth * 0.1, y: self.screenHeight * 0.095)
+        .position(x: self.screenWidth * 0.1, y: self.screenHeight * 0.1) 
     }
 }
 
