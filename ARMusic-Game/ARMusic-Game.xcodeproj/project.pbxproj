@@ -646,7 +646,7 @@
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Beat Buddy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is required to use Augmented Reality (AR) and add virtual objects to the environment.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -686,7 +686,7 @@
 				INFOPLIST_FILE = "ARMusic-Game--IpadOS--Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Beat Buddy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is required to use Augmented Reality (AR) and add virtual objects to the environment.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
