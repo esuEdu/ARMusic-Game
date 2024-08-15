@@ -1,17 +1,18 @@
 //
 //  MotionManager.swift
-//  ARMusic-Game (IpadOS)
+//  ImageParallax
 //
-//  Created by Thiago Pereira de Menezes on 30/07/24.
+//  Created by Rajat Jangra on 05/10/23.
 //
 
 import CoreMotion
 
 class MotionManager: ObservableObject {
-    private let motionManager = CMMotionManager()
     
-    @Published var pitch: Double = 0.0 // inclinação
-    @Published var roll: Double = 0.0 // rolagem
+    private let motionManager = CMMotionManager()
+
+    @Published var pitch: Double = 0.0
+    @Published var roll: Double = 0.0
     
     func startMonitoringMotionUpdates() {
         
@@ -22,10 +23,8 @@ class MotionManager: ObservableObject {
         
         self.motionManager.deviceMotionUpdateInterval = 0.01
         
-        self.motionManager.startDeviceMotionUpdates(to: .main) { motion, erro in
-            
+        self.motionManager.startDeviceMotionUpdates(to: .main) { motion, error in
             guard let motion = motion else { return }
-            
             self.pitch = motion.attitude.pitch
             self.roll = motion.attitude.roll
         }
@@ -35,4 +34,5 @@ class MotionManager: ObservableObject {
         self.motionManager.stopDeviceMotionUpdates()
         self.motionManager.stopGyroUpdates()
     }
+    
 }

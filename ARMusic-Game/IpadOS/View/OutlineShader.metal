@@ -11,17 +11,15 @@ using namespace metal;
 
 [[visible]]
 void OutlineSurfaceShader(realitykit::surface_parameters params) {
+
     
-    params.surface().set_metallic(0);
-    params.surface().set_specular(0);
-    params.surface().set_ambient_occlusion(0);
     params.surface().set_base_color(half3(1.0, 0.482, 0.0));
 }
 
 [[visible]]
 void OutlineGeometryShader(realitykit::geometry_parameters params) {
 
-    float outlineWidth = 0.5;
+    float outlineWidth = 0.1;
     
     float3 normal = params.geometry().normal();
     

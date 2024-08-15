@@ -49,6 +49,7 @@ public class ModelLoader {
                     instrumentEntity.addChild(entity)
                     
                     instrumentEntity.addCollisionComponent()
+                    instrumentEntity.addOutlineComponent()
                     self.positionEntity(instrumentEntity, in: anchor, at: position)
                     print("Model for \(instrumentEntity.instrument) loaded successfully")
                 })
