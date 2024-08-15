@@ -18,18 +18,19 @@ struct NoteButton: View {
     
     var body: some View {
         Button(action: action) {
-            Circle()
-                .fill(Color.blue)
+            Image("purpleSphere")
+                .resizable()
                 .frame(width: self.screenHeight * 0.087, height: self.screenHeight * 0.087)
                 .overlay(
                     Group {
                         if isSystemImage {
-                            Image(systemName: note)
+                            Image(note)
                                 .foregroundColor(.white)
                                 .font(.headline)
+                                .padding()
                         } else {
                             Text(note)
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .font(.headline)
                         }
                     }
@@ -64,7 +65,7 @@ struct SelectMusicalNoteView: View {
             }
             
             NoteButton(
-                note: showMenu ? "xmark" : (selectedNote ?? "music.note"),
+                note: showMenu ? "xmark" : (selectedNote ?? "noteMusic"),
                 action: {
                     withAnimation {
                         if showMenu {

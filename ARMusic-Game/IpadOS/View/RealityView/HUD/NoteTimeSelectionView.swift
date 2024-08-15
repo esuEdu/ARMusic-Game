@@ -17,8 +17,9 @@ struct TimeComponent: View {
     
     var body: some View {
         VStack {
-            RoundedRectangle(cornerRadius: 42)
-                .fill(isSelected ? Color.blue : Color.white)
+            Image("selectPurpleNote")
+                .resizable()
+                .opacity(isSelected ? 0.5 : 1.0)
                 .frame(width: self.screenWidth * 0.079, height: self.screenWidth * 0.140)
                 .overlay(
                     RoundedRectangle(cornerRadius: 42)
@@ -28,12 +29,12 @@ struct TimeComponent: View {
                     action()
                 }
             
-            Circle()
-                .fill(Color.gray)
+            Image("noteTime")
+                .resizable()
                 .frame(width: self.screenWidth * 0.048, height: self.screenWidth * 0.048)
                 .overlay(
                     Text(timeText)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .font(.headline)
                 )
                 .offset(y: -40)
