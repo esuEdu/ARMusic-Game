@@ -12,21 +12,68 @@ struct DetailCDModalView: View {
     @Binding var isPresented: Bool
 
     var body: some View {
-        VStack {
-            header
-            modalImage
-            Spacer()
-            Text("Nome do disco: \(item.text)")
-                .font(.largeTitle)
-                .bold()
-            Spacer()
-        }
+        ZStack {
+            // Fundo transparente que fecha a modal ao clicar fora dela
+//            Color.black.opacity(0.4)
+//                .edgesIgnoringSafeArea(.all)
+//                .onTapGesture {
+//                    withAnimation(.easeInOut) {
+//                        isPresented = false
+//                    }
+//                }
+
+            VStack {
+                // Background transparente da modal
+                Image("modalBackground")
+                    .resizable()
+                    .scaledToFit()
+                    .overlay {
+                        VStack {
+//                            header
+                            modalImage
+                            
+                            Image("backgroundTextFieldModalDetailDisco")
+                                .overlay {
+                                    Text(" \(item.text)")
+                                        .font(.largeTitle)
+                                        .foregroundStyle(.white)
+                                        .bold()
+                                }
+                            
+                            Button {
+                                
+                            } label: {
+                                Image("btnCompletoSalvar")
+                            }
+                        }
+                    }
+                    .overlay(alignment: .topTrailing) {
+                        Button {
+                            withAnimation(.easeInOut) {
+                                self.isPresented.toggle()
+                            }
+
+                        }label: {
+                            Image("btnCancelar")
+                        }
+                    }
+
+            }
+            .background(Color.clear) // Fundo da modal transparente
+            .cornerRadius(20)
+            .padding(20)
+            .transition(.move(edge: .bottom).combined(with: .opacity))
+            .animation(.easeInOut(duration: 0.3))
+            .frame(maxWidth: .infinity)
+                    }
     }
     
     var header: some View {
         HStack {
             modalButton(text: "Cancelar") {
-                self.isPresented.toggle()
+                withAnimation(.easeInOut) {
+                    self.isPresented.toggle()
+                }
             }
             Spacer()
             modalButton(text: "Salvar") {
@@ -38,18 +85,18 @@ struct DetailCDModalView: View {
     
     var modalImage: some View {
         VStack {
-            Image(systemName: item.image ?? "heart.fill")
+            Image("capaDisco")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 150, height: 150)
+                .frame(width: 250, height: 250)
                 .padding()
                 .foregroundStyle(.red)
-
-            Button("Alterar Imagem") {
-                // Ação para alterar a imagem
+            
+            Button {
+                
+            } label: {
+                Image("buttonInteiroAlterarImagem")
             }
-            .padding()
-            .foregroundColor(.blue)
         }
     }
     
@@ -64,4 +111,8 @@ struct DetailCDModalView: View {
                 .cornerRadius(25)
         }
     }
+}
+
+#Preview {
+    LibraryView()
 }

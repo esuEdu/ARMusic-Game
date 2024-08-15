@@ -12,7 +12,7 @@ struct CDGridItemView: View {
     @Binding var dragOffsets: [UUID: CGSize]
     @Binding var data: [CDItem]
     
-    private let rectangleSize: CGFloat = 200.0
+    private let rectangleSize: CGFloat = 282.0
     private let tamanhoDosCDS: CGFloat = UIScreen.screenWidth * 0.13
     
     var onItemSelected: (CDItem) -> Void
@@ -22,7 +22,8 @@ struct CDGridItemView: View {
             ZStack {
                 GeometryReader { geometry in
                     if !item.isDefinido {
-                        Circle()
+                        Image("disco")
+                            .resizable()
                             .foregroundStyle(.cd)
                             .offset(x: geometry.size.width / 2)
                             .offset(dragOffsets[item.id] ?? .zero)
@@ -38,15 +39,25 @@ struct CDGridItemView: View {
                     }
                 }
                 
-                Rectangle()
+                Image("capaDisco")
+                    .resizable()
                     .foregroundStyle(.capaCD)
                     .frame(width: rectangleSize, height: rectangleSize)
             }
-            Text(item.descricao)
-                .bold()
-                .foregroundColor(.black)
-                .frame(width: tamanhoDosCDS * 1.3)
-                .multilineTextAlignment(.center)
+            
+            ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.secondaryPurple.opacity(0.5))
+                    .frame(width: rectangleSize, height: 50)
+                Text(item.descricao)
+                    .bold()
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+            }
+            .frame(width: rectangleSize)
+
+
         }
         .frame(width: rectangleSize, height: rectangleSize)
         .padding(.bottom, 40)
@@ -68,3 +79,7 @@ struct CDGridItemView: View {
 //#Preview {
 //    CDGridItemView(item: <#T##Binding<CDItem>#>, rectangleSize: <#T##CGFloat#>, tamanhoDosCDS: <#T##CGFloat#>, dragOffsets: <#T##Binding<[UUID : CGSize]>#>, draggingCD: <#T##Binding<CDItem?>#>, selectedItem: <#T##Binding<CDItem?>#>, data: <#T##Binding<[CDItem]>#>, onItemSelected: <#T##(CDItem) -> Void#>)
 //}
+
+#Preview {
+    LibraryView()
+}

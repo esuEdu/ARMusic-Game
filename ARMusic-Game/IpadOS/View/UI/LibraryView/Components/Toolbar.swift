@@ -16,49 +16,70 @@ struct Toolbar: View {
     
     var body: some View {
         HStack {
-            circleButton(imageName: "chevron.left", action: {})
+            circleButton(image: "backButton", action: {})
                 .padding(.leading, 20)
-            Spacer()
             SearchBar(searchText: $searchText)
-            Spacer()
-            circleButton(imageName: "line.horizontal.3.decrease.circle", action: {})
+                .padding(.horizontal, 40)
+            circleButton(image: "filterButton", action: {})
                 .padding(.trailing, 20)
         }
         .padding(.vertical)
     }
-    
-    func circleButton(imageName: String, action: @escaping () -> Void) -> some View {
+        
+    private func circleButton(image: String, action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Circle()
+            Image("backgroundPurpleRoundedBtn")
                 .frame(width: toolbarButtonWeight,
                        height: toolbarButtonHeigth)
                 .foregroundColor(.gray)
                 .overlay {
-                    Image(systemName: imageName)
+                    Image(image)
                         .font(.system(size: 32))
                         .fontWeight(.heavy)
                         .foregroundColor(.black)
                 }
         }
     }
-    
+
     struct SearchBar: View {
+        let searchBarHeigth: CGFloat = UIScreen.screenHeight * 0.13
         @Binding var searchText: String
         
         var body: some View {
-            HStack {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(.gray)
-                    .padding(.leading, 8)
-                
-                TextField("Pesquisar", text: $searchText)
-                    .padding(8)
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(10)
-            }
+//            HStack {
+//                RoundedRectangle(cornerRadius: .infinity)
+//                    .foregroundColor(.primaryPurple)
+//                    .shadow(color: .black.opacity(0.8), radius: 10, x: 0, y: 0)
+//                    .clipShape(RoundedRectangle(cornerRadius: .infinity))
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: .infinity)
+//                            .stroke(Color.black, lineWidth: 2)
+//                            .shadow(color: .black.opacity(0.8), radius: 10, x: 0, y: 0)
+//                            .clipShape(RoundedRectangle(cornerRadius: .infinity))
+//                    )
+//                    .overlay {
+//                        HStack {
+//                            Image("lupaIcon")
+//                                .foregroundColor(.blue)
+//                                .padding(.leading, 8)
+//
+//                            TextField("NOME DO DISCO", text: $searchText)
+//                                .padding(8)
+//                                .customFont(.metarin, textStyle: .title)
+//
+//                        }
+//                        .padding()
+//                        .padding(.horizontal)
+//                        .foregroundStyle(.white)
+//                    }
+//                    .frame(height: searchBarHeigth)
+//            }
+            
+            Image("seachBarFakehehehehhe")
         }
     }
 }
+
 
 #Preview {
     Toolbar(searchText: .constant("aaaa lelek"))

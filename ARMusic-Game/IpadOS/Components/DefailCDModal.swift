@@ -66,6 +66,6 @@ struct DetailCDModal: View {
     }
 }
 
-#Preview {
-    DetailCDModal(item: CDItem(text: "Mamonas assacinas", descricao: "Alelek", image: "pencil.fill"), isPresented: .constant(true))
-}
+//#Preview {
+//    DetailCDModal(item: CDItem(text: "Mamonas assacinas", descricao: "Alelek", image: "pencil.fill"), isPresented: .constant(true))
+//}
