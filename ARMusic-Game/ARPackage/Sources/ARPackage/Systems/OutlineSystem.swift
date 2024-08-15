@@ -18,12 +18,11 @@ public class OutlineEntity: Entity, HasModel {
         name = "outline_entity"
         
         
-        let material = SimpleMaterial(color: .black, isMetallic: false)
+        let material = UnlitMaterial(color: .yellow)
         
         let geometryShader = CustomMaterial.GeometryModifier(named: "OutlineGeometryShader", in: MetalConfig.library)
-        let surfaceShader = CustomMaterial.SurfaceShader(named: "OutlineSurfaceShader", in: MetalConfig.library)
         
-        var customMaterial = try! CustomMaterial(from: material, surfaceShader: surfaceShader, geometryModifier: geometryShader)
+        var customMaterial = try! CustomMaterial(from: material, geometryModifier: geometryShader)
         customMaterial.faceCulling = .front
         let materials = model.materials.map { _ in
             customMaterial
