@@ -18,7 +18,7 @@ struct MuteButtonView: View {
         
         
         ActionButtonView(
-            iconName: arViewManager.muted ? "speaker" : "speaker",
+            iconName: arViewManager.muted ? "speaker" : "speaker-2",
             action: {
                 arViewManager.muted.toggle()
             },

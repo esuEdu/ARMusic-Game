@@ -20,13 +20,13 @@ struct InstrumentInfo {
         case .piano:
             return InstrumentInfo(
                 name: "orcano",
-                imageName: "background", modelName: "piano.usdz",
+                imageName: "baleia", modelName: "piano.usdz",
                 description: "Boa pedida para quem gosta dos clássicos"
             )
             case .guitar:
                 return InstrumentInfo(
-                    name: "Guitar Men",
-                    imageName: "background", modelName: "guitar.usdz",
+                    name: "orcano",
+                    imageName: "cogumelo", modelName: "guitar.usdz",
                     description: "Boa pedida para quem gosta dos clássicos"
                 )
         }

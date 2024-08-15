@@ -30,14 +30,16 @@ struct ActionButtonView: View {
                 Image(.purpleSphere)
                     .resizable()
                     .scaledToFit()
-                    .containerRelativeFrame(.vertical){ width, _ in width/8 }
+                    .containerRelativeFrame(.vertical) { width, _ in
+                        width / 12
+                    }
+                    .shadow(color: .black.opacity(0.3), radius: 4, x: 2, y: 5)
                 
                 Image(iconName)
                     .resizable()
                     .scaledToFit()
                     .foregroundStyle(iconColor)
-                    .containerRelativeFrame(.vertical){ width, _ in width/14 }
-
+                    .containerRelativeFrame(.vertical){ width, _ in width/20 }
                 
             }
             .scaleEffect(isPressed ? 0.95 : 1.0)

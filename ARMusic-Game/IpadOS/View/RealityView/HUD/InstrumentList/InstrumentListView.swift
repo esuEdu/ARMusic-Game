@@ -52,7 +52,7 @@ struct InstrumentListView: View {
                                         isDrop:  isDropLocationOutside
                                     )
                                 }
-                                .frame(height: geometry.size.height * 0.58)
+                                .frame(height: geometry.size.height * 0.38)
                             }
                         }
                         .padding()
@@ -178,6 +178,7 @@ struct HeaderView: View {
                 .containerRelativeFrame(.horizontal){ width, _ in width * 0.2}
                 .opacity(isExpanded ? 1 : 0)
                 .transition(.move(edge: .trailing).combined(with: .opacity))
+                .padding(.top, 20)
                 .padding()
         }
         .frame(maxWidth: .infinity, alignment: .center)

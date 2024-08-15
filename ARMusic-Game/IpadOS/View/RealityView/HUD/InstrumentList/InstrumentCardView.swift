@@ -27,27 +27,28 @@ struct InstrumentCardView: View {
                         .blur(radius: 8.1)
                         .blendMode(.multiply)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
-                        .padding()
+                        .padding(10)
+                        .padding(.horizontal, 20)
                 }
 
                 VStack {
                     VStack{
                         Image(instrumentInfo.imageName)
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
+                            .aspectRatio(contentMode: .fit)
                             .clipShape(.rect(cornerRadius: 15))
-                            .containerRelativeFrame(.vertical){ height, _ in height * 0.18}
-                            .padding(.vertical, 5)
+                            .containerRelativeFrame(.vertical){ height, _ in height * 0.14}
+                            .padding(.top, 5)
                         
                         VStack(spacing: 5) {
                             Image(instrumentInfo.name)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .multilineTextAlignment(.center)
-                                .containerRelativeFrame(.vertical){ height, _ in height * 0.09}
+                                .containerRelativeFrame(.vertical){ height, _ in height * 0.04}
                             
                             Text(instrumentInfo.description)
-                                .customFont(.goodBakwan, textStyle: .footnote)
+                                .customFont(.goodBakwan, textStyle: .headline)
                                 .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.center)
                             
