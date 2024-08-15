@@ -7,13 +7,12 @@ import ARKit
 struct StartView: View {
     
     @State private var currentHue: Double = 0
-
-    
     @ObservedObject var managerMotion = MotionManager()
     @State var scene: SCNScene? = .init(named: "pancakes.usdz")
     @State var motion: CMDeviceMotion? = nil
     @State private var isLoading = false
     @State private var navigateToRealityView = false
+    @State private var navigateToLibraryView = false
     
     let motionManager = CMMotionManager()
     let thresholdPitch: Double = 35 * .pi / 180
@@ -57,7 +56,10 @@ struct StartView: View {
                                     navigateToRealityView = true
                                 }
                             }, title: "Criar")
-                            
+
+                            PrimaryButton(action: {
+                                navigateToLibraryView = true
+                            }, title: "Ir para a LibraryView")
                         }
                         
                         ZStack {
@@ -71,7 +73,6 @@ struct StartView: View {
                             }
                         }
                         .onAppear {
-                            
                             Task {
                                 if let modelURL = ModelData(instrument: .piano).getURL() {
                                     scene = try? .init(url: modelURL)
@@ -80,14 +81,11 @@ struct StartView: View {
                             if motionManager.isDeviceMotionAvailable {
                                 self.motionManager.deviceMotionUpdateInterval = 1.0 / 60.0
                                 self.motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { (data, error) in
-                                    
                                     if let validData = data {
                                         self.motion = validData
                                     }
-                                    
                                 }
                             }
-                            
                         }
                     }
                     .padding()
@@ -96,8 +94,6 @@ struct StartView: View {
                             .resizable()
                             .frame(width: UIScreen.main.bounds.size.height * 3.0)
                             .frame(height: UIScreen.main.bounds.size.height * 3.0)
-//                            .blendMode(.softLight)
-//                            .background(waveGradient())
                             .colorEffect(ShaderLibrary.default.boise(.boundingRect, .float(date.timeIntervalSinceNow)))
                             .offset(x: managerMotion.roll * 100, y: managerMotion.pitch * 100)
                             .onAppear {
@@ -120,6 +116,13 @@ struct StartView: View {
                     ) {
                         EmptyView()
                     }
+
+                    NavigationLink(
+                        destination: LibraryView(),
+                        isActive: $navigateToLibraryView
+                    ) {
+                        EmptyView()
+                    }
                 }
             }
         }
@@ -127,7 +130,6 @@ struct StartView: View {
     
     func waveGradient() -> LinearGradient {
         var a = (sin(date.timeIntervalSinceNow * 0.1) + 1.0) / 2.0
-        
         
         return LinearGradient(gradient: Gradient(colors: [Color(hue: a, saturation: 1.0, brightness: 1.0), Color(hue: a + 0.1, saturation: 1.0, brightness: 1.0)]), startPoint: .topLeading, endPoint: .bottomTrailing)
     }
@@ -143,4 +145,3 @@ struct StartView: View {
 #Preview {
     StartView()
 }
-
